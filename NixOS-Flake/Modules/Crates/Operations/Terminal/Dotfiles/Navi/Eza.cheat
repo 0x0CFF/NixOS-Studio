@@ -1,0 +1,10 @@
+% Eza
+
+# 查看文件详细
+eza --long --header --group --created --modified --time-style=long-iso --all --icons --group-directories-first --git-repos --git
+
+# 查看文件详细-树状图
+eza --long --header --group --created --modified --time-style=long-iso --all --icons --group-directories-first --tree --level=2 --git-repos --git
+
+# 查看文件详细-树状图（自定义层数）
+eza --long --header --group --created --modified --time-style=long-iso --all --icons --group-directories-first --tree --level=<Int> --git-repos --git

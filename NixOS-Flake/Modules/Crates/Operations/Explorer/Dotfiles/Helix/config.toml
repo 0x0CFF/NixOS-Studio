@@ -1,0 +1,49 @@
+theme = "nord"
+
+[editor]                                                                                                             # 编辑器
+scrolloff = 8                                                                                                        # 滚动时屏幕边缘周围的填充行数
+mouse = true                                                                                                         # 启用鼠标模式
+middle-click-paste = true                                                                                            # 中键点击粘贴支持
+scroll-lines = 4                                                                                                     # 每个滚轮步骤要滚动的行数
+# shell =                                                                                                            # 运行外部命令时要使用的命令行管理程序
+line-number = "absolute"                                                                                             # 行号显示 | absolute（绝对行号）、relative（相对行号）
+cursorline = false                                                                                                   # 用光标突出显示所有行
+cursorcolumn = false                                                                                                 # 用光标突出显示所有列
+# gutters =
+auto-completion = true                                                                                               # 启用自动弹出自动完成
+auto-format = true                                                                                                   # 保存时启用自动格式化
+auto-save = true                                                                                                     # 焦点远离 Helix 时，自动保存
+
+
+[editor.statusline]                                                                                                  # 编辑器状态栏
+left = ["mode", "spinner"]                                                                                           # 与状态行左侧对齐的元素列表
+center = ["file-name", "file-modification-indicator"]                                                                # 与状态行中间对齐的元素列表
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]                  # 与状态行右侧对齐的元素列表
+separator = "│"                                                                                                      # 用于分隔状态行中元素的字符
+mode.normal = "NORMAL"                                                                                               # 正常模式元素中显示的文本
+mode.insert = "INSERT"                                                                                               # 插入模式元素中显示的文本
+mode.select = "SELECT"                                                                                               # 选择模式元素中显示的文本
+
+[editor.cursor-shape]                                                                                                # 光标形状
+insert = "bar"                                                                                                       # 正常模式下的光标形状
+normal = "block"                                                                                                     # 插入模式下的光标形状
+select = "underline"                                                                                                 # 选择模式下的光标形状
+
+[editor.file-picker]                                                                                                 # 文件选择器
+hidden = false                                                                                                       # 不显示隐藏文件
+follow-symlinks = true                                                                                               # 遵循符号链接而不是忽略它们
+deduplicate-links = true                                                                                             # 忽略指向选取器中已显示文件的符号链接
+parents = true                                                                                                       # 允许从父目录中读取忽略文件
+ignore = true                                                                                                        # 启用读取 .ignore 文件
+git-ignore = true                                                                                                    # 启用读取 .gitignore 文件
+git-global = true                                                                                                    #
+git-exclude = true                                                                                                   # 启用读取 .git/info/exclude 文件
+# max-depth =
+
+[editor.auto-pairs]                                                                                                  # 自动配对
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'

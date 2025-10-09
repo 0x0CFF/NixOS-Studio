@@ -1,0 +1,67 @@
+# 根据 schema 提供自动补全
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# 在提示符之间插入空行
+add_newline = true
+
+
+format = '''
+[╭─ $os](bold #5bc8af)[\[ ($sudo )$hostname(@$username) \]](bold #9cbc81)[\[ $directory \]](bold #f9f1a5)[(\[ $git_branch(  $git_status) \])](bold #f1a025)
+[╰─ $character](bold #5bc8af)
+'''
+
+
+right_format = '''
+[$time ](bold #5bc8af)
+'''
+
+
+# 模块
+
+[os]
+disabled = false
+format = '[\[ $name \]](bold #5bc8af)'
+
+[sudo]
+disabled = false
+allow_windows = true
+format = '[SUDO](bold #d1737a)'
+
+[hostname]
+disabled = false
+ssh_only = false
+format = '[$hostname](bold #9cbc81)'
+
+[username]
+disabled = false
+show_always = true
+style_user = "bold #9cbc81"
+style_root = "bold #d1737a"
+format = '[$user]($style)'
+
+[directory]
+disabled = false
+format = '$path'
+truncate_to_repo = false
+truncation_length = 8
+truncation_symbol = "…/"
+
+[git_branch]
+disabled = false
+symbol = ""
+format = '$symbol $branch'
+
+[git_status]
+disabled = false
+format = '$all_status$ahead_behind'
+
+[character]
+success_symbol = '\(≧ ∇ ≦ \)ゞ'
+error_symbol = 'Σ\(っ°Д°\)っ'
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+utc_time_offset = "+8"
+format = '$time'
+

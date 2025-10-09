@@ -1,0 +1,5 @@
+# NixOS
+flake.lock
+
+# Zed
+.ropeproject

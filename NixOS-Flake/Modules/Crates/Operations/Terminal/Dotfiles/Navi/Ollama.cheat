@@ -1,0 +1,16 @@
+% Ollama
+
+# 启动 Ollama
+ollama serve
+
+# 运行 LLMs 模型
+ollama run <LLMs>
+
+# 删除 LLMs 模型
+ollama rm <LLMs>
+
+# 查看 LLMs 模型列表
+ollama list
+
+# 检查 Ollama 是否启动
+curl http://127.0.0.1:11434

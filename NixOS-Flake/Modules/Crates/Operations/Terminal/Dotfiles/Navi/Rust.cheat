@@ -1,0 +1,43 @@
+% Rust
+
+#  创建新项目
+cargo new <ProjectName>
+
+# 更新项目中的所有依赖关系
+cargo update
+
+# 更新项目中的指定依赖
+cargo update -p <CrateName>
+
+# 检查代码能否编译通过（无需生成二进制文件）
+cargo check
+
+# 代码单元测试
+cargo test
+
+# 编译项目 + 运行可执行文件
+cargo run
+
+# 编译项目 [Debug 模式]
+cargo build
+
+# 编译项目 [Release 模式]
+cargo build --release
+
+# 自动格式化代码
+cargo fmt
+
+# 查看 Cargo 版本
+cargo version
+
+# 生成项目文档
+cargo doc
+
+# 查看 Rust 版本
+rustc -V
+
+# 查看帮助
+cargo help
+
+# 更新 Rust 到最新版本
+rustup update

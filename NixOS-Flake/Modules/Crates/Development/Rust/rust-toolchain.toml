@@ -1,0 +1,2 @@
+[toolchain]
+channel = "stable"  # 使用稳定版工具链

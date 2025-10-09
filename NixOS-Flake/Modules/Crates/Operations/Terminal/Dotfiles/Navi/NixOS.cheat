@@ -1,0 +1,178 @@
+% NixOS
+
+# 查看系统版本号
+nixos-version
+
+# 查看 nix-daemon 进程的所有环境变量
+sudo cat /proc/$(pidof nix-daemon)/environ | tr '\0' '\n'
+
+# 查看当前可用的所有 NixOS 历史版本
+nix profile history --profile /nix/var/nix/profiles/system
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, HDD
+
+# 更新硬件表
+sudo nixos-generate-config
+
+# 替换硬件信息
+sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/<Hostname>/Device/
+
+$ Hostname: echo "NODENS/NODENS00 NODENS/NODENS01 DATASC/DATASC00 DATASC/DATASC01 DATABC/DATABC00 DATABC/DATABC01 DATAHC/DATAHC00 DATAHC/DATAHC01" | tr ' ' '\n'
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, Proxy
+
+# 修改 nix-daemon 进程的环境变量，启用临时代理
+```sh
+FILE="/run/systemd/system/nix-daemon.service.d/override.conf"
+
+if [ -f "$FILE" ]; then
+    echo "临时代理配置文件已存在"
+else
+    # 创建 /run/systemd/system/nix-daemon.service.d/override.conf
+    sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
+    sudo tee /run/systemd/system/nix-daemon.service.d/override.conf <<EOF
+    [Service]
+    Environment="https_proxy=socks5h://192.168.31.200:20172"
+    EOF
+    # 重启 nix-daemon 进程
+    sudo systemctl daemon-reload
+    sudo systemctl restart nix-daemon
+fi
+```
+
+# 修改 nix-daemon 进程的环境变量，关闭临时代理
+```sh
+FILE="/run/systemd/system/nix-daemon.service.d/override.conf"
+
+if [ -f "$FILE" ]; then
+    # 删除 /run/systemd/system/nix-daemon.service.d/override.conf
+    sudo rm -f $FILE
+    # 重启 nix-daemon 进程
+    sudo systemctl daemon-reload
+    sudo systemctl restart nix-daemon
+    echo "已关闭临时代理"
+else
+    echo "临时代理配置文件不存在"
+fi
+```
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, Build
+
+# [Flake] 更新 flake.lock（更新所有依赖项）
+sudo nix flake update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake
+
+# [Flake] 部署 NixOS 系统
+sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --show-trace -L -v --option substituters "<Channels>"
+
+# [Flake] [Git] 回滚 NixOS 系统
+```sh
+git checkout HEAD^1
+sudo nixos-rebuild switch --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --show-trace -L -v --option substituters "<Channels>"
+```
+
+# [Flake] 远程部署 NixOS 系统（系统构建过程将在本机执行）
+sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --target-host root@<IP> --build-host localhost --verbose
+
+# [Flake] 远程部署 NixOS 系统（系统构建过程将在远程主机执行）
+sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --target-host root@<IP> --build-host root@<IP> --verbose
+
+# [Unflake] 部署 NixOS 系统
+sudo nixos-rebuild <Commands> -I nixos-config=<Path> --show-trace -L -v --option substituters "<Channels>"
+
+# [Unflake] 回滚 NixOS 系统
+sudo nixos-rebuild rollback
+
+# 更新 Home-Manager
+sudo home-manager switch --flake .#0x0CFF@<Hostname>
+
+$ Commands: echo "test switch boot" | tr ' ' '\n'
+$ Hostname: echo "NODENS00 NODENS01 DATASC00 DATASC01 DATABC00 DATABC01 DATAHC00 DATAHC01" | tr ' ' '\n'
+$ Channels: echo "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://mirrors.ustc.edu.cn/nix-channels/store https://mirrors.nju.edu.cn/nix-channels/store https://mirror.sjtu.edu.cn/nix-channels/store https://mirrors.cqupt.edu.cn/nix-channels/store https://mirror.nyist.edu.cn/nix-channels/store https://mirror.iscas.ac.cn/nix-channels/store" | tr ' ' '\n'
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, Develop
+
+# 从交互式 Shell 运行开发环境（适合临时开发）
+nix shell nixpkgs#<Package_Name>
+
+# 从 flake.nix 运行开发环境
+nix develop .#default
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, GC
+
+# 清理 7 天之前的所有 NixOS 历史版本
+sudo nix profile wipe-history --older-than 7d --profile /nix/var/nix/profiles/system
+
+# 清理 N 天之前的所有 NixOS 历史版本
+sudo nix profile wipe-history --older-than <Int>d --profile /nix/var/nix/profiles/system
+
+# 清理 /nix/store 中未被使用的对象、NixOS 历史版本 [所有]
+sudo nix-collect-garbage --delete-old
+
+# 清理 /nix/store 中未被使用的对象、NixOS 历史版本 [N 天前]
+sudo nix-collect-garbage --delete-older-than <Int>d
+
+# 清理 /nix/store 中未被使用的对象、NixOS 历史版本 [指定大小]
+sudo nix-collect-garbage --max-freed <Bytes>
+
+# 删除 Nix 存储中无法访问的路径（不会清理 NixOS 历史版本）
+sudo nix store gc --debug
+
+# 删除 Nix 存储中无法访问的路径，删除容量为 1 GB（不会清理 NixOS 历史版本）
+sudo nix store gc --debug --max 1G
+
+# 删除 7 天之前的所有 Home-Manager 历史版本
+sudo home-manager expire-generations "-7days"
+
+# 删除 N 天之前的所有 Home-Manager 历史版本
+sudo home-manager expire-generations "-<Int>days"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, Timers
+
+# 系统活动计时器列表 [活跃]
+systemctl list-timers
+
+# 系统活动计时器列表 [所有]
+systemctl list-timers --all
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+% NixOS, NH
+
+# [Flake] 部署 NixOS 系统
+sudo nh os <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --ask --hostname <Hostname>
+
+# [Flake] 更新 flake.lock 并部署 NixOS 系统
+sudo nh os <Commands> --update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --ask --hostname <Hostname>
+
+# [Flake][Github] 部署 NixOS 系统
+sudo nh os <Commands> github:username/nixos-config --ask --hostname <Hostname>
+
+# 清理所有系统范围内的配置文件和 GC 根
+sudo nh clean all --ask
+
+# 清理所有系统范围内的配置文件和 GC 根，保留 N 代
+sudo nh clean all --ask --keep <N>
+
+# 保留比这个持续时间新近的代数和 GC 根
+sudo nh clean all --ask --keep-since <DURATION>
+
+# 仅清理当前用户的配置文件和 GC 根
+sudo nh clean user --ask
+
+# 仅清理当前用户的配置文件和 GC 根，保留 N 代
+sudo nh clean user --ask --keep <N>
+
+$ Commands: echo "test switch boot" | tr ' ' '\n'
+$ Hostname: echo "NODENS00 NODENS01 DATASC00 DATASC01 DATABC00 DATABC01 DATAHC00 DATAHC01" | tr ' ' '\n'
