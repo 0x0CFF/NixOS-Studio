@@ -21,6 +21,8 @@
       ${pkgs.rsync}/bin/rsync -avP --delete -e "/run/current-system/sw/bin/ssh" /mnt/Temp/ 0x0CFF@192.168.31.200:/mnt/Temp/
       # 镜像备份，NODENS01 [ /mnt/Workspace/ ] --> NODENS00 [ /mnt/Workspace/ ]
       ${pkgs.rsync}/bin/rsync -avP --delete -e "/run/current-system/sw/bin/ssh" /mnt/Workspace/ 0x0CFF@192.168.31.200:/mnt/Workspace/
+      # 镜像备份，NODENS01 [ /mnt/Document/ ] --> NODENS00 [ /mnt/Document/ ]
+      ${pkgs.rsync}/bin/rsync -avP --delete -e "/run/current-system/sw/bin/ssh" /mnt/Document/ 0x0CFF@192.168.31.200:/mnt/Document/
     '';
     # 单元配置
     serviceConfig = {
