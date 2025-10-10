@@ -156,7 +156,7 @@ sudo nh os <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --ask
 # [Flake] 更新 flake.lock 并部署 NixOS 系统
 sudo nh os <Commands> --update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --ask --hostname <Hostname>
 
-# [Flake][Github] 部署 NixOS 系统
+# [Flake] [Github] 部署 NixOS 系统
 sudo nh os <Commands> github:username/nixos-config --ask --hostname <Hostname>
 
 # 清理所有系统范围内的配置文件和 GC 根
