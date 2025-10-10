@@ -5,7 +5,7 @@
   # 特性
   nixConfig = {
     # 二进制缓存服务器镜像源（覆盖默认 substituters）
-    # substituters = [
+    # extra-substituters = [
     #   "https://cache.nixos.org"                                     # 官方二进制缓存服务器
     #   "https://mirrors.ustc.edu.cn/nix-channels/store"              # 中国科学技术大学
     #   "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"     # 清华大学

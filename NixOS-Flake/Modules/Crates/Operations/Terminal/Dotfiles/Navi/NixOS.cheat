@@ -150,29 +150,38 @@ systemctl list-timers --all
 
 % NixOS, NH
 
-# [Flake] 部署 NixOS 系统
-sudo nh os <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --ask --hostname <Hostname>
+# [Flake] 部署 NixOS 系统，使用官方二进制缓存
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask
 
-# [Flake] 更新 flake.lock 并部署 NixOS 系统
-sudo nh os <Commands> --update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --ask --hostname <Hostname>
+# [Flake] 部署 NixOS 系统，使用且信任非官方二进制缓存
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask -- --accept-flake-config
 
-# [Flake] [Github] 部署 NixOS 系统
-sudo nh os <Commands> github:username/nixos-config --ask --hostname <Hostname>
+# [Flake] 更新 flake.lock 并部署 NixOS 系统，使用官方二进制缓存
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask --update 
+
+# [Flake] 更新 flake.lock 并部署 NixOS 系统，使用且信任非官方二进制缓存
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask --update -- --accept-flake-config
+
+# [Flake] [Github] 部署 NixOS 系统，使用官方二进制缓存
+nh os <Commands> github:username/nixos-config --hostname <Hostname> --ask 
+
+# [Flake] [Github] 部署 NixOS 系统，使用且信任非官方二进制缓存
+nh os <Commands> github:username/nixos-config --hostname <Hostname> --ask -- --accept-flake-config
 
 # 清理所有系统范围内的配置文件和 GC 根
-sudo nh clean all --ask
+nh clean all --ask
 
 # 清理所有系统范围内的配置文件和 GC 根，保留 N 代
-sudo nh clean all --ask --keep <N>
+nh clean all --ask --keep <N>
 
-# 保留比这个持续时间新近的代数和 GC 根
-sudo nh clean all --ask --keep-since <DURATION>
+# 保留指定时间代数和 GC 根 （支持 Humantime 格式，如：2years、3months、4days、5weeks，6hours，7minutes，8seconds）
+nh clean all --ask --keep-since <DURATION>
 
 # 仅清理当前用户的配置文件和 GC 根
-sudo nh clean user --ask
+nh clean user --ask
 
 # 仅清理当前用户的配置文件和 GC 根，保留 N 代
-sudo nh clean user --ask --keep <N>
+nh clean user --ask --keep <N>
 
 $ Commands: echo "test switch boot" | tr ' ' '\n'
 $ Hostname: echo "NODENS00 NODENS01 DATASC00 DATASC01 DATABC00 DATABC01 DATAHC00 DATAHC01" | tr ' ' '\n'

@@ -33,14 +33,14 @@
         eval "$(starship init bash)"
         eval "$(navi widget bash)"
         eval "$(zellij setup --generate-auto-start bash)"
-        bind "\eq": navi --path "~/.config/navi"
-        bind "\ec": clear-screen
-        bind "\ef": fastfetch
-        bind "\em": btm
-        bind "\ep": pik
-        bind "\es": systemctl-tui
-        bind "\eg": gitui
-      ''
+        bind '"\eq": "navi --path ~/.config/navi\n"'
+        bind '"\ec": clear-screen'
+        bind '"\en": "fastfetch\n"'
+        bind '"\em": "btm\n"'
+        bind '"\ep": "pik\n"'
+        bind '"\es": "systemctl-tui\n"'
+        bind '"\eg": "gitui\n"'
+      '';
       # 设置命令别名
       shellAliases = {
         NAVI = "navi --path '~/.config/navi'";
