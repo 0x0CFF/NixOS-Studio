@@ -112,7 +112,7 @@ batch_create_smb_users() {
     echo "失败用户: $fail_count"
 }
 
-################################################ 创建 mnt 目录（NODENS00, NODENS01） ###############################################
+################################################ 创建 mnt 目录（NODENS00, NODENS00-BACKUP） ###############################################
 
 # 定义要创建的文件夹
 NODENS_FOLDERS=(
@@ -156,22 +156,22 @@ batch_create_smb_folders_nodens() {
     done
 }
 
-################################################ 创建 mnt 目录（DATASC00, DATABC00） ###############################################
+################################################ 创建 mnt 目录（DATASC00, DATASC00-BACKUP） ###############################################
 
 # 定义要创建的文件夹
 MATERIAL_FOLDERS=(
-    "/mnt/Material#PUBLIC/:BOARD_R5:PUBLIC:775"
-    "/mnt/Material#FINANCE/:FINANCE_R5:FINANCE:770"
-    "/mnt/Material#BUSINESS/:BUSINESS_R5:BUSINESS:770"
-    "/mnt/Material#DESIGN/:DESIGN_R5:DESIGN:775"
-    "/mnt/Material#VIDEO/:VIDEO_R5:VIDEO:775"
-    "/mnt/Material#ANIMATION/:ANIMATION_R5:ANIMATION:775"
+    "/mnt/Material#PUBLIC/:BOARD_R5:PUBLIC:755"
+    "/mnt/Material#FINANCE/:FINANCE_R5:FINANCE:750"
+    "/mnt/Material#BUSINESS/:BUSINESS_R5:BUSINESS:750"
+    "/mnt/Material#DESIGN/:DESIGN_R5:DESIGN:755"
+    "/mnt/Material#VIDEO/:VIDEO_R5:VIDEO:755"
+    "/mnt/Material#ANIMATION/:ANIMATION_R5:ANIMATION:755"
 )
 
 # 函数 : 批量创建文件夹
 batch_create_smb_folders_material() {
     # 遍历数组创建文件夹
-    for folder in "${NODENS_FOLDERS[@]}"; do
+    for folder in "${MATERIAL_FOLDERS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -192,7 +192,7 @@ batch_create_smb_folders_material() {
     done
 }
 
-################################################ 创建 mnt 目录（DATASC01, DATABC01） ###############################################
+################################################ 创建 mnt 目录（DATASC01, DATASC01-BACKUP） ###############################################
 
 # 定义要创建的文件夹
 ARCHIVE_FOLDERS=(
@@ -207,7 +207,7 @@ ARCHIVE_FOLDERS=(
 # 函数 : 批量创建文件夹
 batch_create_smb_folders_archive() {
     # 遍历数组创建文件夹
-    for folder in "${NODENS_FOLDERS[@]}"; do
+    for folder in "${ARCHIVE_FOLDERS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -234,11 +234,11 @@ batch_create_smb_folders_archive() {
 show_menu() {
     echo "====== 请选择 Hostname ======"
     echo "1. NODENS00"
-    echo "2. NODENS01"
+    echo "2. NODENS00-BACKUP"
     echo "3. DATASC00"
-    echo "4. DATASC01"
-    echo "5. DATABC00"
-    echo "6. DATABC01"
+    echo "4. DATASC00-BACKUP"
+    echo "5. DATASC01"
+    echo "6. DATASC01-BACKUP"
     echo "7. DATAHC00"
     echo "8. DATAHC01"
     echo "============================"
@@ -262,10 +262,10 @@ handle_choice() {
             ;;
         2)
             echo  # 空行
-            echo "========= NODENS01 ========="
+            echo "========= NODENS00-BACKUP ========="
             # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS01/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS01 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
+            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00-BACKUP/Device/
+            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00-BACKUP --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
             # 构建 /mnt 目录群
             batch_create_smb_folders_nodens
             # 构建 SMB 用户群
@@ -286,6 +286,18 @@ handle_choice() {
             ;;
         4)
             echo  # 空行
+            echo "========= DATASC00-BACKUP ========="
+            # 复制硬件信息
+            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00-BACKUP/Device/
+            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00-BACKUP --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
+            # 构建 /mnt 目录群
+            batch_create_smb_folders_material
+            # 构建 SMB 用户群
+            batch_create_smb_users
+            exit 0
+            ;;
+        5)
+            echo  # 空行
             echo "========= DATASC01 ========="
             # 复制硬件信息
             cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01/Device/
@@ -296,24 +308,12 @@ handle_choice() {
             batch_create_smb_users
             exit 0
             ;;
-        5)
-            echo  # 空行
-            echo "========= DATABC00 ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATABC/DATABC00/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATABC00 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_material
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
-            ;;
         6)
             echo  # 空行
-            echo "========= DATABC01 ========="
+            echo "========= DATASC01-BACKUP ========="
             # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATABC/DATABC01/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATABC01 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
+            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01-BACKUP/Device/
+            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01-BACKUP --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
             # 构建 /mnt 目录群
             batch_create_smb_folders_archive
             # 构建 SMB 用户群

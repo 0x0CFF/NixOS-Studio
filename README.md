@@ -14,9 +14,6 @@
 # 生成配置文件
 sudo nixos-generate-config --root /mnt
 
-# 创建 nix shell，临时配置 Git
-sudo nix shell nixpkgs#git
-
 # 拉取远程仓库到本地
 git clone https://github.com/0x0CFF/NixOS-Studio.git
 
@@ -54,15 +51,19 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 登录 `0x0CFF` 账户
 
 ```shell
-# 拉取远程配置文件
-git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/
-
-# 使用脚本构建 /mnt 目录群、SMB 用户群
-sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
-
 # 使用 mount 命令挂载硬盘到 /mnt 目录下
 
-# 修改对应的 Services/samba.nix 文件
+# 拉取远程配置文件
+# git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
+GIT
+
+# 使用脚本构建 /mnt 目录群、SMB 用户群
+# sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+FLAKE
+
+# 执行 nixos-install.sh 后，NixOS 在 Flake[test] 模式下运行，可执行 Flake 对应操作
+
+# 修改对应 Services/samba.nix 文件
 # 修改 flake.nix 文件，开启 samba 专项
 
 # NAVI: 生成 `hardware-configuration.nix` 硬件信息，替换到 NixOS-Flake 相应文件夹下

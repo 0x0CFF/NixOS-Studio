@@ -7,8 +7,10 @@
     tailspin                 # [AUX] [RUST] 日志文件高亮工具
     starship                 # [AUX] [RUST] 命令行提示符
     eza                      # [AUX] [RUST] 文件列表命令行
+    hdparm                   # [CLI] [C] 硬盘工具
     curl                     # [CLI] [C] URL 传输数据
     fastfetch                # [CLI] [C] 系统信息查看工具
+    restic                   # [CLI] [GO] 数据备份工具
     smartmontools            # [CLI] [C++] 硬盘健康监测工具
     grex                     # [CLI] [RUST] 正则表达式生成器
     trashy                   # [CLI] [RUST] 命令行回收站工具
@@ -18,9 +20,7 @@
     bottom                   # [TUI] [RUST] 资源管理器
     zellij                   # [TUI] [RUST] 终端复用器
     systemctl-tui            # [TUI] [RUST] Systemd 服务管理工具
-    # somo                    # [TUI] [RUST] 端口查看工具
-    # hdparm                  # [CLI] [C] 硬盘工具
-    # hoard                   # [TUI] [RUST] 命令行备忘录
+    # somo                     # [TUI] [RUST] 端口查看工具
   ];
 
   programs = {

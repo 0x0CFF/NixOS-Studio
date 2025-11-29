@@ -28,8 +28,8 @@
     networkmanager.enable = true;  # 易于使用的网络管理工具（大多数发行版默认使用它）
     # 网络代理配置，格式："http://user:password@proxy:port/"
     # proxy = {
-    #   default = "http://192.168.31.xx:20171/";            # [ 代理服务器 ] V2ray 非分流端口
-    #   default = "http://192.168.31.xx:20172/";            # [ 代理服务器 ] V2ray 分流端口
+    #   default = "http://192.168.31.51:20171/";            # [ 代理服务器 ] V2ray 非分流端口
+    #   default = "http://192.168.31.51:20172/";            # [ 代理服务器 ] V2ray 分流端口
     #   noProxy = "127.0.0.1,localhost,internal.domain";    # 代理黑名单
     # };
     # 防火墙端口配置
@@ -104,11 +104,38 @@
       enable = true;
     };
     # Syncthing 服务
-    services.syncthing = {
+    syncthing = {
       enable = true;
       user = "0x0CFF";
-      dataDir = "/home/0x0CFF";
+      dataDir = "/home/0x0CFF/Solution";
       guiAddress = "0.0.0.0:8384";
+    };
+    # Samba 服务
+    samba = {
+      enable = true;
+      openFirewall = true;
+      settings = {
+        # 全局配置
+        global = {
+          # 设定安全级别，共有 6 种
+          # share  : 不需要提供用户名和密码
+          # user   : 需要提供用户名和密码，身份验证由 Samba 负责
+          # server : 需要提供用户名和密码，可指定其他机器作身份验证
+          # domain : 需要提供用户名和密码，指定域服务器作身份验证
+          security = "user";
+          # 用户登录黑名单
+          "invalid users" = [
+            "root"
+            "0x0CFF"
+          ];
+        };
+      };
+    };
+    # Web 服务动态发现主机守护程序，使共享对 Windows 10 客户端可见
+    # 这使 Samba 主机（如本地 NAS 设备）能够被 Windows 等 Web 服务发现客户端找到
+    samba-wsdd = {
+      enable = true;                                  # 启用服务
+      workgroup = "WORKGROUP";                        # Samba 工作组
     };
   };
 
@@ -141,11 +168,6 @@
     yazi           # 文件管理器
     bottom         # 系统任务管理器
     fastfetch      # 系统信息查看工具
-    # hdparm         # 硬盘工具
-    # smartmontool   # 硬盘健康监测工具
-    # nh             # NixOS 生态系统辅助工具
-    # somo           # 端口查看工具
-    # isd            # systemd 管理工具
   ];
 
   # 复制 NixOS 配置文件并将其从生成的系统中链接，(/run/current-system/configuration.nix)，这在意外删除 configuration.nix 时很有用
@@ -160,5 +182,5 @@
   # 这个值低于当前的 NixOS 版本并不意味着系统过时、不受支持或容易受到攻击
   # 除非已手动检查它将对配置进行的所有更改，并相应地迁移了数据，否则请勿更改此值
   # 有关详细信息，请参阅 `man configuration.nix` 或 https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  system.stateVersion = "25.05";  # 更改此值前，确定阅读了上面的信息?
+  system.stateVersion = "25.11";  # 更改此值前，确定阅读了上面的信息?
 }

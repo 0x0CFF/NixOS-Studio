@@ -19,7 +19,7 @@ sudo nixos-generate-config
 # 替换硬件信息
 sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/<Hostname>/Device/
 
-$ Hostname: echo "NODENS/NODENS00 NODENS/NODENS01 DATASC/DATASC00 DATASC/DATASC01 DATABC/DATABC00 DATABC/DATABC01 DATAHC/DATAHC00 DATAHC/DATAHC01" | tr ' ' '\n'
+$ Hostname: echo "NODENS/NODENS00 NODENS/NODENS00-BACKUP DATASC/DATASC00 DATASC/DATASC00-BACKUP DATAHC/DATAHC00 DATAHC/DATAHC01" | tr ' ' '\n'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -36,7 +36,7 @@ else
     sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
     sudo tee /run/systemd/system/nix-daemon.service.d/override.conf <<EOF
     [Service]
-    Environment="https_proxy=socks5h://192.168.31.200:20172"
+    Environment="https_proxy=socks5h://192.168.31.51:20172"
     EOF
     # 重启 nix-daemon 进程
     sudo systemctl daemon-reload
@@ -92,7 +92,7 @@ sudo nixos-rebuild rollback
 sudo home-manager switch --flake .#0x0CFF@<Hostname>
 
 $ Commands: echo "test switch boot" | tr ' ' '\n'
-$ Hostname: echo "NODENS00 NODENS01 DATASC00 DATASC01 DATABC00 DATABC01 DATAHC00 DATAHC01" | tr ' ' '\n'
+$ Hostname: echo "NODENS00 NODENS00-BACKUP DATASC00 DATASC00-BACKUP DATASC01 DATASC01-BACKUP DATAHC00 DATAHC01" | tr ' ' '\n'
 $ Channels: echo "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://mirrors.ustc.edu.cn/nix-channels/store https://mirrors.nju.edu.cn/nix-channels/store https://mirror.sjtu.edu.cn/nix-channels/store https://mirrors.cqupt.edu.cn/nix-channels/store https://mirror.nyist.edu.cn/nix-channels/store https://mirror.iscas.ac.cn/nix-channels/store" | tr ' ' '\n'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -184,4 +184,4 @@ nh clean user --ask
 nh clean user --ask --keep <N>
 
 $ Commands: echo "test switch boot" | tr ' ' '\n'
-$ Hostname: echo "NODENS00 NODENS01 DATASC00 DATASC01 DATABC00 DATABC01 DATAHC00 DATAHC01" | tr ' ' '\n'
+$ Hostname: echo "NODENS00 NODENS00-BACKUP DATASC00 DATASC00-BACKUP DATASC01 DATASC01-BACKUP DATAHC00 DATAHC01" | tr ' ' '\n'
