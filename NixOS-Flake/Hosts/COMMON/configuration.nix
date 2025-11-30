@@ -12,14 +12,14 @@
       noto-fonts-cjk-sans   # Google CJK 无衬线字体
       noto-fonts-cjk-serif  # Google CJK 衬线字体
       noto-fonts-emoji      # Google Emoji
-      
+
       # Nerd Fonts
       nerd-fonts.jetbrains-mono     # 编程字体
       nerd-fonts.symbols-only       # 符号字体
       nerd-fonts.dejavu-sans-mono   # 盲文字体
     ];
   };
-  
+
   # 国际化与输入法
   i18n.defaultLocale = "zh_CN.UTF-8";
   # console = {
@@ -31,7 +31,8 @@
   # 定义用户，首次构建系统不要忘记使用「passwd」命令设置密码
   users.users."0x0CFF" = {
     isNormalUser = true;
-    extraGroups = [
+    group = "STUDIO";                  # 主要用户组
+    extraGroups = [                    # 辅助用户组
       "wheel"           # 为该用户启用 sudo 权限
       "PUBLIC"
       "ADMINISTRATION"
@@ -48,13 +49,8 @@
     #   tree
     # ];
   };
-
-  # 启用 Home Manager 并自引用
-  programs.home-manager.enable = true;
-  home = {
-    username = "0x0CFF";
-    homeDirectory = "/home/0x0CFF";
-  };
+  # 定义主要用户组（否则工作室对应用户无法创建）
+  users.groups.STUDIO = {};
 
   nix = {
     # 系统特性

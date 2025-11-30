@@ -182,5 +182,5 @@
   # 这个值低于当前的 NixOS 版本并不意味着系统过时、不受支持或容易受到攻击
   # 除非已手动检查它将对配置进行的所有更改，并相应地迁移了数据，否则请勿更改此值
   # 有关详细信息，请参阅 `man configuration.nix` 或 https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
-  system.stateVersion = "25.11";  # 更改此值前，确定阅读了上面的信息?
+  system.stateVersion = "25.05";  # 更改此值前，确定阅读了上面的信息?
 }

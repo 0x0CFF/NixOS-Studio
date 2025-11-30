@@ -19,7 +19,7 @@
       # 在 Bash Shell 初始化期间调用的 Shell 脚本代码
       shellInit = ''
         bind "\ee": yazi
-      ''
+      '';
     };
   };
 }

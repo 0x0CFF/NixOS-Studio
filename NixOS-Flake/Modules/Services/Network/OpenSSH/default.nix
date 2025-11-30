@@ -17,7 +17,7 @@
         # "prohibit-password"    : 允许 Root 用户登录，需要密码验证
         # "forced-commands-only" : 允许 Root 用户登录，仅允许使用密钥
         # "no"                   : 不允许 Root 用户登录
-        PermitRootLogin = "no"
+        PermitRootLogin = "no";
       };
     };
   };

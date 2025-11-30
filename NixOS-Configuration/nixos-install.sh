@@ -98,7 +98,7 @@ batch_create_smb_users() {
             echo "用户 $username 创建成功"
             success_count=$((success_count + 1))
         else
-            echo "错误：无法创建SMB用户 $username"
+            echo "错误：无法创建 SMB 用户 $username"
             fail_count=$((fail_count + 1))
         fi
 
@@ -118,6 +118,7 @@ batch_create_smb_users() {
 NODENS_FOLDERS=(
     "/mnt/Temp/:BOARD_R5:PUBLIC:775"
     "/mnt/Workspace/:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/Obsidian/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/Obsidian/公共文档:BOARD_R5:PUBLIC:775"
     "/mnt/Document/Obsidian/动画文档:ANIMATION_R5:ANIMATION:775"
@@ -244,97 +245,185 @@ show_menu() {
     echo "============================"
 }
 
+# 显示二级菜单函数
+show_submenu() {
+    echo "====== 请选择操作 ======"
+    echo "1. Switch Flake"
+    echo "2. Init SMB"
+    echo "============================"
+}
+
 # 处理用户选择
 handle_choice() {
     case $1 in
         1)
             echo  # 空行
             echo "========= NODENS00 ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00/Device/
-            # 构建 NixOS 系统
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_nodens
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00/Device/
+                    # 构建 NixOS 系统
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+                2)
+                    echo  # 空行
+                    # 构建 /mnt 目录群
+                    batch_create_smb_folders_nodens
+                    # 构建 SMB 用户群
+                    batch_create_smb_users
+                    exit 0
+                    ;;
+                *)
+                    echo  # 空行
+                    echo "错误选择，请重新输入！"
+                    ;;
+            esac
             ;;
         2)
             echo  # 空行
             echo "========= NODENS00-BACKUP ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00-BACKUP/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00-BACKUP --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_nodens
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00-BACKUP/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+                2)            
+                    echo  # 空行
+                    # 构建 /mnt 目录群
+                    batch_create_smb_folders_nodens
+                    # 构建 SMB 用户群
+                    batch_create_smb_users
+                    exit 0
+                    ;;
+                *)
+                    echo  # 空行
+                    echo "错误选择，请重新输入！"
+                    ;;
+            esac
             ;;
         3)
             echo  # 空行
             echo "========= DATASC00 ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_material
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+                2)  
+                    echo  # 空行
+                    # 构建 /mnt 目录群
+                    batch_create_smb_folders_material
+                    # 构建 SMB 用户群
+                    batch_create_smb_users
+                    exit 0
+                    ;;
+                *)
+                    echo  # 空行
+                    echo "错误选择，请重新输入！"
+                    ;;
+            esac
             ;;
         4)
             echo  # 空行
             echo "========= DATASC00-BACKUP ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00-BACKUP/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00-BACKUP --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_material
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00-BACKUP/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+                2)  
+                    echo  # 空行
+                    # 构建 /mnt 目录群
+                    batch_create_smb_folders_material
+                    # 构建 SMB 用户群
+                    batch_create_smb_users
+                    exit 0
+                    ;;
+                *)
+                    echo  # 空行
+                    echo "错误选择，请重新输入！"
+                    ;;
+            esac
             ;;
         5)
             echo  # 空行
             echo "========= DATASC01 ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_archive
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+                2)  
+                    echo  # 空行
+                    # 构建 /mnt 目录群
+                    batch_create_smb_folders_archive
+                    # 构建 SMB 用户群
+                    batch_create_smb_users
+                    exit 0
+                    ;;
+                *)
+                    echo  # 空行
+                    echo "错误选择，请重新输入！"
+                    ;;
+            esac
             ;;
         6)
             echo  # 空行
             echo "========= DATASC01-BACKUP ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01-BACKUP/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01-BACKUP --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            # 构建 /mnt 目录群
-            batch_create_smb_folders_archive
-            # 构建 SMB 用户群
-            batch_create_smb_users
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01-BACKUP/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+                2)  
+                    echo  # 空行            
+                    # 构建 /mnt 目录群
+                    batch_create_smb_folders_archive
+                    # 构建 SMB 用户群
+                    batch_create_smb_users
+                    exit 0
+                    ;;
+                *)
+                    echo  # 空行
+                    echo "错误选择，请重新输入！"
+                    ;;
+            esac
             ;;
         7)
             echo  # 空行
             echo "========= DATAHC00 ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC00/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC00 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC00/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+            esac
             ;;
         8)
             echo  # 空行
             echo "========= DATAHC01 ========="
-            # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC01/Device/
-            sudo nixos-rebuild test --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC01 --show-trace --option substituters https://mirror.sjtu.edu.cn/nix-channels/store
-            exit 0
+            case $2 in
+                1)
+                    # 复制硬件信息
+                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC01/Device/
+                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC01 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+                    exit 0
+                    ;;
+            esac
             ;;
         *)
             echo  # 空行
@@ -346,7 +435,9 @@ handle_choice() {
 # 主循环
 while true; do
     show_menu
-    read -p "请输入选择 [1-8]: " choice
-    handle_choice "$choice"
+    read -p "请输入选择 [1-8]: " choice1
+    show_submenu
+    read -p "请输入选择 [1-2]: " choice2
+    handle_choice "$choice1" "$choice2"
     echo  # 空行
 done

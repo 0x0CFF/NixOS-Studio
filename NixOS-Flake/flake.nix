@@ -40,7 +40,7 @@
     };
 
     # 软件源
-    helix.url = "github:helix-editor/helix/master";
+    # helix.url = "github:helix-editor/helix/master";
   };
 
   # 输出
@@ -121,21 +121,24 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
-
     # 定义 NODENS00-BACKUP 系统配置
     nixosConfigurations."NODENS00-BACKUP" = nixpkgs.lib.nixosSystem {
       # 系统架构类型
@@ -199,19 +202,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
 
     # DATASC 系列（Data Storage Center，数据存储中心） ###########################################################
@@ -279,19 +286,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
 
     # 定义 DATASC00-BACKUP 系统配置
@@ -356,19 +367,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
 
     # 定义 DATASC01 系统配置
@@ -435,19 +450,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
 
     # 定义 DATASC01-BACKUP 系统配置
@@ -513,19 +532,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
 
     # DATAHC 系列（Data Handling Center，数据处理中心） ##########################################################
@@ -591,19 +614,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
 
     # 定义 DATAHC01 系统配置
@@ -667,19 +694,23 @@
         ./Users/FINANCE/default.nix                                         # 财务部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
-        # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
-        home-manager.extraSpecialArgs = { inherit inputs; };
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users."0x0CFF" = {
-            # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-            ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
+              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
           };
-        };
-      ]
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
     };
   };
 }
