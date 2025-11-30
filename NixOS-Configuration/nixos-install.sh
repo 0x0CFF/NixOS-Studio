@@ -135,8 +135,8 @@ batch_create_nodens_mountpoint() {
         else
             # 创建文件夹（-p 参数会自动创建父级目录）
             if mkdir -p "$folder"; then
-                sudo chown -R "$owner":"$group" "$folder"
-                sudo chmod -R "$permission" "$folder"
+                sudo chown -R $owner:$group $folder
+                sudo chmod -R $permission $folder
                 echo "成功创建文件夹: $folder"
             else
                 echo "创建文件夹失败: $folder"
@@ -175,8 +175,8 @@ batch_create_nodens_folder() {
         else
             # 创建文件夹（-p 参数会自动创建父级目录）
             if mkdir -p "$folder"; then
-                sudo chown -R "$owner":"$group" "$folder"
-                sudo chmod -R "$permission" "$folder"
+                sudo chown -R $owner:$group $folder
+                sudo chmod -R $permission $folder
                 echo "成功创建文件夹: $folder"
             else
                 echo "创建文件夹失败: $folder"
@@ -211,8 +211,8 @@ batch_create_datasc00_mountpoint() {
         else
             # 创建文件夹（-p 参数会自动创建父级目录）
             if mkdir -p "$folder"; then
-                sudo chown -R "$owner":"$group" "$folder"
-                sudo chmod -R "$permission" "$folder"
+                sudo chown -R $owner:$group $folder
+                sudo chmod -R $permission $folder
                 echo "成功创建文件夹: $folder"
             else
                 echo "创建文件夹失败: $folder"
@@ -247,8 +247,8 @@ batch_create_datasc01_mountpoint() {
         else
             # 创建文件夹（-p 参数会自动创建父级目录）
             if mkdir -p "$folder"; then
-                sudo chown -R "$owner":"$group" "$folder"
-                sudo chmod -R "$permission" "$folder"
+                sudo chown -R $owner:$group $folder
+                sudo chmod -R $permission $folder
                 echo "成功创建文件夹: $folder"
             else
                 echo "创建文件夹失败: $folder"

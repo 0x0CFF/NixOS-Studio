@@ -62,13 +62,18 @@ FLAKE
 # 重启电脑
 sudo reboot
 
-# 构建 /mnt 目录群、SMB 用户群
-sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+# 构建 /mnt 挂载点、SMB 用户群
+# sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+FLAKE
 
 # 使用 mount 命令挂载硬盘到 /mnt 目录下
+# NAVI: 生成 `hardware-configuration.nix` 硬件信息，替换到 NixOS-Flake 相应文件夹下
+
+# 构建 SMB 共享文件夹
+# sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+FLAKE
 
 # 修改对应 Services/samba.nix 文件
 # 修改 flake.nix 文件，开启 samba 专项
-# NAVI: 生成 `hardware-configuration.nix` 硬件信息，替换到 NixOS-Flake 相应文件夹下
 # NAVI: 构建系统
 ```
