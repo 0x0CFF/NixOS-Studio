@@ -104,10 +104,19 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BOARD";
+      #   "write list" = "@R5";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BOARD_R5";
-      #   "force group" = "BOARD";
+      #   "force group" = "R5";
+      #   # 以下参数用于配置回收站（空目录被删除不会放入回收站）
+      #   "vfs object" = "recycle";                   # 载入 Samba 用于回收站功能的模块 recycle.so
+      #   "recycle:repository" = ".Trash";            # 回收站的相对于共享资源目录的路径（删除文件位于共享资源目录下的 ".Trash" 目录）
+      #   "recycle:repository" = ".Trash/%U";         # 回收站的相对于共享资源目录的路径（%U 变量表示当前浏览共享用户的用户名，所配置的目录其他用户必须有写权限，每个用户删除的文件都会存放在以他用户名命名的目录下）
+      #   "recycle:versions" = "Yes";                 # 如果在回收站所在目录中存在同名文件，则以 "Copy #x of" 文件名的形式加以区分
+      #   "recycle:keeptree" = "Yes";                 # 在将文件移入回收站时，要建立相对应的目录结构
+      #   "recycle:maxsixe" = "0";                    # 回收站的最大使用空间，单位为字节，"0" 表示没有最大使用空间的限制
+      #   "recycle:exclude_dir" = ".Trash"            # 排除文件夹（绝对路径，使用逗号隔开，支持通配符 * 和 ?）
+      #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
     };
   };

@@ -44,6 +44,7 @@
       "FINANCE"
       "OPERATION"
       "VIDEO"
+      "R5"
     ];
     # packages = with pkgs; [
     #   tree
@@ -60,7 +61,13 @@
   users.groups.DEVELOPMENT = {};
   users.groups.FINANCE = {};  
   users.groups.OPERATION = {};
-  users.groups.VIDEO = {};  
+  users.groups.VIDEO = {};
+  users.groups.R0 = {};
+  users.groups.R1 = {};    
+  users.groups.R2 = {};    
+  users.groups.R3 = {};    
+  users.groups.R4 = {};    
+  users.groups.R5 = {};      
   
   nix = {
     # 系统特性

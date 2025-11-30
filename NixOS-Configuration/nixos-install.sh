@@ -135,9 +135,6 @@ batch_create_nodens_mountpoint() {
         else
             # 创建文件夹（-p 参数会自动创建父级目录）
             if mkdir -p "$folder"; then
-                echo $owner
-                echo $group
-                echo $folder
                 sudo chown -R $owner:$group $folder
                 sudo chmod -R $permission $folder
                 echo "成功创建文件夹: $folder"
