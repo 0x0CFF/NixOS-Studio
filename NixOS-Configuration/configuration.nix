@@ -107,7 +107,7 @@
     syncthing = {
       enable = true;
       user = "0x0CFF";
-      dataDir = "/home/0x0CFF/Solution";
+      dataDir = "/home/0x0CFF";
       guiAddress = "0.0.0.0:8384";
     };
     # Samba 服务

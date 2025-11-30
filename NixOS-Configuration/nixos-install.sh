@@ -136,7 +136,7 @@ NODENS_FOLDERS=(
 # 函数 : 批量创建文件夹
 batch_create_smb_folders_nodens() {
     # 遍历数组创建文件夹
-    for folder in "${NODENS_FOLDERS[@]}"; do
+    for folder_info in "${NODENS_FOLDERS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -172,7 +172,7 @@ MATERIAL_FOLDERS=(
 # 函数 : 批量创建文件夹
 batch_create_smb_folders_material() {
     # 遍历数组创建文件夹
-    for folder in "${MATERIAL_FOLDERS[@]}"; do
+    for folder_info in "${MATERIAL_FOLDERS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -208,7 +208,7 @@ ARCHIVE_FOLDERS=(
 # 函数 : 批量创建文件夹
 batch_create_smb_folders_archive() {
     # 遍历数组创建文件夹
-    for folder in "${ARCHIVE_FOLDERS[@]}"; do
+    for folder_info in "${ARCHIVE_FOLDERS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"

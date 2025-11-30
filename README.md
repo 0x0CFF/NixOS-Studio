@@ -55,9 +55,15 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 # git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
 GIT
 
-# 使用脚本构建 /mnt 目录群、SMB 用户群
+# 将系统 FLAKE 化
 # sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
 FLAKE
+
+# 重启电脑
+reboot
+
+# 构建 /mnt 目录群、SMB 用户群
+sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
 
 # 执行 nixos-install.sh 后，NixOS 切换到 Flake 模式，可执行 Flake 对应操作
 
