@@ -114,11 +114,39 @@ batch_create_smb_users() {
 
 ################################################ 创建 mnt 目录（NODENS00, NODENS00-BACKUP） ###############################################
 
-# 定义要创建的文件夹
-NODENS_FOLDERS=(
+# 定义要创建的挂载点
+NODENS_MOUNTPOINTS=(
     "/mnt/Temp/:BOARD_R5:PUBLIC:775"
     "/mnt/Workspace/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/:BOARD_R5:PUBLIC:775"
+)
+
+# 函数 : 批量创建文件夹
+batch_create_nodens_mountpoint() {
+    # 遍历数组创建文件夹
+    for folder_info in "${NODENS_MOUNTPOINTS[@]}"; do
+
+        # 分割用户名和密码
+        IFS=':' read -r folder owner group permission<<< "$folder_info"
+
+        # 检查文件夹是否已存在
+        if [ -d "$folder" ]; then
+            echo "文件夹已存在: $folder"
+        else
+            # 创建文件夹（-p 参数会自动创建父级目录）
+            if mkdir -p "$folder"; then
+                sudo chown -R "$owner":"$group" "$folder"
+                sudo chmod -R "$permission" "$folder"
+                echo "成功创建文件夹: $folder"
+            else
+                echo "创建文件夹失败: $folder"
+            fi
+        fi
+    done
+}
+
+# 定义要创建的文件夹
+NODENS_FOLDERS=(
     "/mnt/Document/Obsidian/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/Obsidian/公共文档:BOARD_R5:PUBLIC:775"
     "/mnt/Document/Obsidian/动画文档:ANIMATION_R5:ANIMATION:775"
@@ -134,7 +162,7 @@ NODENS_FOLDERS=(
 )
 
 # 函数 : 批量创建文件夹
-batch_create_smb_folders_nodens() {
+batch_create_nodens_folder() {
     # 遍历数组创建文件夹
     for folder_info in "${NODENS_FOLDERS[@]}"; do
 
@@ -159,8 +187,8 @@ batch_create_smb_folders_nodens() {
 
 ################################################ 创建 mnt 目录（DATASC00, DATASC00-BACKUP） ###############################################
 
-# 定义要创建的文件夹
-MATERIAL_FOLDERS=(
+# 定义要创建的挂载点
+DATASC00_MOUNTPOINTS=(
     "/mnt/Material#PUBLIC/:BOARD_R5:PUBLIC:755"
     "/mnt/Material#FINANCE/:FINANCE_R5:FINANCE:750"
     "/mnt/Material#BUSINESS/:BUSINESS_R5:BUSINESS:750"
@@ -170,9 +198,9 @@ MATERIAL_FOLDERS=(
 )
 
 # 函数 : 批量创建文件夹
-batch_create_smb_folders_material() {
+batch_create_datasc00_mountpoint() {
     # 遍历数组创建文件夹
-    for folder_info in "${MATERIAL_FOLDERS[@]}"; do
+    for folder_info in "${DATASC00_MOUNTPOINTS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -195,8 +223,8 @@ batch_create_smb_folders_material() {
 
 ################################################ 创建 mnt 目录（DATASC01, DATASC01-BACKUP） ###############################################
 
-# 定义要创建的文件夹
-ARCHIVE_FOLDERS=(
+# 定义要创建的挂载点
+DATASC01_MOUNTPOINTS=(
     "/mnt/Archive#01/:BUSINESS_R5:BUSINESS:775"
     "/mnt/Archive#02/:BUSINESS_R5:BUSINESS:775"
     "/mnt/Archive#03/:BUSINESS_R5:BUSINESS:775"
@@ -206,9 +234,9 @@ ARCHIVE_FOLDERS=(
 )
 
 # 函数 : 批量创建文件夹
-batch_create_smb_folders_archive() {
+batch_create_datasc01_mountpoint() {
     # 遍历数组创建文件夹
-    for folder_info in "${ARCHIVE_FOLDERS[@]}"; do
+    for folder_info in "${DATASC01_MOUNTPOINTS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -249,7 +277,8 @@ show_menu() {
 show_submenu() {
     echo "====== 请选择操作 ======"
     echo "1. Switch Flake"
-    echo "2. Init SMB"
+    echo "2. Init SMB Mountpoint"
+    echo "3. Init SMB Folder"
     echo "============================"
 }
 
@@ -269,10 +298,16 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 目录群
-                    batch_create_smb_folders_nodens
+                    # 构建 /mnt 挂载点
+                    batch_create_nodens_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
+                    exit 0
+                    ;;
+                3)
+                    echo  # 空行
+                    # 构建 /mnt 文件夹
+                    batch_create_nodens_folder
                     exit 0
                     ;;
                 *)
@@ -291,12 +326,18 @@ handle_choice() {
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
                     ;;
-                2)            
+                2)
                     echo  # 空行
-                    # 构建 /mnt 目录群
-                    batch_create_smb_folders_nodens
+                    # 构建 /mnt 挂载点
+                    batch_create_nodens_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
+                    exit 0
+                    ;;
+                3)
+                    echo  # 空行
+                    # 构建 /mnt 文件夹
+                    batch_create_nodens_folder
                     exit 0
                     ;;
                 *)
@@ -315,13 +356,17 @@ handle_choice() {
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
                     ;;
-                2)  
+                2)
                     echo  # 空行
-                    # 构建 /mnt 目录群
-                    batch_create_smb_folders_material
+                    # 构建 /mnt 挂载点
+                    batch_create_datasc00_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
+                    ;;
+                3)
+                    echo  # 空行
+                    echo "无须构建！"
                     ;;
                 *)
                     echo  # 空行
@@ -339,13 +384,17 @@ handle_choice() {
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
                     ;;
-                2)  
+                2)
                     echo  # 空行
-                    # 构建 /mnt 目录群
-                    batch_create_smb_folders_material
+                    # 构建 /mnt 挂载点
+                    batch_create_datasc00_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
+                    ;;
+                3)
+                    echo  # 空行
+                    echo "无须构建！"
                     ;;
                 *)
                     echo  # 空行
@@ -363,13 +412,17 @@ handle_choice() {
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
                     ;;
-                2)  
+                2)
                     echo  # 空行
-                    # 构建 /mnt 目录群
-                    batch_create_smb_folders_archive
+                    # 构建 /mnt 挂载点
+                    batch_create_datasc01_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
+                    ;;
+                3)
+                    echo  # 空行
+                    echo "无须构建！"
                     ;;
                 *)
                     echo  # 空行
@@ -387,13 +440,17 @@ handle_choice() {
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
                     ;;
-                2)  
-                    echo  # 空行            
-                    # 构建 /mnt 目录群
-                    batch_create_smb_folders_archive
+                2)
+                    echo  # 空行
+                    # 构建 /mnt 挂载点
+                    batch_create_datasc01_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
+                    ;;
+                3)
+                    echo  # 空行
+                    echo "无须构建！"
                     ;;
                 *)
                     echo  # 空行
@@ -411,6 +468,14 @@ handle_choice() {
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
                     ;;
+                2)
+                    echo  # 空行
+                    echo "无须构建！"
+                    ;;
+                3)
+                    echo  # 空行
+                    echo "无须构建！"
+                    ;;
             esac
             ;;
         8)
@@ -422,6 +487,14 @@ handle_choice() {
                     cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC01/Device/
                     sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC01 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
                     exit 0
+                    ;;
+                2)
+                    echo  # 空行
+                    echo "无须构建！"
+                    ;;
+                3)
+                    echo  # 空行
+                    echo "无须构建！"
                     ;;
             esac
             ;;
@@ -437,7 +510,7 @@ while true; do
     show_menu
     read -p "请输入选择 [1-8]: " choice1
     show_submenu
-    read -p "请输入选择 [1-2]: " choice2
+    read -p "请输入选择 [1-3]: " choice2
     handle_choice "$choice1" "$choice2"
     echo  # 空行
 done
