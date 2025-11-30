@@ -51,8 +51,6 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 登录 `0x0CFF` 账户
 
 ```shell
-# 使用 mount 命令挂载硬盘到 /mnt 目录下
-
 # 拉取远程配置文件
 # git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
 GIT
@@ -61,7 +59,9 @@ GIT
 # sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
 FLAKE
 
-# 执行 nixos-install.sh 后，NixOS 在 Flake[test] 模式下运行，可执行 Flake 对应操作
+# 执行 nixos-install.sh 后，NixOS 切换到 Flake 模式，可执行 Flake 对应操作
+
+# 重启电脑，使用 mount 命令挂载硬盘到 /mnt 目录下
 
 # 修改对应 Services/samba.nix 文件
 # 修改 flake.nix 文件，开启 samba 专项
