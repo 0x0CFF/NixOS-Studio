@@ -51,7 +51,17 @@
   };
   # 定义主要用户组（否则工作室对应用户无法创建）
   users.groups.STUDIO = {};
-
+  users.groups.PUBLIC = {};
+  users.groups.ADMINISTRATION = {};
+  users.groups.ANIMATION = {};
+  users.groups.BOARD = {};
+  users.groups.BUSINESS = {};
+  users.groups.DESIGN = {};
+  users.groups.DEVELOPMENT = {};
+  users.groups.FINANCE = {};  
+  users.groups.OPERATION = {};
+  users.groups.VIDEO = {};  
+  
   nix = {
     # 系统特性
     settings = {

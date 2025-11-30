@@ -135,6 +135,9 @@ batch_create_nodens_mountpoint() {
         else
             # 创建文件夹（-p 参数会自动创建父级目录）
             if mkdir -p "$folder"; then
+                echo $owner
+                echo $group
+                echo $folder
                 sudo chown -R $owner:$group $folder
                 sudo chmod -R $permission $folder
                 echo "成功创建文件夹: $folder"
@@ -277,8 +280,9 @@ show_menu() {
 show_submenu() {
     echo "====== 请选择操作 ======"
     echo "1. Switch Flake"
-    echo "2. Init SMB Mountpoint"
-    echo "3. Init SMB Folder"
+    echo "2. Create SMB User"
+    echo "3. Init SMB Mountpoint"
+    echo "4. Init SMB Folder"
     echo "============================"
 }
 
@@ -298,15 +302,19 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 挂载点
-                    batch_create_nodens_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
                     ;;
                 3)
                     echo  # 空行
-                    # 构建 /mnt 文件夹
+                    # 构建 SMB 挂载点
+                    batch_create_nodens_mountpoint
+                    exit 0
+                    ;;
+                4)
+                    echo  # 空行
+                    # 构建 SMB 共享文件夹
                     batch_create_nodens_folder
                     exit 0
                     ;;
@@ -328,15 +336,19 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 挂载点
-                    batch_create_nodens_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
                     ;;
                 3)
                     echo  # 空行
-                    # 构建 /mnt 文件夹
+                    # 构建 SMB 挂载点
+                    batch_create_nodens_mountpoint
+                    exit 0
+                    ;;
+                4)
+                    echo  # 空行
+                    # 构建 SMB 共享文件夹
                     batch_create_nodens_folder
                     exit 0
                     ;;
@@ -358,13 +370,17 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 挂载点
-                    batch_create_datasc00_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
                     ;;
                 3)
+                    echo  # 空行
+                    # 构建 SMB 挂载点
+                    batch_create_datasc00_mountpoint
+                    exit 0
+                    ;;
+                4)
                     echo  # 空行
                     echo "无须构建！"
                     ;;
@@ -386,13 +402,17 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 挂载点
-                    batch_create_datasc00_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
                     ;;
                 3)
+                    echo  # 空行
+                    # 构建 SMB 挂载点
+                    batch_create_datasc00_mountpoint
+                    exit 0
+                    ;;
+                4)
                     echo  # 空行
                     echo "无须构建！"
                     ;;
@@ -414,13 +434,17 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 挂载点
-                    batch_create_datasc01_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
                     ;;
                 3)
+                    echo  # 空行
+                    # 构建 SMB 挂载点
+                    batch_create_datasc01_mountpoint
+                    exit 0
+                    ;;
+                4)
                     echo  # 空行
                     echo "无须构建！"
                     ;;
@@ -442,13 +466,17 @@ handle_choice() {
                     ;;
                 2)
                     echo  # 空行
-                    # 构建 /mnt 挂载点
-                    batch_create_datasc01_mountpoint
                     # 构建 SMB 用户群
                     batch_create_smb_users
                     exit 0
                     ;;
                 3)
+                    echo  # 空行
+                    # 构建 SMB 挂载点
+                    batch_create_datasc01_mountpoint
+                    exit 0
+                    ;;
+                4)
                     echo  # 空行
                     echo "无须构建！"
                     ;;
@@ -476,6 +504,10 @@ handle_choice() {
                     echo  # 空行
                     echo "无须构建！"
                     ;;
+                4)
+                    echo  # 空行
+                    echo "无须构建！"
+                    ;;
             esac
             ;;
         8)
@@ -496,6 +528,10 @@ handle_choice() {
                     echo  # 空行
                     echo "无须构建！"
                     ;;
+                4)
+                    echo  # 空行
+                    echo "无须构建！"
+                    ;;
             esac
             ;;
         *)
@@ -510,7 +546,7 @@ while true; do
     show_menu
     read -p "请输入选择 [1-8]: " choice1
     show_submenu
-    read -p "请输入选择 [1-3]: " choice2
+    read -p "请输入选择 [1-4]: " choice2
     handle_choice "$choice1" "$choice2"
     echo  # 空行
 done
