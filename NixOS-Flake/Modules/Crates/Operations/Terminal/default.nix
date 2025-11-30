@@ -29,7 +29,7 @@
       # Tab 补全功能
       completion.enable = true;
       # 在 Bash Shell 初始化期间调用的 Shell 脚本代码
-      shellInit = ''
+      initExtra = ''
         eval "$(starship init bash)"
         eval "$(navi widget bash)"
         eval "$(zellij setup --generate-auto-start bash)"
@@ -44,6 +44,8 @@
       # 设置命令别名
       shellAliases = {
         NAVI = "navi --path '~/.config/navi'";
+        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio";
+        FLAKE = "sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh";
       };
     };
   };

@@ -17,7 +17,7 @@
     # 配置 Bash
     bash = {
       # 在 Bash Shell 初始化期间调用的 Shell 脚本代码
-      shellInit = ''
+      initExtra = ''
         bind "\ee": yazi
       '';
     };
