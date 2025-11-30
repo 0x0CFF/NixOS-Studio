@@ -64,6 +64,9 @@ fi
 
 % NixOS, Build
 
+# 拉取 NixOS 配置
+git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
+
 # [Flake] 更新 flake.lock（更新所有依赖项）
 sudo nix flake update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake
 
