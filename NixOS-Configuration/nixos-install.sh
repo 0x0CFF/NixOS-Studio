@@ -55,6 +55,13 @@ USERS=(
     "FINANCE_R3:D78RZQDX"            # 财务部门-高级
     "FINANCE_R4:DQ92FXRF"            # 财务部门-主管
     "FINANCE_R5:F28MF8LU"            # 财务部门-总监
+    # 运维部门
+    "OPERATION_R0:WM3E8FZ4"          # 运维部门-实习
+    "OPERATION_R1:WF5ZPXW8"          # 运维部门-初级
+    "OPERATION_R2:C56UA3NK"          # 运维部门-中级
+    "OPERATION_R3:V4KQZ4CZ"          # 运维部门-高级
+    "OPERATION_R4:WN8W6DZS"          # 运维部门-主管
+    "OPERATION_R5:B6XCURH4"          # 运维部门-总监
     # 视频部门
     "VIDEO_R0:K3GTMT5E"              # 视频部门-实习
     "VIDEO_R1:F5SVQF9K"              # 视频部门-初级
@@ -154,7 +161,7 @@ NODENS_FOLDERS=(
     "/mnt/Document/Obsidian/视频文档:VIDEO_R5:VIDEO:775"
     "/mnt/Document/Obsidian/财务文档:FINANCE_R5:FINANCE:770"
     "/mnt/Document/Obsidian/商务文档:BUSINESS_R5:BUSINESS:770"
-    "/mnt/Document/Obsidian/运维文档:0x0CFF:OPERATION:775"
+    "/mnt/Document/Obsidian/运维文档:OPERATION_R5:OPERATION:775"
     "/mnt/Document/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:775"
     "/mnt/Document/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:770"
     "/mnt/Document/Keepass:BOARD_R5:PUBLIC:775"
@@ -225,12 +232,12 @@ batch_create_datasc00_mountpoint() {
 
 # 定义要创建的挂载点
 DATASC01_MOUNTPOINTS=(
-    "/mnt/Archive#01/:BUSINESS_R5:BUSINESS:775"
-    "/mnt/Archive#02/:BUSINESS_R5:BUSINESS:775"
-    "/mnt/Archive#03/:BUSINESS_R5:BUSINESS:775"
-    "/mnt/Archive#04/:BUSINESS_R5:BUSINESS:775"
-    "/mnt/Archive#05/:BUSINESS_R5:BUSINESS:775"
-    "/mnt/Archive#06/:BUSINESS_R5:BUSINESS:775"
+    "/mnt/Archive#01/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#02/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#03/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#04/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#05/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#06/:BOARD_R5:PUBLIC:775"
 )
 
 # 函数 : 批量创建文件夹

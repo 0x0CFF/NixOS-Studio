@@ -52,10 +52,10 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BUSINESS";
+      #   "write list" = "@PUBLIC";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
+      #   # "force group" = "PUBLIC";
       # };
       # "归档盘#02" = {
       #   "path" = "/mnt/Archive#02";                 # 共享目录
@@ -69,10 +69,10 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BUSINESS";
+      #   "write list" = "@PUBLIC";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
+      #   # "force group" = "PUBLIC";
       # };
       # "归档盘#03" = {
       #   "path" = "/mnt/Archive#03";                 # 共享目录
@@ -86,10 +86,10 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BUSINESS";
+      #   "write list" = "@PUBLIC";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
+      #   # "force group" = "PUBLIC";
       # };
       # "归档盘#04" = {
       #   "path" = "/mnt/Archive#04";                 # 共享目录
@@ -103,10 +103,10 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BUSINESS";
+      #   "write list" = "@PUBLIC";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
+      #   # "force group" = "PUBLIC";
       # };
       # "归档盘#05" = {
       #   "path" = "/mnt/Archive#05";                 # 共享目录
@@ -120,10 +120,10 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BUSINESS";
+      #   "write list" = "@PUBLIC";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
+      #   # "force group" = "PUBLIC";
       # };
       # "归档盘#06" = {
       #   "path" = "/mnt/Archive#06";                 # 共享目录
@@ -137,10 +137,10 @@
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
       #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "@BUSINESS";
+      #   "write list" = "@PUBLIC";
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
+      #   # "force group" = "PUBLIC";
       # };
     };
   };
