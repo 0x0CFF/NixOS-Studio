@@ -33,7 +33,7 @@
       #   "recycle:versions" = "Yes";                 # 如果在回收站所在目录中存在同名文件，则以 "Copy #x of" 文件名的形式加以区分
       #   "recycle:keeptree" = "Yes";                 # 在将文件移入回收站时，要建立相对应的目录结构
       #   "recycle:maxsixe" = "0";                    # 回收站的最大使用空间，单位为字节，"0" 表示没有最大使用空间的限制
-      #   "recycle:exclude_dir" = ".Trash"            # 排除文件夹（绝对路径，使用逗号隔开，支持通配符 * 和 ?）
+      #   "recycle:exclude_dir" = ".Trash";           # 排除文件夹（绝对路径，使用逗号隔开，支持通配符 * 和 ?）
       #   "recycle:exclude" = ".tmp|.mp3";            # 排除文件类型（使用逗号隔开）
       #   "recycle:noversions = *.doc";               # 如果在回收站所在目录中存在同名文件，覆盖原有文件的文件类型
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期

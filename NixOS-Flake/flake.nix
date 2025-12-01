@@ -69,7 +69,7 @@
         ./Hosts/NODENS/NODENS00/Device/environment.nix                      # 环境变量
         ./Hosts/NODENS/NODENS00/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
-        # ./Hosts/NODENS/NODENS00/Services/samba.nix                          # Samba 专项配置
+        ./Hosts/NODENS/NODENS00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/NODENS/NODENS00/Timers/mnt-backup.nix                       # 数据备份
         ./Hosts/NODENS/NODENS00/Timers/samba-gc.nix                         # Samba 垃圾回收
@@ -154,7 +154,7 @@
         ./Hosts/NODENS/NODENS00-BACKUP/Device/environment.nix               # 环境变量
         ./Hosts/NODENS/NODENS00-BACKUP/Device/hardware-configuration.nix    # 硬件信息
         # 服务专项配置
-        # ./Hosts/NODENS/NODENS00-BACKUP/Services/samba.nix                   # Samba 专项配置
+        ./Hosts/NODENS/NODENS00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
         ./Hosts/NODENS/NODENS00-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
 
@@ -238,7 +238,7 @@
         ./Hosts/DATASC/DATASC00/Device/environment.nix                      # 环境变量
         ./Hosts/DATASC/DATASC00/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
-        # ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
+        ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC00/Timers/mnt-backup.nix                       # 数据备份
 
@@ -320,7 +320,7 @@
         ./Hosts/DATASC/DATASC00-BACKUP/Device/environment.nix               # 环境变量
         ./Hosts/DATASC/DATASC00-BACKUP/Device/hardware-configuration.nix    # 硬件信息
         # 服务专项配置
-        # ./Hosts/DATASC/DATASC00-BACKUP/Services/samba.nix                   # Samba 专项配置
+        ./Hosts/DATASC/DATASC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
 
         # 程序集合
@@ -401,7 +401,7 @@
         ./Hosts/DATASC/DATASC01/Device/environment.nix                      # 环境变量
         ./Hosts/DATASC/DATASC01/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
-        # ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
+        ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC01/Timers/mnt-backup.nix                       # 数据备份
         ./Hosts/DATASC/DATASC01/Timers/samba-gc.nix                         # Samba 垃圾回收
