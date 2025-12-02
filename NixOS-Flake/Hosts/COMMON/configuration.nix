@@ -37,12 +37,15 @@
       "PUBLIC"
       "ADMINISTRATION"
       "ANIMATION"
+      "AUDIO"
       "BOARD"
       "BUSINESS"
       "DESIGN"
       "DEVELOPMENT"
       "FINANCE"
+      "MODELING"
       "OPERATION"
+      "PHOTOGRAPHY"
       "VIDEO"
       "R5"
     ];
@@ -55,12 +58,15 @@
   users.groups.PUBLIC = {};
   users.groups.ADMINISTRATION = {};
   users.groups.ANIMATION = {};
+  users.groups.AUDIO = {};
   users.groups.BOARD = {};
   users.groups.BUSINESS = {};
   users.groups.DESIGN = {};
   users.groups.DEVELOPMENT = {};
-  users.groups.FINANCE = {};  
+  users.groups.FINANCE = {};
+  users.groups.MODELING = {};  
   users.groups.OPERATION = {};
+  users.groups.PHOTOGRAPHY = {};
   users.groups.VIDEO = {};
   users.groups.R0 = {};
   users.groups.R1 = {};    

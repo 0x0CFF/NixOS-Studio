@@ -18,9 +18,11 @@
     # 查找程序所在位置 echo $(which ssh)
     script = ''
       # 清空临时盘回收站
-      rm -f /mnt/Temp/.Trash/*
+      rm -f /mnt/Temp/临时盘/.Trash/*
       # 清空协作盘回收站
-      rm -f /mnt/Workspace/.Trash/*
+      rm -f /mnt/Workspace/协作盘/.Trash/*
+      # 清空文档盘回收站
+      rm -f /mnt/Document/文档盘/.Trash/*
     '';
     # 单元配置
     serviceConfig = {

@@ -20,6 +20,13 @@ USERS=(
     "ANIMATION_R3:H9HVFY6N"          # 动画部门-高级
     "ANIMATION_R4:CDF7VG4X"          # 动画部门-主管
     "ANIMATION_R5:AUS38NTL"          # 动画部门-总监
+    # 音频部门
+    "AUDIO_R0:QGZM6FQA"              # 音频部门-实习
+    "AUDIO_R1:NRB6RHGF"              # 音频部门-初级
+    "AUDIO_R2:RZF3R4NS"              # 音频部门-中级
+    "AUDIO_R3:G4VHBJ4Z"              # 音频部门-高级
+    "AUDIO_R4:E5QHSHUD"              # 音频部门-主管
+    "AUDIO_R5:HSN4RFWQ"              # 音频部门-总监
     # 董事会
     "BOARD_R0:EN35TSUX"              # 董事秘书-实习
     "BOARD_R1:TN4F8YLH"              # 董事秘书-正式
@@ -55,6 +62,13 @@ USERS=(
     "FINANCE_R3:D78RZQDX"            # 财务部门-高级
     "FINANCE_R4:DQ92FXRF"            # 财务部门-主管
     "FINANCE_R5:F28MF8LU"            # 财务部门-总监
+    # 建模部门
+    "MODELING_R0:N76RBDGS"           # 建模部门-实习
+    "MODELING_R1:KT4V2NPV"           # 建模部门-初级
+    "MODELING_R2:HWJS87K7"           # 建模部门-中级
+    "MODELING_R3:WJC4WSEH"           # 建模部门-高级
+    "MODELING_R4:VNH5DS48"           # 建模部门-主管
+    "MODELING_R5:KQ64FZ8R"           # 建模部门-总监
     # 运维部门
     "OPERATION_R0:WM3E8FZ4"          # 运维部门-实习
     "OPERATION_R1:WF5ZPXW8"          # 运维部门-初级
@@ -62,6 +76,13 @@ USERS=(
     "OPERATION_R3:V4KQZ4CZ"          # 运维部门-高级
     "OPERATION_R4:WN8W6DZS"          # 运维部门-主管
     "OPERATION_R5:B6XCURH4"          # 运维部门-总监
+    # 摄影部门
+    "PHOTOGRAPHY_R0:RD528VP5"        # 摄影部门-实习
+    "PHOTOGRAPHY_R1:VNU2YR76"        # 摄影部门-初级
+    "PHOTOGRAPHY_R2:USKSN4AB"        # 摄影部门-中级
+    "PHOTOGRAPHY_R3:H4N4NZB3"        # 摄影部门-高级
+    "PHOTOGRAPHY_R4:NKXJZ34B"        # 摄影部门-主管
+    "PHOTOGRAPHY_R5:RGJ8A8UM"        # 摄影部门-总监
     # 视频部门
     "VIDEO_R0:K3GTMT5E"              # 视频部门-实习
     "VIDEO_R1:F5SVQF9K"              # 视频部门-初级
@@ -154,18 +175,21 @@ batch_create_nodens_mountpoint() {
 
 # 定义要创建的文件夹
 NODENS_FOLDERS=(
-    "/mnt/Document/Obsidian/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/Obsidian/公共文档:BOARD_R5:PUBLIC:755"
-    "/mnt/Document/Obsidian/动画文档:ANIMATION_R5:ANIMATION:755"
-    "/mnt/Document/Obsidian/设计文档:DESIGN_R5:DESIGN:755"
-    "/mnt/Document/Obsidian/视频文档:VIDEO_R5:VIDEO:755"
-    "/mnt/Document/Obsidian/财务文档:FINANCE_R5:FINANCE:750"
-    "/mnt/Document/Obsidian/商务文档:BUSINESS_R5:BUSINESS:750"
-    "/mnt/Document/Obsidian/运维文档:OPERATION_R5:OPERATION:755"
-    "/mnt/Document/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:755"
-    "/mnt/Document/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:750"
-    "/mnt/Document/Keepass:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/Masscode:DEVELOPMENT_R5:DEVELOPMENT:755"
+    "/mnt/Document/文档盘/Keepass:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/文档盘/Masscode:DEVELOPMENT_R5:DEVELOPMENT:755"
+    "/mnt/Document/文档盘/Obsidian/:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/文档盘/Obsidian/音频文档:AUDIO_R5:AUDIO:755"
+    "/mnt/Document/文档盘/Obsidian/视频文档:VIDEO_R5:VIDEO:755"
+    "/mnt/Document/文档盘/Obsidian/公共文档:BOARD_R5:PUBLIC:755"
+    "/mnt/Document/文档盘/Obsidian/设计文档:DESIGN_R5:DESIGN:755"
+    "/mnt/Document/文档盘/Obsidian/财务文档:FINANCE_R5:FINANCE:750"
+    "/mnt/Document/文档盘/Obsidian/建模文档:MODELING_R5:MODELING:755"
+    "/mnt/Document/文档盘/Obsidian/商务文档:BUSINESS_R5:BUSINESS:750"
+    "/mnt/Document/文档盘/Obsidian/运维文档:OPERATION_R5:OPERATION:755"
+    "/mnt/Document/文档盘/Obsidian/动画文档:ANIMATION_R5:ANIMATION:755"
+    "/mnt/Document/文档盘/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:755"
+    "/mnt/Document/文档盘/Obsidian/摄影文档:PHOTOGRAPHY_R5:PHOTOGRAPHY:755"
+    "/mnt/Document/文档盘/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:750"
 )
 
 # 函数 : 批量创建文件夹
@@ -196,12 +220,14 @@ batch_create_nodens_folder() {
 
 # 定义要创建的挂载点
 DATASC00_MOUNTPOINTS=(
-    "/mnt/Material#PUBLIC/:BOARD_R5:PUBLIC:755"
-    "/mnt/Material#FINANCE/:FINANCE_R5:FINANCE:750"
-    "/mnt/Material#BUSINESS/:BUSINESS_R5:BUSINESS:750"
-    "/mnt/Material#DESIGN/:DESIGN_R5:DESIGN:755"
-    "/mnt/Material#VIDEO/:VIDEO_R5:VIDEO:755"
-    "/mnt/Material#ANIMATION/:ANIMATION_R5:ANIMATION:755"
+    "/mnt/Material#PUBLIC/公共素材库/:BOARD_R5:PUBLIC:755"
+    "/mnt/Material#FINANCE/财务素材库/:FINANCE_R5:FINANCE:750"
+    "/mnt/Material#BUSINESS/商务素材库/:BUSINESS_R5:BUSINESS:750"
+    "/mnt/Material#MODELING/建模素材库/:MODELING_R5:MODELING:755"
+    "/mnt/Material#DESIGN/设计素材库/:DESIGN_R5:DESIGN:755"
+    "/mnt/Material#VIDEO/视频素材库/:VIDEO_R5:VIDEO:755"
+    "/mnt/Material#AUDIO/音频素材库/:AUDIO_R5:AUDIO:755"
+    "/mnt/Material#ANIMATION/动画素材库/:ANIMATION_R5:ANIMATION:755"
 )
 
 # 函数 : 批量创建文件夹
@@ -232,12 +258,14 @@ batch_create_datasc00_mountpoint() {
 
 # 定义要创建的挂载点
 DATASC01_MOUNTPOINTS=(
-    "/mnt/Archive#01/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#02/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#03/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#04/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#05/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#06/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#01/归档盘#01/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#02/归档盘#02/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#03/归档盘#03/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#04/归档盘#04/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#05/归档盘#05/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#06/归档盘#06/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#07/归档盘#07/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#08/归档盘#08/:BOARD_R5:PUBLIC:775"
 )
 
 # 函数 : 批量创建文件夹
