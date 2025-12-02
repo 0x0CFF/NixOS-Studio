@@ -41,7 +41,7 @@
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
       "临时盘" = {
-        "path" = "/mnt/Temp";                       # 共享目录
+        "path" = "/mnt/Temp/临时盘";                 # 共享目录
         "read only" = "no";                         # 是否只读
         "browseable" = "yes";                       # 指定该共享是否可以浏览
         "writable" = "yes";                         # 指定该共享路径是否可写
@@ -67,7 +67,7 @@
         "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       };
       "协作盘" = {
-        "path" = "/mnt/Workspace";                  # 共享目录
+        "path" = "/mnt/Workspace/协作盘";            # 共享目录
         "read only" = "no";                         # 是否只读
         "browseable" = "yes";                       # 指定该共享是否可以浏览
         "writable" = "yes";                         # 指定该共享路径是否可写
@@ -93,7 +93,7 @@
         "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       };
       "文档盘" = {
-        "path" = "/mnt/Document";                       # 共享目录
+        "path" = "/mnt/Document/文档盘";                 # 共享目录
         "read only" = "no";                             # 是否只读
         "browseable" = "yes";                           # 指定该共享是否可以浏览
         "writable" = "yes";                             # 指定该共享路径是否可写

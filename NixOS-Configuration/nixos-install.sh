@@ -123,9 +123,9 @@ batch_create_smb_users() {
 
 # 定义要创建的挂载点
 NODENS_MOUNTPOINTS=(
-    "/mnt/Temp/:BOARD_R5:PUBLIC:775"
-    "/mnt/Workspace/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/:BOARD_R5:PUBLIC:775"
+    "/mnt/Temp/临时盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Workspace/协作盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/文档盘/:BOARD_R5:PUBLIC:775"
 )
 
 # 函数 : 批量创建文件夹
@@ -155,17 +155,17 @@ batch_create_nodens_mountpoint() {
 # 定义要创建的文件夹
 NODENS_FOLDERS=(
     "/mnt/Document/Obsidian/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/Obsidian/公共文档:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/Obsidian/动画文档:ANIMATION_R5:ANIMATION:775"
-    "/mnt/Document/Obsidian/设计文档:DESIGN_R5:DESIGN:775"
-    "/mnt/Document/Obsidian/视频文档:VIDEO_R5:VIDEO:775"
-    "/mnt/Document/Obsidian/财务文档:FINANCE_R5:FINANCE:770"
-    "/mnt/Document/Obsidian/商务文档:BUSINESS_R5:BUSINESS:770"
-    "/mnt/Document/Obsidian/运维文档:OPERATION_R5:OPERATION:775"
-    "/mnt/Document/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:775"
-    "/mnt/Document/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:770"
+    "/mnt/Document/Obsidian/公共文档:BOARD_R5:PUBLIC:755"
+    "/mnt/Document/Obsidian/动画文档:ANIMATION_R5:ANIMATION:755"
+    "/mnt/Document/Obsidian/设计文档:DESIGN_R5:DESIGN:755"
+    "/mnt/Document/Obsidian/视频文档:VIDEO_R5:VIDEO:755"
+    "/mnt/Document/Obsidian/财务文档:FINANCE_R5:FINANCE:750"
+    "/mnt/Document/Obsidian/商务文档:BUSINESS_R5:BUSINESS:750"
+    "/mnt/Document/Obsidian/运维文档:OPERATION_R5:OPERATION:755"
+    "/mnt/Document/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:755"
+    "/mnt/Document/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:750"
     "/mnt/Document/Keepass:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/Masscode:DEVELOPMENT_R5:DEVELOPMENT:775"
+    "/mnt/Document/Masscode:DEVELOPMENT_R5:DEVELOPMENT:755"
 )
 
 # 函数 : 批量创建文件夹
