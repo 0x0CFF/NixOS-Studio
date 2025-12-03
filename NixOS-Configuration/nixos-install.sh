@@ -20,13 +20,6 @@ USERS=(
     "ANIMATION_R3:H9HVFY6N"          # 动画部门-高级
     "ANIMATION_R4:CDF7VG4X"          # 动画部门-主管
     "ANIMATION_R5:AUS38NTL"          # 动画部门-总监
-    # 音频部门
-    "AUDIO_R0:QGZM6FQA"              # 音频部门-实习
-    "AUDIO_R1:NRB6RHGF"              # 音频部门-初级
-    "AUDIO_R2:RZF3R4NS"              # 音频部门-中级
-    "AUDIO_R3:G4VHBJ4Z"              # 音频部门-高级
-    "AUDIO_R4:E5QHSHUD"              # 音频部门-主管
-    "AUDIO_R5:HSN4RFWQ"              # 音频部门-总监
     # 董事会
     "BOARD_R0:EN35TSUX"              # 董事秘书-实习
     "BOARD_R1:TN4F8YLH"              # 董事秘书-正式
@@ -55,6 +48,13 @@ USERS=(
     "DEVELOPMENT_R3:NSN8G7R4"        # 开发部门-高级
     "DEVELOPMENT_R4:NRACA2MJ"        # 开发部门-主管
     "DEVELOPMENT_R5:MGCT6JK6"        # 开发部门-总监
+    # 特效部门
+    "EFFECTS_R0:QGZM6FQA"            # 特效部门-实习
+    "EFFECTS_R1:NRB6RHGF"            # 特效部门-初级
+    "EFFECTS_R2:RZF3R4NS"            # 特效部门-中级
+    "EFFECTS_R3:G4VHBJ4Z"            # 特效部门-高级
+    "EFFECTS_R4:E5QHSHUD"            # 特效部门-主管
+    "EFFECTS_R5:HSN4RFWQ"            # 特效部门-总监
     # 财务部门
     "FINANCE_R0:G35EXZYC"            # 财务部门-实习
     "FINANCE_R1:Q2HSA5ZX"            # 财务部门-初级
@@ -178,18 +178,18 @@ NODENS_FOLDERS=(
     "/mnt/Document/文档盘/Keepass:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/Masscode:DEVELOPMENT_R5:DEVELOPMENT:755"
     "/mnt/Document/文档盘/Obsidian/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/文档盘/Obsidian/音频文档:AUDIO_R5:AUDIO:755"
-    "/mnt/Document/文档盘/Obsidian/视频文档:VIDEO_R5:VIDEO:755"
+    "/mnt/Document/文档盘/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:750"
+    "/mnt/Document/文档盘/Obsidian/动画文档:ANIMATION_R5:ANIMATION:755"
     "/mnt/Document/文档盘/Obsidian/公共文档:BOARD_R5:PUBLIC:755"
+    "/mnt/Document/文档盘/Obsidian/商务文档:BUSINESS_R5:BUSINESS:750"
     "/mnt/Document/文档盘/Obsidian/设计文档:DESIGN_R5:DESIGN:755"
+    "/mnt/Document/文档盘/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:755"
+    "/mnt/Document/文档盘/Obsidian/特效文档:EFFECTS_R5:EFFECTS:755"
     "/mnt/Document/文档盘/Obsidian/财务文档:FINANCE_R5:FINANCE:750"
     "/mnt/Document/文档盘/Obsidian/建模文档:MODELING_R5:MODELING:755"
-    "/mnt/Document/文档盘/Obsidian/商务文档:BUSINESS_R5:BUSINESS:750"
     "/mnt/Document/文档盘/Obsidian/运维文档:OPERATION_R5:OPERATION:755"
-    "/mnt/Document/文档盘/Obsidian/动画文档:ANIMATION_R5:ANIMATION:755"
-    "/mnt/Document/文档盘/Obsidian/开发文档:DEVELOPMENT_R5:DEVELOPMENT:755"
     "/mnt/Document/文档盘/Obsidian/摄影文档:PHOTOGRAPHY_R5:PHOTOGRAPHY:755"
-    "/mnt/Document/文档盘/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:750"
+    "/mnt/Document/文档盘/Obsidian/视频文档:VIDEO_R5:VIDEO:755"
 )
 
 # 函数 : 批量创建文件夹
@@ -220,14 +220,13 @@ batch_create_nodens_folder() {
 
 # 定义要创建的挂载点
 DATASC00_MOUNTPOINTS=(
-    "/mnt/Material#PUBLIC/公共素材库/:BOARD_R5:PUBLIC:755"
-    "/mnt/Material#FINANCE/财务素材库/:FINANCE_R5:FINANCE:750"
-    "/mnt/Material#BUSINESS/商务素材库/:BUSINESS_R5:BUSINESS:750"
-    "/mnt/Material#MODELING/建模素材库/:MODELING_R5:MODELING:755"
-    "/mnt/Material#DESIGN/设计素材库/:DESIGN_R5:DESIGN:755"
-    "/mnt/Material#VIDEO/视频素材库/:VIDEO_R5:VIDEO:755"
-    "/mnt/Material#AUDIO/音频素材库/:AUDIO_R5:AUDIO:755"
     "/mnt/Material#ANIMATION/动画素材库/:ANIMATION_R5:ANIMATION:755"
+    "/mnt/Material#BUSINESS/商务素材库/:BUSINESS_R5:BUSINESS:750"
+    "/mnt/Material#DESIGN/设计素材库/:DESIGN_R5:DESIGN:755"
+    "/mnt/Material#EFFECTS/特效素材库/:EFFECTS_R5:EFFECTS:755"
+    "/mnt/Material#MODELING/建模素材库/:MODELING_R5:MODELING:755"
+    "/mnt/Material#PUBLIC/公共素材库/:BOARD_R5:PUBLIC:755"
+    "/mnt/Material#VIDEO/视频素材库/:VIDEO_R5:VIDEO:755"
 )
 
 # 函数 : 批量创建文件夹

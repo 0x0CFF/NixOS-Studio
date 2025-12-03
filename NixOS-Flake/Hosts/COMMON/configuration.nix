@@ -37,11 +37,11 @@
       "PUBLIC"
       "ADMINISTRATION"
       "ANIMATION"
-      "AUDIO"
       "BOARD"
       "BUSINESS"
       "DESIGN"
       "DEVELOPMENT"
+      "EFFECTS"
       "FINANCE"
       "MODELING"
       "OPERATION"
@@ -58,23 +58,23 @@
   users.groups.PUBLIC = {};
   users.groups.ADMINISTRATION = {};
   users.groups.ANIMATION = {};
-  users.groups.AUDIO = {};
   users.groups.BOARD = {};
   users.groups.BUSINESS = {};
   users.groups.DESIGN = {};
   users.groups.DEVELOPMENT = {};
+  users.groups.EFFECTS = {};
   users.groups.FINANCE = {};
-  users.groups.MODELING = {};  
+  users.groups.MODELING = {};
   users.groups.OPERATION = {};
   users.groups.PHOTOGRAPHY = {};
   users.groups.VIDEO = {};
   users.groups.R0 = {};
-  users.groups.R1 = {};    
-  users.groups.R2 = {};    
-  users.groups.R3 = {};    
-  users.groups.R4 = {};    
-  users.groups.R5 = {};      
-  
+  users.groups.R1 = {};
+  users.groups.R2 = {};
+  users.groups.R3 = {};
+  users.groups.R4 = {};
+  users.groups.R5 = {};
+
   nix = {
     # 系统特性
     settings = {

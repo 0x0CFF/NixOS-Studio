@@ -118,8 +118,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -200,8 +203,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -285,8 +291,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -367,8 +376,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -451,8 +463,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -534,8 +549,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -617,8 +635,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
@@ -698,8 +719,11 @@
         ./Users/BUSINESS/default.nix                                        # 商务部门
         ./Users/DESIGN/default.nix                                          # 设计部门
         ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
         ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
         ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
         ./Users/VIDEO/default.nix                                           # 视频部门
 
         # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
