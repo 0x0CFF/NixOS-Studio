@@ -1,0 +1,10 @@
+% Studio, Trash
+
+# 清除挂载点垃圾箱 - 文档盘
+sudo rm -rf /mnt/Document/.Trash-0/*
+
+# 清除挂载点垃圾箱 - 临时盘
+sudo rm -rf /mnt/Temp/.Trash-0/*
+
+# 清除挂载点垃圾箱 - 协作盘
+sudo rm -rf /mnt/Workspace/.Trash-0/*

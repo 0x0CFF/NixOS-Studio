@@ -145,8 +145,11 @@ batch_create_smb_users() {
 # 定义要创建的挂载点
 NODENS_MOUNTPOINTS=(
     "/mnt/Temp/临时盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Temp/临时盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Workspace/协作盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Workspace/协作盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/文档盘/.Trash/:BOARD_R5:PUBLIC:775"
 )
 
 # 函数 : 批量创建文件夹
