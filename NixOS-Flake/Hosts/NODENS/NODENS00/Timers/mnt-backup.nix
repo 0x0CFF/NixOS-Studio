@@ -7,8 +7,10 @@
     timerConfig = {
       # 需要运行的单元（脚本或程序）
       Unit = "mnt-backup.service";
-      # 每 15 分钟运行一次
-      OnUnitActiveSec = "15min";
+      # 每小时的 0 分和 30 分触发
+      OnUnitActiveSec = "*-*-* *:00/30:00";
+      # 如果开机时错过了执行时间，则立即补执行
+      Persistent = true;
     };
   };
 
@@ -17,12 +19,18 @@
     # 运行脚本
     # 查找程序所在位置 echo $(which ssh)
     script = ''
+      # Rsync 参数说明
+      # -a：归档模式，保留文件权限、时间戳、符号链接等元数据
+      # -v：详细模式，显示传输过程中的详细信息
+      # -p：保留文件权限
+      # -X：在归档模式基础上，额外保留扩展属性（例如 chattr 修改后的属性）
+
       # 镜像备份，NODENS00 [ /mnt/Temp/ ] --> NODENS00-BACKUP [ /mnt/Temp/ ]
-      ${pkgs.rsync}/bin/rsync -avP --delete -e "/run/current-system/sw/bin/ssh" /mnt/Temp/ 0x0CFF@192.168.31.101:/mnt/Temp/
+      ${pkgs.rsync}/bin/rsync -avPX --delete -e "/run/current-system/sw/bin/ssh" /mnt/Temp/ 0x0CFF@192.168.31.101:/mnt/Temp/
       # 镜像备份，NODENS00 [ /mnt/Workspace/ ] --> NODENS00-BACKUP [ /mnt/Workspace/ ]
-      ${pkgs.rsync}/bin/rsync -avP --delete -e "/run/current-system/sw/bin/ssh" /mnt/Workspace/ 0x0CFF@192.168.31.101:/mnt/Workspace/
+      ${pkgs.rsync}/bin/rsync -avPX --delete -e "/run/current-system/sw/bin/ssh" /mnt/Workspace/ 0x0CFF@192.168.31.101:/mnt/Workspace/
       # 镜像备份，NODENS00 [ /mnt/Document/ ] --> NODENS00-BACKUP [ /mnt/Document/ ]
-      ${pkgs.rsync}/bin/rsync -avP --delete -e "/run/current-system/sw/bin/ssh" /mnt/Document/ 0x0CFF@192.168.31.101:/mnt/Document/
+      ${pkgs.rsync}/bin/rsync -avPX --delete -e "/run/current-system/sw/bin/ssh" /mnt/Document/ 0x0CFF@192.168.31.101:/mnt/Document/
     '';
     # 单元配置
     serviceConfig = {
