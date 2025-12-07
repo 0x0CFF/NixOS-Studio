@@ -5,10 +5,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "董事秘书-实习";       # 用户描述
     password = "EN35TSUX";
-    group = "STUDIO";                  # 主要用户组
+    group = "BOARD";                   # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BOARD"
       "R0"
     ];
   };
@@ -17,10 +16,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "董事秘书-正式";       # 用户描述
     password = "TN4F8YLH";
-    group = "STUDIO";                  # 主要用户组
+    group = "BOARD";                   # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BOARD"
       "R1"
     ];
   };
@@ -29,10 +27,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "董事成员";           # 用户描述
     password = "GBNE26R7";
-    group = "STUDIO";                  # 主要用户组
+    group = "BOARD";                   # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BOARD"
       "R2"
     ];
   };
@@ -41,10 +38,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "执行董事";           # 用户描述
     password = "F7EY6KJM";
-    group = "STUDIO";                  # 主要用户组
+    group = "BOARD";                   # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BOARD"
       "R3"
     ];
   };
@@ -53,10 +49,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "副董事长";           # 用户描述
     password = "M5LF7M65";
-    group = "STUDIO";                  # 主要用户组
+    group = "BOARD";                   # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BOARD"
       "R4"
     ];
   };
@@ -65,10 +60,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "董事长";             # 用户描述
     password = "A8HFKF8M";
-    group = "STUDIO";                  # 主要用户组
+    group = "BOARD";                   # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BOARD"
       "R5"
     ];
   };

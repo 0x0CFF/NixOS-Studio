@@ -5,10 +5,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "商务部门-实习";       # 用户描述
     password = "WF457FQ7";
-    group = "STUDIO";                  # 主要用户组
+    group = "BUSINESS";                # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BUSINESS"
       "R0"
     ];
   };
@@ -17,10 +16,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "商务部门-初级";       # 用户描述
     password = "QPH3T2AS";
-    group = "STUDIO";                  # 主要用户组
+    group = "BUSINESS";                # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BUSINESS"
       "R1"
     ];
   };
@@ -29,10 +27,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "商务部门-中级";       # 用户描述
     password = "CYSMWAP3";
-    group = "STUDIO";                  # 主要用户组
+    group = "BUSINESS";                # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BUSINESS"
       "R2"
     ];
   };
@@ -41,10 +38,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "商务部门-高级";       # 用户描述
     password = "MJE3ZD86";
-    group = "STUDIO";                  # 主要用户组
+    group = "BUSINESS";                # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BUSINESS"
       "R3"
     ];
   };
@@ -53,10 +49,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "商务部门-主管";       # 用户描述
     password = "Q7CE3HGW";
-    group = "STUDIO";                  # 主要用户组
+    group = "BUSINESS";                # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BUSINESS"
       "R4"
     ];
   };
@@ -65,10 +60,9 @@
     isNormalUser = true;               # 是否为普通用户
     description = "商务部门-总监";       # 用户描述
     password = "SPCTYM37";
-    group = "STUDIO";                  # 主要用户组
+    group = "BUSINESS";                # 主要用户组
     extraGroups = [                    # 辅助用户组
       "PUBLIC"
-      "BUSINESS"
       "R5"
     ];
   };

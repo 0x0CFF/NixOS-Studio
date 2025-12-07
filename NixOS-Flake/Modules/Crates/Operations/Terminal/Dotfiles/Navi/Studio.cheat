@@ -33,7 +33,7 @@ $ Path: echo "/mnt/Document /mnt/Temp /mnt/Workspace" | tr ' '
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-% Studio, Chattr
+% Studio, Eagle
 
 # 设置目录，添加不可变属性
 sudo chattr +i /mnt/Material#<Library><Path>

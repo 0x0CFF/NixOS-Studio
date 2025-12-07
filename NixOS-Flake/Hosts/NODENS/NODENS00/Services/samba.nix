@@ -107,7 +107,7 @@
         "write list" = "@R5";
         # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
         # "force user" = "BOARD_R5";
-        "force group" = "R5";
+        # "force group" = "R5";
         # 以下参数用于配置回收站（空目录被删除不会放入回收站）
         "vfs object" = "recycle";                   # 载入 Samba 用于回收站功能的模块 recycle.so
         "recycle:repository" = ".Trash";            # 回收站的相对于共享资源目录的路径（删除文件位于共享资源目录下的 ".Trash" 目录）
