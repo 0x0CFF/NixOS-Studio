@@ -4,7 +4,7 @@
   services = {
     openssh = {
       enable = true;
-      openFirewall = true;
+      openFirewall = true;     # 开放防火墙端口
       settings = {
         # 访问控制，用户登录白名单
         AllowUsers = [

@@ -113,7 +113,7 @@
     # Samba 服务
     samba = {
       enable = true;
-      openFirewall = true;
+      openFirewall = true;    # 开放防火墙端口
       settings = {
         # 全局配置
         global = {

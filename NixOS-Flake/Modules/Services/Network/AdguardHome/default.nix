@@ -4,7 +4,7 @@
   services = {
     adguardhome = {
       enable = true;
-      openFirewall = true;
+      openFirewall = true;     # 开放防火墙端口
       host = "0.0.0.0";
       port = 3000;
     };
@@ -13,11 +13,10 @@
   # 防火墙端口配置
   networking.firewall = {
     allowedTCPPorts = [
-      3000                     # Web 管理后台
-      53                       # 规则代理端口
+      53                       # DNS 服务器端口
     ];
     allowedUDPPorts = [
-      53                       # 规则代理端口
+      53                       # DNS 服务器端口
     ];
     allowedUDPPortRanges = [
       #

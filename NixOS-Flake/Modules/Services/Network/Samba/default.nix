@@ -3,8 +3,8 @@
 {
   services = {
     samba = {
-      enable = true;                                  # 启用服务
-      openFirewall = true;                            # 防火墙
+      enable = true;
+      openFirewall = true;     # 开放防火墙端口
       settings = {
         # 全局配置
         global = {
