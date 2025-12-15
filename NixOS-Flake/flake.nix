@@ -26,15 +26,15 @@
   inputs = {
     # NixOS 官方硬件信息
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # NixOS 官方软件源，nixos-25.05 分支
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # NixOS 官方软件源，nixos-25.11 分支
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     # NixOS 官方软件源，非稳定版本
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # home-manager，用于管理用户配置
     home-manager = {
-      # home-manager 官方源，home-manager-25.05 分支
-      url = "github:nix-community/home-manager/release-25.05";
+      # home-manager 官方源，home-manager-25.11 分支
+      url = "github:nix-community/home-manager/release-25.11";
       # 强制 home-manager 和该 flake 使用相同版本的 nixpkgs，避免依赖的 nixpkgs 版本不一致导致问题
       inputs.nixpkgs.follows = "nixpkgs";
     };

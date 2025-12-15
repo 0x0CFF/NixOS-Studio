@@ -11,6 +11,7 @@
     curl                     # [CLI] [C] URL 传输数据
     fastfetch                # [CLI] [C] 系统信息查看工具
     restic                   # [CLI] [GO] 数据备份工具
+    rclone                   # [CLI] [GO] 云存储同步工具
     smartmontools            # [CLI] [C++] 硬盘健康监测工具
     grex                     # [CLI] [RUST] 正则表达式生成器
     trashy                   # [CLI] [RUST] 命令行回收站工具
@@ -20,7 +21,7 @@
     bottom                   # [TUI] [RUST] 资源管理器
     zellij                   # [TUI] [RUST] 终端复用器
     systemctl-tui            # [TUI] [RUST] Systemd 服务管理工具
-    # somo                     # [TUI] [RUST] 端口查看工具
+    somo                     # [TUI] [RUST] 端口查看工具
   ];
 
   programs = {
