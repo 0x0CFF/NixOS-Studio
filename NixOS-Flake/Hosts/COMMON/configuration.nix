@@ -9,9 +9,9 @@
     fontDir.enable = true;
     # 字体包
     packages = with pkgs; [
-      noto-fonts-cjk-sans   # Google CJK 无衬线字体
-      noto-fonts-cjk-serif  # Google CJK 衬线字体
-      noto-fonts-emoji      # Google Emoji
+      noto-fonts-cjk-sans         # Google CJK 无衬线字体
+      noto-fonts-cjk-serif        # Google CJK 衬线字体
+      noto-fonts-color-emoji      # Google Emoji
 
       # Nerd Fonts
       nerd-fonts.jetbrains-mono     # 编程字体
