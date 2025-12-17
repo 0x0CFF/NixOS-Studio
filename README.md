@@ -67,6 +67,8 @@ sudo reboot
 FLAKE
 
 # 使用 mount 命令挂载硬盘到 /mnt 目录下
+# 查看硬盘挂载情况
+sudo lsblk -f
 # NAVI [hdd]: 生成 `hardware-configuration.nix` 硬件信息
 # NAVI [hdd]: 替换硬件信息到 NixOS-Flake 相应文件夹下
 

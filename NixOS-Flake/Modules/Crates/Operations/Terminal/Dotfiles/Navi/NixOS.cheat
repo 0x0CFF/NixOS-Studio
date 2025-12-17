@@ -19,7 +19,7 @@ sudo nixos-generate-config
 # 替换硬件信息
 sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/<Hostname>/Device/
 
-$ Hostname: echo "NODENS/NODENS00 NODENS/NODENS00-BACKUP DATASC/DATASC00 DATASC/DATASC00-BACKUP DATAHC/DATAHC00 DATAHC/DATAHC01" | tr ' ' '\n'
+$ Hostname: echo "NODENS/NODENS00 NODENS/NODENS00-BACKUP DATASC/DATASC00 DATASC/DATASC00-BACKUP DATASC/DATASC01 DATASC/DATASC01-BACKUP DATAHC/DATAHC00 DATAHC/DATAHC01" | tr ' ' '\n'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
