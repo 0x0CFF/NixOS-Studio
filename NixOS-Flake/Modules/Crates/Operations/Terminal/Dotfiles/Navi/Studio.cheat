@@ -1,16 +1,14 @@
 % Studio, Git
 
 # 重置 NixOS-Studio 配置
-
 ```sh
 rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/*
 git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
-rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.git/*
+rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.git
 rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.gitignore
 ```
 
 # 重置 Panel-Studio 配置
-
 ```sh
 rm -rf /home/0x0CFF/Solution/Profiles/Web-Studio/Panel-Studio/*
 git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Profiles/Web-Studio/Panel-Studio

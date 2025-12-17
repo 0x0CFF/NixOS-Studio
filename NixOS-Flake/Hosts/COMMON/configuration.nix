@@ -95,7 +95,10 @@
       options = "--delete-older-than 14d";       # 垃圾收集器自动运行时 nix-collect-garbage 的选项
     };
   };
-
+  
+  # 允许系统使用非自由包
+  nixpkgs.config.allowUnfree = true;
+  
   # 系统程序
   # programs = {
   #   # 一些程序需要 SUID 包装器，可以进一步配置或在用户会话中启动
