@@ -54,7 +54,7 @@
         # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
         "force user" = "BOARD_R5";
         "force group" = "PUBLIC";
-      # };
+      };
       # "财务素材库" = {
       #   "path" = "/mnt/Material#FINANCE/财务素材库";    # 共享目录
       #   "read only" = "no";                           # 是否只读
