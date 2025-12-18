@@ -144,12 +144,9 @@ batch_create_smb_users() {
 
 # 定义要创建的挂载点
 NODENS_MOUNTPOINTS=(
-    "/mnt/Temp/临时盘/:BOARD_R5:PUBLIC:775"
-    "/mnt/Temp/临时盘/.Trash/:BOARD_R5:PUBLIC:775"
-    "/mnt/Workspace/协作盘/:BOARD_R5:PUBLIC:775"
-    "/mnt/Workspace/协作盘/.Trash/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/文档盘/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/文档盘/.Trash/:BOARD_R5:PUBLIC:775"
+    "/mnt/Temp/:root:root:775"
+    "/mnt/Workspace/:root:root:775"
+    "/mnt/Document/:root:root:775"
 )
 
 # 函数 : 批量创建文件夹
@@ -178,6 +175,12 @@ batch_create_nodens_mountpoint() {
 
 # 定义要创建的文件夹
 NODENS_FOLDERS=(
+    "/mnt/Temp/临时盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Temp/临时盘/.Trash/:BOARD_R5:PUBLIC:775"
+    "/mnt/Workspace/协作盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Workspace/协作盘/.Trash/:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/文档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Document/文档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/Keepass:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/Masscode:DEVELOPMENT_R5:DEVELOPMENT:755"
     "/mnt/Document/文档盘/Obsidian/:BOARD_R5:PUBLIC:775"
@@ -223,13 +226,13 @@ batch_create_nodens_folder() {
 
 # 定义要创建的挂载点
 DATASC00_MOUNTPOINTS=(
-    "/mnt/Material#ANIMATION/动画素材库/:ANIMATION_R5:ANIMATION:755"
-    "/mnt/Material#BUSINESS/商务素材库/:BUSINESS_R5:BUSINESS:750"
-    "/mnt/Material#DESIGN/设计素材库/:DESIGN_R5:DESIGN:755"
-    "/mnt/Material#EFFECTS/特效素材库/:EFFECTS_R5:EFFECTS:755"
-    "/mnt/Material#MODELING/建模素材库/:MODELING_R5:MODELING:755"
-    "/mnt/Material#PUBLIC/公共素材库/:BOARD_R5:PUBLIC:755"
-    "/mnt/Material#VIDEO/视频素材库/:VIDEO_R5:VIDEO:755"
+    "/mnt/Material#ANIMATION/:root:root:775"
+    "/mnt/Material#BUSINESS/:root:root:775"
+    "/mnt/Material#DESIGN/:root:root:775"
+    "/mnt/Material#EFFECTS/:root:root:775"
+    "/mnt/Material#MODELING/:root:root:775"
+    "/mnt/Material#PUBLIC/:root:root:775"
+    "/mnt/Material#VIDEO/:root:root:775"
 )
 
 # 函数 : 批量创建文件夹
@@ -256,10 +259,81 @@ batch_create_datasc00_mountpoint() {
     done
 }
 
+# 定义要创建的文件夹
+DATASC00_FOLDERS=(
+    "/mnt/Material#ANIMATION/动画素材库.library/:ANIMATION_R5:ANIMATION:755"
+    "/mnt/Material#BUSINESS/商务素材库.library/:BUSINESS_R5:BUSINESS:750"
+    "/mnt/Material#DESIGN/设计素材库.library/:DESIGN_R5:DESIGN:755"
+    "/mnt/Material#EFFECTS/特效素材库.library/:EFFECTS_R5:EFFECTS:755"
+    "/mnt/Material#MODELING/建模素材库.library/:MODELING_R5:MODELING:755"
+    "/mnt/Material#PUBLIC/公共素材库.library/:BOARD_R5:PUBLIC:755"
+    "/mnt/Material#VIDEO/视频素材库.library/:VIDEO_R5:VIDEO:755"
+)
+
+# 函数 : 批量创建文件夹
+batch_create_datasc00_folder() {
+    # 遍历数组创建文件夹
+    for folder_info in "${DATASC00_FOLDERS[@]}"; do
+
+        # 分割用户名和密码
+        IFS=':' read -r folder owner group permission<<< "$folder_info"
+
+        # 检查文件夹是否已存在
+        if [ -d "$folder" ]; then
+            echo "文件夹已存在: $folder"
+        else
+            # 创建文件夹（-p 参数会自动创建父级目录）
+            if mkdir -p "$folder"; then
+                sudo chown -R $owner:$group $folder
+                sudo chmod -R $permission $folder
+                echo "成功创建文件夹: $folder"
+            else
+                echo "创建文件夹失败: $folder"
+            fi
+        fi
+    done
+}
+
 ################################################ 创建 mnt 目录（DATASC01, DATASC01-BACKUP） ###############################################
 
 # 定义要创建的挂载点
 DATASC01_MOUNTPOINTS=(
+    "/mnt/Archive#01/:root:root:775"
+    "/mnt/Archive#02/:root:root:775"
+    "/mnt/Archive#03/:root:root:775"
+    "/mnt/Archive#04/:root:root:775"
+    "/mnt/Archive#05/:root:root:775"
+    "/mnt/Archive#06/:root:root:775"
+    "/mnt/Archive#07/:root:root:775"
+    "/mnt/Archive#08/:root:root:775"
+)
+
+# 函数 : 批量创建文件夹
+batch_create_datasc01_mountpoint() {
+    # 遍历数组创建文件夹
+    for folder_info in "${DATASC01_MOUNTPOINTS[@]}"; do
+
+        # 分割用户名和密码
+        IFS=':' read -r folder owner group permission<<< "$folder_info"
+
+        # 检查文件夹是否已存在
+        if [ -d "$folder" ]; then
+            echo "文件夹已存在: $folder"
+        else
+            # 创建文件夹（-p 参数会自动创建父级目录）
+            if mkdir -p "$folder"; then
+                sudo chown -R $owner:$group $folder
+                sudo chmod -R $permission $folder
+                echo "成功创建文件夹: $folder"
+            else
+                echo "创建文件夹失败: $folder"
+            fi
+        fi
+    done
+}
+
+# 定义要创建的文件夹
+DATASC01_FOLDERS=(
     "/mnt/Archive#01/归档盘#01/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#02/归档盘#02/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#03/归档盘#03/:BOARD_R5:PUBLIC:775"
@@ -271,9 +345,9 @@ DATASC01_MOUNTPOINTS=(
 )
 
 # 函数 : 批量创建文件夹
-batch_create_datasc01_mountpoint() {
+batch_create_datasc01_folder() {
     # 遍历数组创建文件夹
-    for folder_info in "${DATASC01_MOUNTPOINTS[@]}"; do
+    for folder_info in "${DATASC01_FOLDERS[@]}"; do
 
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
@@ -416,7 +490,8 @@ handle_choice() {
                     ;;
                 4)
                     echo  # 空行
-                    echo "无须构建！"
+                    batch_create_datasc00_folder
+                    exit 0
                     ;;
                 *)
                     echo  # 空行
@@ -448,7 +523,8 @@ handle_choice() {
                     ;;
                 4)
                     echo  # 空行
-                    echo "无须构建！"
+                    batch_create_datasc00_folder
+                    exit 0
                     ;;
                 *)
                     echo  # 空行
@@ -480,7 +556,8 @@ handle_choice() {
                     ;;
                 4)
                     echo  # 空行
-                    echo "无须构建！"
+                    batch_create_datasc01_folder
+                    exit 0
                     ;;
                 *)
                     echo  # 空行
@@ -512,8 +589,8 @@ handle_choice() {
                     ;;
                 4)
                     echo  # 空行
-                    echo "无须构建！"
-                    ;;
+                    batch_create_datasc01_folder
+                    exit 0
                 *)
                     echo  # 空行
                     echo "错误选择，请重新输入！"

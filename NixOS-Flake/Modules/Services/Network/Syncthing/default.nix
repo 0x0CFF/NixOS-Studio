@@ -8,7 +8,6 @@
       dataDir = "/home/0x0CFF";
       guiAddress = "0.0.0.0:8384";
       extraFlags = [
-          "--reset-deltas"
           # "--reset-database"
       ];
     };

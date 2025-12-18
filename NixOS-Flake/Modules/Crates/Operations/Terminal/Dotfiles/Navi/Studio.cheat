@@ -18,16 +18,18 @@ git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Profiles/Web-Stu
 
 % Studio, Trash
 
-# 清除挂载点垃圾箱 - 文档盘
-sudo rm -rf <Path>/.Trash-0/*
+# 清除挂载点垃圾箱 - NODENS00
+sudo rm -rf <NODENS00-Path>/.Trash-0/*
 
-# 清除挂载点垃圾箱 - 临时盘
-sudo rm -rf <Path>/.Trash-0/*
+# 清除挂载点垃圾箱 - DATASC00
+sudo rm -rf <DATASC00-Path>/.Trash-0/*
 
-# 清除挂载点垃圾箱 - 协作盘
-sudo rm -rf <Path>/.Trash-0/*
+# 清除挂载点垃圾箱 - DATASC01
+sudo rm -rf <DATASC01-Path>/.Trash-0/*
 
-$ Path: echo "/mnt/Document /mnt/Temp /mnt/Workspace" | tr ' '
+$ NODENS00-Path: echo "/mnt/Document /mnt/Temp /mnt/Workspace" | tr ' ' '\n'
+$ DATASC00-Path: echo "/mnt/Material#PUBLIC /mnt/Material#FINANCE /mnt/Material#BUSINESS /mnt/Material#DESIGN /mnt/Material#VIDEO /mnt/Material#ANIMATION" | tr ' ' '\n'
+$ DATASC01-Path: echo "/mnt/Archive#01 /mnt/Archive#02 /mnt/Archive#03 /mnt/Archive#04 /mnt/Archive#05 /mnt/Archive#06" | tr ' ' '\n'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

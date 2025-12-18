@@ -39,13 +39,13 @@
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
       "公共素材库" = {
-        "path" = "/mnt/Material#PUBLIC/公共素材库";     # 共享目录
-        "read only" = "no";                           # 是否只读
-        "browseable" = "yes";                         # 指定该共享是否可以浏览
-        "writable" = "yes";                           # 指定该共享路径是否可写
-        "public" = "no";                              # 指定该共享是否允许 Guest 账户访问
-        "create mask" = "0775";                       # 创建文件权限
-        "directory mask" = "0775";                    # 创建目录权限
+        "path" = "/mnt/Material#PUBLIC/公共素材库.library";        # 共享目录
+        "read only" = "no";                                      # 是否只读
+        "browseable" = "yes";                                    # 指定该共享是否可以浏览
+        "writable" = "yes";                                      # 指定该共享路径是否可写
+        "public" = "no";                                         # 指定该共享是否允许 Guest 账户访问
+        "create mask" = "0775";                                  # 创建文件权限
+        "directory mask" = "0775";                               # 创建目录权限
         # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
         # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
         "vaild users" = "@PUBLIC";
@@ -56,13 +56,13 @@
         "force group" = "PUBLIC";
       };
       # "财务素材库" = {
-      #   "path" = "/mnt/Material#FINANCE/财务素材库";    # 共享目录
-      #   "read only" = "no";                           # 是否只读
-      #   "browseable" = "yes";                         # 指定该共享是否可以浏览
-      #   "writable" = "yes";                           # 指定该共享路径是否可写
-      #   "public" = "no";                              # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0770";                       # 创建文件权限
-      #   "directory mask" = "0770";                    # 创建目录权限
+        # "path" = "/mnt/Material#FINANCE/财务素材库.library";       # 共享目录
+      #   "read only" = "no";                                      # 是否只读
+      #   "browseable" = "yes";                                    # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                      # 指定该共享路径是否可写
+      #   "public" = "no";                                         # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0770";                                  # 创建文件权限
+      #   "directory mask" = "0770";                               # 创建目录权限
       #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@FINANCE";
@@ -73,13 +73,13 @@
       #   "force group" = "FINANCE";
       # };
       # "商务素材库" = {
-      #   "path" = "/mnt/Material#BUSINESS/商务素材库";   # 共享目录
-      #   "read only" = "no";                           # 是否只读
-      #   "browseable" = "yes";                         # 指定该共享是否可以浏览
-      #   "writable" = "yes";                           # 指定该共享路径是否可写
-      #   "public" = "no";                              # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0770";                       # 创建文件权限
-      #   "directory mask" = "0770";                    # 创建目录权限
+      #   "path" = "/mnt/Material#BUSINESS/商务素材库.library";     # 共享目录
+      #   "read only" = "no";                                     # 是否只读
+      #   "browseable" = "yes";                                   # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                     # 指定该共享路径是否可写
+      #   "public" = "no";                                        # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0770";                                 # 创建文件权限
+      #   "directory mask" = "0770";                              # 创建目录权限
       #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@BUSINESS";
@@ -90,13 +90,13 @@
       #   "force group" = "BUSINESS";
       # };
       # "设计素材库" = {
-      #   "path" = "/mnt/Material#DESIGN/设计素材库";     # 共享目录
-      #   "read only" = "no";                           # 是否只读
-      #   "browseable" = "yes";                         # 指定该共享是否可以浏览
-      #   "writable" = "yes";                           # 指定该共享路径是否可写
-      #   "public" = "no";                              # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0775";                       # 创建文件权限
-      #   "directory mask" = "0775";                    # 创建目录权限
+      #   "path" = "/mnt/Material#DESIGN/设计素材库.library";       # 共享目录
+      #   "read only" = "no";                                     # 是否只读
+      #   "browseable" = "yes";                                   # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                     # 指定该共享路径是否可写
+      #   "public" = "no";                                        # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                                 # 创建文件权限
+      #   "directory mask" = "0775";                              # 创建目录权限
       #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
@@ -107,13 +107,13 @@
       #   "force group" = "DESIGN";
       # };
       # "视频素材库" = {
-      #   "path" = "/mnt/Material#VIDEO/视频素材库";      # 共享目录
-      #   "read only" = "no";                           # 是否只读
-      #   "browseable" = "yes";                         # 指定该共享是否可以浏览
-      #   "writable" = "yes";                           # 指定该共享路径是否可写
-      #   "public" = "no";                              # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0775";                       # 创建文件权限
-      #   "directory mask" = "0775";                    # 创建目录权限
+      #   "path" = "/mnt/Material#VIDEO/视频素材库.library";       # 共享目录
+      #   "read only" = "no";                                    # 是否只读
+      #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                    # 指定该共享路径是否可写
+      #   "public" = "no";                                       # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                                # 创建文件权限
+      #   "directory mask" = "0775";                             # 创建目录权限
       #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
@@ -124,13 +124,13 @@
       #   "force group" = "VIDEO";
       # };
       # "动画素材库" = {
-      #   "path" = "/mnt/Material#ANIMATION/动画素材库";  # 共享目录
-      #   "read only" = "no";                           # 是否只读
-      #   "browseable" = "yes";                         # 指定该共享是否可以浏览
-      #   "writable" = "yes";                           # 指定该共享路径是否可写
-      #   "public" = "no";                              # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0775";                       # 创建文件权限
-      #   "directory mask" = "0775";                    # 创建目录权限
+      #   "path" = "/mnt/Material#ANIMATION/动画素材库.library";   # 共享目录
+      #   "read only" = "no";                                    # 是否只读
+      #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                    # 指定该共享路径是否可写
+      #   "public" = "no";                                       # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                                # 创建文件权限
+      #   "directory mask" = "0775";                             # 创建目录权限
       #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
       #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
       #   "vaild users" = "@PUBLIC";
