@@ -25,11 +25,11 @@
       # -p：保留文件权限
       # -X：在归档模式基础上，额外保留扩展属性（例如 chattr 修改后的属性）
 
-      # 镜像备份，NODENS00 [ /mnt/Temp/ ] --> NODENS00-BACKUP [ /mnt/Temp/ ]
+      # 镜像备份，DATABC00 [ /mnt/Temp/ ] --> DATABC00-BACKUP [ /mnt/Temp/ ]
       ${pkgs.rsync}/bin/rsync -avPX --delete -e "/run/current-system/sw/bin/ssh" /mnt/Temp/ 0x0CFF@192.168.31.101:/mnt/Temp/
-      # 镜像备份，NODENS00 [ /mnt/Workspace/ ] --> NODENS00-BACKUP [ /mnt/Workspace/ ]
+      # 镜像备份，DATABC00 [ /mnt/Workspace/ ] --> DATABC00-BACKUP [ /mnt/Workspace/ ]
       ${pkgs.rsync}/bin/rsync -avPX --delete -e "/run/current-system/sw/bin/ssh" /mnt/Workspace/ 0x0CFF@192.168.31.101:/mnt/Workspace/
-      # 镜像备份，NODENS00 [ /mnt/Document/ ] --> NODENS00-BACKUP [ /mnt/Document/ ]
+      # 镜像备份，DATABC00 [ /mnt/Document/ ] --> DATABC00-BACKUP [ /mnt/Document/ ]
       ${pkgs.rsync}/bin/rsync -avPX --delete -e "/run/current-system/sw/bin/ssh" /mnt/Document/ 0x0CFF@192.168.31.101:/mnt/Document/
     '';
     # 单元配置

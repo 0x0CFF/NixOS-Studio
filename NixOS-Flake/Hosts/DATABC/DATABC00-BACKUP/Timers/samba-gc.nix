@@ -7,8 +7,8 @@
     timerConfig = {
       # 需要运行的单元（脚本或程序）
       Unit = "samba-gc.service";
-      # 在系统运行时，每年 1、3、5、7、9、11 月的 1 日 05：00：00 运行一次
-      OnCalendar = "*-01,03,05,07,09,11-01 05:00:00";
+      # 在系统运行时，每年 1 月 1 日开始，每 2 个月循环，在 05：00：00 运行任务
+      OnCalendar = "*-01/2-01 05:00:00";
     };
   };
 
@@ -17,12 +17,8 @@
     # 运行脚本
     # 查找程序所在位置 echo $(which ssh)
     script = ''
-      # 清空临时盘回收站
-      rm -f /mnt/Temp/临时盘/.Trash/*
-      # 清空协作盘回收站
-      rm -f /mnt/Workspace/协作盘/.Trash/*
-      # 清空文档盘回收站
-      rm -f /mnt/Document/文档盘/.Trash/*
+      # 清空 SMB 回收站
+      rm -rf /mnt/*/*/.Trash/*
     '';
     # 单元配置
     serviceConfig = {

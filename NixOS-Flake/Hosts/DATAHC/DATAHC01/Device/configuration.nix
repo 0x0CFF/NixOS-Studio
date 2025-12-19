@@ -41,9 +41,7 @@
     firewall = {
       enable = true;                  # 防火墙开关（关闭则完全禁用防火墙）
       allowPing = true;
-      allowedTCPPorts = [             # 防火墙 TCP 放行端口
-        8384                          # Syncthing
-      ];
+      # allowedTCPPorts = [ ... ];    # 防火墙 TCP 放行端口
       # allowedUDPPorts = [ ... ];    # 防火墙 UPD 放行端口
     };
   };

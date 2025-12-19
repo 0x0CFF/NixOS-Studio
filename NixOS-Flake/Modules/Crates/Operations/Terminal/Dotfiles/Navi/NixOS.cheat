@@ -17,9 +17,7 @@ nix profile history --profile /nix/var/nix/profiles/system
 sudo nixos-generate-config
 
 # 替换硬件信息
-sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/<Hostname>/Device/
-
-$ Hostname: echo "NODENS/NODENS00 NODENS/NODENS00-BACKUP DATASC/DATASC00 DATASC/DATASC00-BACKUP DATASC/DATASC01 DATASC/DATASC01-BACKUP DATAHC/DATAHC00 DATAHC/DATAHC01" | tr ' ' '\n'
+sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -71,19 +69,19 @@ git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-S
 sudo nix flake update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake
 
 # [Flake] 部署 NixOS 系统
-sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --show-trace -L -v --option substituters "<Channels>"
+sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
 
 # [Flake] [Git] 回滚 NixOS 系统
 ```sh
 git checkout HEAD^1
-sudo nixos-rebuild switch --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --show-trace -L -v --option substituters "<Channels>"
+sudo nixos-rebuild switch --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
 ```
 
 # [Flake] 远程部署 NixOS 系统（系统构建过程将在本机执行）
-sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --target-host root@<IP> --build-host localhost --verbose
+sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host localhost --verbose
 
 # [Flake] 远程部署 NixOS 系统（系统构建过程将在远程主机执行）
-sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#<Hostname> --target-host root@<IP> --build-host root@<IP> --verbose
+sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host root@<IP> --verbose
 
 # [Unflake] 部署 NixOS 系统
 sudo nixos-rebuild <Commands> -I nixos-config=<Path> --show-trace -L -v --option substituters "<Channels>"
@@ -95,7 +93,6 @@ sudo nixos-rebuild rollback
 sudo home-manager switch --flake .#0x0CFF@<Hostname>
 
 $ Commands: echo "test switch boot" | tr ' ' '\n'
-$ Hostname: echo "NODENS00 NODENS00-BACKUP DATASC00 DATASC00-BACKUP DATASC01 DATASC01-BACKUP DATAHC00 DATAHC01" | tr ' ' '\n'
 $ Channels: echo "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://mirrors.ustc.edu.cn/nix-channels/store https://mirrors.nju.edu.cn/nix-channels/store https://mirror.sjtu.edu.cn/nix-channels/store https://mirrors.cqupt.edu.cn/nix-channels/store https://mirror.nyist.edu.cn/nix-channels/store https://mirror.iscas.ac.cn/nix-channels/store" | tr ' ' '\n'
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -154,22 +151,22 @@ systemctl list-timers --all
 % NixOS, NH
 
 # [Flake] 部署 NixOS 系统，使用官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask
 
 # [Flake] 部署 NixOS 系统，使用且信任非官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask -- --accept-flake-config
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask -- --accept-flake-config
 
 # [Flake] 更新 flake.lock 并部署 NixOS 系统，使用官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask --update 
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask --update 
 
 # [Flake] 更新 flake.lock 并部署 NixOS 系统，使用且信任非官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname <Hostname> --ask --update -- --accept-flake-config
+nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask --update -- --accept-flake-config
 
 # [Flake] [Github] 部署 NixOS 系统，使用官方二进制缓存
-nh os <Commands> github:username/nixos-config --hostname <Hostname> --ask 
+nh os <Commands> github:username/nixos-config --hostname $HOSTNAME --ask 
 
 # [Flake] [Github] 部署 NixOS 系统，使用且信任非官方二进制缓存
-nh os <Commands> github:username/nixos-config --hostname <Hostname> --ask -- --accept-flake-config
+nh os <Commands> github:username/nixos-config --hostname $HOSTNAME --ask -- --accept-flake-config
 
 # 清理所有系统范围内的配置文件和 GC 根
 nh clean all --ask
@@ -187,4 +184,3 @@ nh clean user --ask
 nh clean user --ask --keep <N>
 
 $ Commands: echo "test switch boot" | tr ' ' '\n'
-$ Hostname: echo "NODENS00 NODENS00-BACKUP DATASC00 DATASC00-BACKUP DATASC01 DATASC01-BACKUP DATAHC00 DATAHC01" | tr ' ' '\n'

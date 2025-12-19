@@ -52,10 +52,10 @@
     # NixOS 构建系统时会根据主机名 Hostname 决定使用哪个配置
     # nixpkgs.lib.nixosSystem 函数用于构建配置
 
-    # NODENS 系列 （Node Network Server，节点网络服务器）#########################################################
-
-    # 定义 NODENS00 系统配置
-    nixosConfigurations."NODENS00" = nixpkgs.lib.nixosSystem {
+    # DATAGC 系列（Data Gateway Center，数据网关中心）#########################################################
+    
+    # 定义 DATAGC 系统配置
+    nixosConfigurations."DATAGC00" = nixpkgs.lib.nixosSystem {
       # 系统架构类型
       system = "x86_64-linux";
       # 传递非默认参数到子模块系统
@@ -63,29 +63,20 @@
       # 引用子模块
       modules = [
         # 设备底层
-        ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
-        ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
-        ./Hosts/NODENS/NODENS00/Device/configuration.nix                    # 基础配置
-        ./Hosts/NODENS/NODENS00/Device/environment.nix                      # 环境变量
-        ./Hosts/NODENS/NODENS00/Device/hardware-configuration.nix           # 硬件信息
+        ./Hosts/COMMON/configuration.nix                                      # 基础配置 [ 通用 ]
+        ./Hosts/COMMON/environment.nix                                        # 环境变量 [ 通用 ]
+        ./Hosts/DATAGC/DATAGC00/Device/configuration.nix                      # 基础配置
+        ./Hosts/DATAGC/DATAGC00/Device/environment.nix                        # 环境变量
+        ./Hosts/DATAGC/DATAGC00/Device/hardware-configuration.nix             # 硬件信息
         # 服务专项配置
-        ./Hosts/NODENS/NODENS00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
-        ./Hosts/NODENS/NODENS00/Timers/mnt-backup.nix                       # 数据备份
-        ./Hosts/NODENS/NODENS00/Timers/samba-gc.nix                         # Samba 垃圾回收
-        # ./Hosts/NODENS/NODENS00/Timers/web-panel.nix                        # 导航面板
-        # ./Hosts/NODENS/NODENS00/Timers/web-toolbox-backend.nix              # 工具箱面板-后端
-        # ./Hosts/NODENS/NODENS00/Timers/web-toolbox-frontend.nix             # 工具箱面板-前端
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
-        ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
+        # ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
         ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
+        # ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
         ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
 
         # 硬件驱动
@@ -97,14 +88,14 @@
         # ./Modules/Driver/Xserver/default.nix                                # Xserver 驱动
 
         # 后台服务
-        # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
         ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
-        ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
+        # ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
         ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
         ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
         # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
-        ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
+        # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
         # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
 
@@ -133,7 +124,96 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+            ];
+          };
+          # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
+          home-manager.extraSpecialArgs = { inherit inputs; };
+        }
+      ];
+    }
+    
+    
+    # DATABC 系列 （Data Buffer Center，数据缓冲中心）#########################################################
+
+    # 定义 DATABC00 系统配置
+    nixosConfigurations."DATABC00" = nixpkgs.lib.nixosSystem {
+      # 系统架构类型
+      system = "x86_64-linux";
+      # 传递非默认参数到子模块系统
+      specialArgs = { inherit inputs; };
+      # 引用子模块
+      modules = [
+        # 设备底层
+        ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
+        ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
+        ./Hosts/DATABC/DATABC00/Device/configuration.nix                    # 基础配置
+        ./Hosts/DATABC/DATABC00/Device/environment.nix                      # 环境变量
+        ./Hosts/DATABC/DATABC00/Device/hardware-configuration.nix           # 硬件信息
+        # 服务专项配置
+        ./Hosts/DATABC/DATABC00/Services/samba.nix                          # Samba 专项配置
+        # 定时服务
+        ./Hosts/DATABC/DATABC00/Timers/mnt-backup.nix                       # 数据备份
+        ./Hosts/DATABC/DATABC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
+        ./Hosts/DATABC/DATABC00/Timers/samba-gc.nix                         # Samba 垃圾回收
+        # ./Hosts/DATABC/DATABC00/Timers/web-panel.nix                        # 导航面板
+        # ./Hosts/DATABC/DATABC00/Timers/web-toolbox-backend.nix              # 工具箱面板-后端
+        # ./Hosts/DATABC/DATABC00/Timers/web-toolbox-frontend.nix             # 工具箱面板-前端
+
+        # 程序集合
+        ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
+        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
+        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
+        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
+        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
+        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+
+        # 硬件驱动
+        ./Modules/Driver/Audio/default.nix                                  # 声音驱动
+        # ./Modules/Driver/Bluetooth/default.nix                              # 蓝牙驱动
+        # ./Modules/Driver/Printer/default.nix                                # 打印机驱动
+        # ./Modules/Driver/Touchpad/default.nix                               # 触控板驱动
+        # ./Modules/Driver/USB/default.nix                                    # USB 驱动
+        # ./Modules/Driver/Xserver/default.nix                                # Xserver 驱动
+
+        # 后台服务
+        # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
+        ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
+        ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
+        ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
+        # ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
+        # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
+        # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
+        # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
+        # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
+
+        # 容器引擎
+        ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+
+        # 用户成员
+        ./Users/ADMINISTRATION/default.nix                                  # 行政部门
+        ./Users/ANIMATION/default.nix                                       # 动画部门
+        ./Users/BOARD/default.nix                                           # 董事会
+        ./Users/BUSINESS/default.nix                                        # 商务部门
+        ./Users/DESIGN/default.nix                                          # 设计部门
+        ./Users/DEVELOPMENT/default.nix                                     # 开发部门
+        ./Users/EFFECTS/default.nix                                         # 特效部门
+        ./Users/FINANCE/default.nix                                         # 财务部门
+        ./Users/MODELING/default.nix                                        # 建模部门
+        ./Users/OPERATION/default.nix                                       # 运维部门
+        ./Users/PHOTOGRAPHY/default.nix                                     # 摄影部门
+        ./Users/VIDEO/default.nix                                           # 视频部门
+
+        # 用户 home-manager（执行 nixos-rebuild switch 时，home-manager 配置会被自动部署）
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users."0x0CFF" = {
+            imports = [
+              # 基础配置
+              ./Hosts/COMMON/homemanager.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -143,8 +223,9 @@
         }
       ];
     };
-    # 定义 NODENS00-BACKUP 系统配置
-    nixosConfigurations."NODENS00-BACKUP" = nixpkgs.lib.nixosSystem {
+    
+    # 定义 DATABC00-BACKUP 系统配置
+    nixosConfigurations."DATABC00-BACKUP" = nixpkgs.lib.nixosSystem {
       # 系统架构类型
       system = "x86_64-linux";
       # 传递非默认参数到子模块系统
@@ -154,18 +235,16 @@
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
-        ./Hosts/NODENS/NODENS00-BACKUP/Device/configuration.nix             # 基础配置
-        ./Hosts/NODENS/NODENS00-BACKUP/Device/environment.nix               # 环境变量
-        ./Hosts/NODENS/NODENS00-BACKUP/Device/hardware-configuration.nix    # 硬件信息
+        ./Hosts/DATABC/DATABC00-BACKUP/Device/configuration.nix             # 基础配置
+        ./Hosts/DATABC/DATABC00-BACKUP/Device/environment.nix               # 环境变量
+        ./Hosts/DATABC/DATABC00-BACKUP/Device/hardware-configuration.nix    # 硬件信息
         # 服务专项配置
-        ./Hosts/NODENS/NODENS00-BACKUP/Services/samba.nix                   # Samba 专项配置
+        ./Hosts/DATABC/DATABC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
-        ./Hosts/NODENS/NODENS00-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
+        ./Hosts/DATABC/DATABC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
+        ./Hosts/DATABC/DATABC00-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -183,13 +262,13 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
-        ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
+        # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
         ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
-        ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
+        # ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
         # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
-        ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
+        # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
         # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
 
@@ -218,7 +297,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -249,11 +327,9 @@
         ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC00/Timers/mnt-backup.nix                       # 数据备份
+        ./Hosts/DATABC/DATASC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -306,7 +382,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -334,11 +409,9 @@
         # 服务专项配置
         ./Hosts/DATASC/DATASC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
+        ./Hosts/DATABC/DATASC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -362,7 +435,7 @@
         ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
         # ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
         # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
-        # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
+        ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
         # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
 
@@ -391,7 +464,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -420,12 +492,10 @@
         ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC01/Timers/mnt-backup.nix                       # 数据备份
+        ./Hosts/DATABC/DATASC01/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
         ./Hosts/DATASC/DATASC01/Timers/samba-gc.nix                         # Samba 垃圾回收
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -478,7 +548,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -506,12 +575,10 @@
         # 服务专项配置
         # ./Hosts/DATASC/DATASC01-BACKUP/Services/samba.nix                     # Samba 专项配置
         # 定时服务
-        ./Hosts/DATASC/DATASC01-BACKUP/Timers/samba-gc.nix                    # Samba 垃圾回收
+        ./Hosts/DATASC/DATASC01-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
+        ./Hosts/DATABC/DATASC01-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -564,7 +631,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -595,9 +661,6 @@
         # 定时服务
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -621,7 +684,7 @@
         ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
         # ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
         ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
-        # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
+        ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
         # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
 
@@ -650,7 +713,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];
@@ -679,9 +741,6 @@
         # 定时服务
 
         # 程序集合
-        # ./Modules/Crates/Desktop/Browser/default.nix                        # 文件类型浏览器集合
-        # ./Modules/Crates/Desktop/DE/default.nix                             # 桌面环境集合
-        # ./Modules/Crates/Desktop/Editor/default.nix                         # 文件类型编辑器集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
@@ -734,7 +793,6 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              # ./Modules/Crates/Desktop/DE/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
               ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
             ];

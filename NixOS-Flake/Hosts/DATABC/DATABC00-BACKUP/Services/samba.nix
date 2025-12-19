@@ -5,7 +5,7 @@
     # Samba 工作组
     workgroup = "WORKGROUP";
     # Samba 服务器名称
-    hostname = "NODENS00";
+    hostname = "DATABC00-BACKUP";
   };
   services.samba = {
     settings = {

@@ -140,41 +140,42 @@ batch_create_smb_users() {
     echo "失败用户: $fail_count"
 }
 
-################################################ 创建 mnt 目录（NODENS00, NODENS00-BACKUP） ###############################################
+######################################################### 构建 SMB 挂载点 #########################################################
 
-# 定义要创建的挂载点
-NODENS_MOUNTPOINTS=(
+# 定义要创建的挂载点（DATABC00, DATABC00-BACKUP）
+DATABC_MOUNTPOINTS=(
     "/mnt/Temp/:root:root:775"
     "/mnt/Workspace/:root:root:775"
     "/mnt/Document/:root:root:775"
 )
 
-# 函数 : 批量创建文件夹
-batch_create_nodens_mountpoint() {
-    # 遍历数组创建文件夹
-    for folder_info in "${NODENS_MOUNTPOINTS[@]}"; do
+# 定义要创建的挂载点（DATASC00, DATASC00-BACKUP）
+DATASC00_MOUNTPOINTS=(
+    "/mnt/Material#ANIMATION/:root:root:775"
+    "/mnt/Material#BUSINESS/:root:root:775"
+    "/mnt/Material#DESIGN/:root:root:775"
+    "/mnt/Material#EFFECTS/:root:root:775"
+    "/mnt/Material#MODELING/:root:root:775"
+    "/mnt/Material#PUBLIC/:root:root:775"
+    "/mnt/Material#VIDEO/:root:root:775"
+)
 
-        # 分割用户名和密码
-        IFS=':' read -r folder owner group permission<<< "$folder_info"
+# 定义要创建的挂载点（DATASC01, DATASC01-BACKUP）
+DATASC01_MOUNTPOINTS=(
+    "/mnt/Archive#01/:root:root:775"
+    "/mnt/Archive#02/:root:root:775"
+    "/mnt/Archive#03/:root:root:775"
+    "/mnt/Archive#04/:root:root:775"
+    "/mnt/Archive#05/:root:root:775"
+    "/mnt/Archive#06/:root:root:775"
+    "/mnt/Archive#07/:root:root:775"
+    "/mnt/Archive#08/:root:root:775"
+)
 
-        # 检查文件夹是否已存在
-        if [ -d "$folder" ]; then
-            echo "文件夹已存在: $folder"
-        else
-            # 创建文件夹（-p 参数会自动创建父级目录）
-            if mkdir -p "$folder"; then
-                sudo chown -R $owner:$group $folder
-                sudo chmod -R $permission $folder
-                echo "成功创建文件夹: $folder"
-            else
-                echo "创建文件夹失败: $folder"
-            fi
-        fi
-    done
-}
+#############################################@########## 构建 SMB 共享文件夹 #######################################################
 
 # 定义要创建的文件夹
-NODENS_FOLDERS=(
+DATABC_FOLDERS=(
     "/mnt/Temp/临时盘/:BOARD_R5:PUBLIC:775"
     "/mnt/Temp/临时盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Workspace/协作盘/:BOARD_R5:PUBLIC:775"
@@ -198,68 +199,6 @@ NODENS_FOLDERS=(
     "/mnt/Document/文档盘/Obsidian/视频文档:VIDEO_R5:VIDEO:755"
 )
 
-# 函数 : 批量创建文件夹
-batch_create_nodens_folder() {
-    # 遍历数组创建文件夹
-    for folder_info in "${NODENS_FOLDERS[@]}"; do
-
-        # 分割用户名和密码
-        IFS=':' read -r folder owner group permission<<< "$folder_info"
-
-        # 检查文件夹是否已存在
-        if [ -d "$folder" ]; then
-            echo "文件夹已存在: $folder"
-        else
-            # 创建文件夹（-p 参数会自动创建父级目录）
-            if mkdir -p "$folder"; then
-                sudo chown -R $owner:$group $folder
-                sudo chmod -R $permission $folder
-                echo "成功创建文件夹: $folder"
-            else
-                echo "创建文件夹失败: $folder"
-            fi
-        fi
-    done
-}
-
-################################################ 创建 mnt 目录（DATASC00, DATASC00-BACKUP） ###############################################
-
-# 定义要创建的挂载点
-DATASC00_MOUNTPOINTS=(
-    "/mnt/Material#ANIMATION/:root:root:775"
-    "/mnt/Material#BUSINESS/:root:root:775"
-    "/mnt/Material#DESIGN/:root:root:775"
-    "/mnt/Material#EFFECTS/:root:root:775"
-    "/mnt/Material#MODELING/:root:root:775"
-    "/mnt/Material#PUBLIC/:root:root:775"
-    "/mnt/Material#VIDEO/:root:root:775"
-)
-
-# 函数 : 批量创建文件夹
-batch_create_datasc00_mountpoint() {
-    # 遍历数组创建文件夹
-    for folder_info in "${DATASC00_MOUNTPOINTS[@]}"; do
-
-        # 分割用户名和密码
-        IFS=':' read -r folder owner group permission<<< "$folder_info"
-
-        # 检查文件夹是否已存在
-        if [ -d "$folder" ]; then
-            echo "文件夹已存在: $folder"
-        else
-            # 创建文件夹（-p 参数会自动创建父级目录）
-            if mkdir -p "$folder"; then
-                sudo chown -R $owner:$group $folder
-                sudo chmod -R $permission $folder
-                echo "成功创建文件夹: $folder"
-            else
-                echo "创建文件夹失败: $folder"
-            fi
-        fi
-    done
-}
-
-# 定义要创建的文件夹
 DATASC00_FOLDERS=(
     "/mnt/Material#ANIMATION/动画素材库.library/:ANIMATION_R5:ANIMATION:755"
     "/mnt/Material#BUSINESS/商务素材库.library/:BUSINESS_R5:BUSINESS:750"
@@ -270,69 +209,6 @@ DATASC00_FOLDERS=(
     "/mnt/Material#VIDEO/视频素材库.library/:VIDEO_R5:VIDEO:755"
 )
 
-# 函数 : 批量创建文件夹
-batch_create_datasc00_folder() {
-    # 遍历数组创建文件夹
-    for folder_info in "${DATASC00_FOLDERS[@]}"; do
-
-        # 分割用户名和密码
-        IFS=':' read -r folder owner group permission<<< "$folder_info"
-
-        # 检查文件夹是否已存在
-        if [ -d "$folder" ]; then
-            echo "文件夹已存在: $folder"
-        else
-            # 创建文件夹（-p 参数会自动创建父级目录）
-            if mkdir -p "$folder"; then
-                sudo chown -R $owner:$group $folder
-                sudo chmod -R $permission $folder
-                echo "成功创建文件夹: $folder"
-            else
-                echo "创建文件夹失败: $folder"
-            fi
-        fi
-    done
-}
-
-################################################ 创建 mnt 目录（DATASC01, DATASC01-BACKUP） ###############################################
-
-# 定义要创建的挂载点
-DATASC01_MOUNTPOINTS=(
-    "/mnt/Archive#01/:root:root:775"
-    "/mnt/Archive#02/:root:root:775"
-    "/mnt/Archive#03/:root:root:775"
-    "/mnt/Archive#04/:root:root:775"
-    "/mnt/Archive#05/:root:root:775"
-    "/mnt/Archive#06/:root:root:775"
-    "/mnt/Archive#07/:root:root:775"
-    "/mnt/Archive#08/:root:root:775"
-)
-
-# 函数 : 批量创建文件夹
-batch_create_datasc01_mountpoint() {
-    # 遍历数组创建文件夹
-    for folder_info in "${DATASC01_MOUNTPOINTS[@]}"; do
-
-        # 分割用户名和密码
-        IFS=':' read -r folder owner group permission<<< "$folder_info"
-
-        # 检查文件夹是否已存在
-        if [ -d "$folder" ]; then
-            echo "文件夹已存在: $folder"
-        else
-            # 创建文件夹（-p 参数会自动创建父级目录）
-            if mkdir -p "$folder"; then
-                sudo chown -R $owner:$group $folder
-                sudo chmod -R $permission $folder
-                echo "成功创建文件夹: $folder"
-            else
-                echo "创建文件夹失败: $folder"
-            fi
-        fi
-    done
-}
-
-# 定义要创建的文件夹
 DATASC01_FOLDERS=(
     "/mnt/Archive#01/归档盘#01/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#02/归档盘#02/:BOARD_R5:PUBLIC:775"
@@ -345,10 +221,12 @@ DATASC01_FOLDERS=(
 )
 
 # 函数 : 批量创建文件夹
-batch_create_datasc01_folder() {
-    # 遍历数组创建文件夹
-    for folder_info in "${DATASC01_FOLDERS[@]}"; do
-
+batch_create_folder() {
+    # 引用数组
+    local -n arr_ref=$1
+    
+    # 遍历数组
+    for folder_info in "${arr_ref[@]}"; do
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
 
@@ -372,292 +250,98 @@ batch_create_datasc01_folder() {
 
 # 显示菜单函数
 show_menu() {
-    echo "====== 请选择 Hostname ======"
-    echo "1. NODENS00"
-    echo "2. NODENS00-BACKUP"
-    echo "3. DATASC00"
-    echo "4. DATASC00-BACKUP"
-    echo "5. DATASC01"
-    echo "6. DATASC01-BACKUP"
-    echo "7. DATAHC00"
-    echo "8. DATAHC01"
-    echo "============================"
-}
-
-# 显示二级菜单函数
-show_submenu() {
-    echo "====== 请选择操作 ======"
+    echo "--------------- 请选择操作 ---------------"
     echo "1. Switch Flake"
     echo "2. Create SMB User"
     echo "3. Init SMB Mountpoint"
     echo "4. Init SMB Folder"
-    echo "============================"
+    echo "-----------------------------------------"
 }
 
 # 处理用户选择
 handle_choice() {
+    echo  # 空行
+    echo "主机名: $HOSTNAME"
+    echo "----------------------------------------"
     case $1 in
-        1)
+        1)  # NixOS Flake 
             echo  # 空行
-            echo "========= NODENS00 ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00/Device/
-                    # 构建 NixOS 系统
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
+            # 复制硬件信息
+            cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+            # 构建 NixOS 系统
+            sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+            exit 1
+            ;;
+        2)  # 构建 SMB 用户群
+            case $HOSTNAME in
+                "DATABC00"|"DATABC00-BACKUP"|"DATASC00"|"DATASC00-BACKUP"|"DATASC01"|"DATASC01-BACKUP")
                     echo  # 空行
-                    # 构建 SMB 用户群
                     batch_create_smb_users
-                    exit 0
-                    ;;
-                3)
-                    echo  # 空行
-                    # 构建 SMB 挂载点
-                    batch_create_nodens_mountpoint
-                    exit 0
-                    ;;
-                4)
-                    echo  # 空行
-                    # 构建 SMB 共享文件夹
-                    batch_create_nodens_folder
-                    exit 0
+                    exit 1
                     ;;
                 *)
-                    echo  # 空行
-                    echo "错误选择，请重新输入！"
+                    echo "$HOSTNAME 无须构建 SMB 用户群！"
+                    exit 1
                     ;;
             esac
+            exit 1
             ;;
-        2)
-            echo  # 空行
-            echo "========= NODENS00-BACKUP ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/NODENS/NODENS00-BACKUP/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#NODENS00-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
+        3)  # 构建 SMB 挂载点
+            case $HOSTNAME in
+                "DATABC00"|"DATABC00-BACKUP")
                     echo  # 空行
-                    # 构建 SMB 用户群
-                    batch_create_smb_users
-                    exit 0
+                    batch_create_folder DATABC_MOUNTPOINTS
+                    exit 1
                     ;;
-                3)
+                "DATASC00"|"DATASC00-BACKUP")
                     echo  # 空行
-                    # 构建 SMB 挂载点
-                    batch_create_nodens_mountpoint
-                    exit 0
+                    batch_create_folder DATASC00_MOUNTPOINTS
+                    exit 1
                     ;;
-                4)
+                "DATASC01"|"DATASC01-BACKUP")
                     echo  # 空行
-                    # 构建 SMB 共享文件夹
-                    batch_create_nodens_folder
-                    exit 0
+                    batch_create_folder DATASC01_MOUNTPOINTS
+                    exit 1
                     ;;
                 *)
-                    echo  # 空行
-                    echo "错误选择，请重新输入！"
+                    echo "$HOSTNAME 无须构建 SMB 挂载点！"
+                    exit 1
                     ;;
             esac
+            exit 1
             ;;
-        3)
-            echo  # 空行
-            echo "========= DATASC00 ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
+        4)  # 构建 SMB 共享文件夹
+            case $HOSTNAME in
+                "DATABC00"|"DATABC00-BACKUP")
                     echo  # 空行
-                    # 构建 SMB 用户群
-                    batch_create_smb_users
-                    exit 0
+                    batch_create_folder DATABC_FOLDERS
+                    exit 1
                     ;;
-                3)
+                "DATASC00"|"DATASC00-BACKUP")
                     echo  # 空行
-                    # 构建 SMB 挂载点
-                    batch_create_datasc00_mountpoint
-                    exit 0
+                    batch_create_folder DATASC00_FOLDERS
+                    exit 1
                     ;;
-                4)
+                "DATASC01"|"DATASC01-BACKUP")
                     echo  # 空行
-                    batch_create_datasc00_folder
-                    exit 0
+                    batch_create_folder DATASC01_FOLDERS
+                    exit 1
                     ;;
                 *)
-                    echo  # 空行
-                    echo "错误选择，请重新输入！"
+                    echo "$HOSTNAME 无须构建 SMB 共享文件夹！"
+                    exit 1
                     ;;
             esac
-            ;;
-        4)
-            echo  # 空行
-            echo "========= DATASC00-BACKUP ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC00-BACKUP/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC00-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
-                    echo  # 空行
-                    # 构建 SMB 用户群
-                    batch_create_smb_users
-                    exit 0
-                    ;;
-                3)
-                    echo  # 空行
-                    # 构建 SMB 挂载点
-                    batch_create_datasc00_mountpoint
-                    exit 0
-                    ;;
-                4)
-                    echo  # 空行
-                    batch_create_datasc00_folder
-                    exit 0
-                    ;;
-                *)
-                    echo  # 空行
-                    echo "错误选择，请重新输入！"
-                    ;;
-            esac
-            ;;
-        5)
-            echo  # 空行
-            echo "========= DATASC01 ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
-                    echo  # 空行
-                    # 构建 SMB 用户群
-                    batch_create_smb_users
-                    exit 0
-                    ;;
-                3)
-                    echo  # 空行
-                    # 构建 SMB 挂载点
-                    batch_create_datasc01_mountpoint
-                    exit 0
-                    ;;
-                4)
-                    echo  # 空行
-                    batch_create_datasc01_folder
-                    exit 0
-                    ;;
-                *)
-                    echo  # 空行
-                    echo "错误选择，请重新输入！"
-                    ;;
-            esac
-            ;;
-        6)
-            echo  # 空行
-            echo "========= DATASC01-BACKUP ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATASC/DATASC01-BACKUP/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATASC01-BACKUP --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
-                    echo  # 空行
-                    # 构建 SMB 用户群
-                    batch_create_smb_users
-                    exit 0
-                    ;;
-                3)
-                    echo  # 空行
-                    # 构建 SMB 挂载点
-                    batch_create_datasc01_mountpoint
-                    exit 0
-                    ;;
-                4)
-                    echo  # 空行
-                    batch_create_datasc01_folder
-                    exit 0
-                *)
-                    echo  # 空行
-                    echo "错误选择，请重新输入！"
-                    ;;
-            esac
-            ;;
-        7)
-            echo  # 空行
-            echo "========= DATAHC00 ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC00/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC00 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
-                    echo  # 空行
-                    echo "无须构建！"
-                    ;;
-                3)
-                    echo  # 空行
-                    echo "无须构建！"
-                    ;;
-                4)
-                    echo  # 空行
-                    echo "无须构建！"
-                    ;;
-            esac
-            ;;
-        8)
-            echo  # 空行
-            echo "========= DATAHC01 ========="
-            case $2 in
-                1)
-                    # 复制硬件信息
-                    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATAHC/DATAHC01/Device/
-                    sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#DATAHC01 --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-                    exit 0
-                    ;;
-                2)
-                    echo  # 空行
-                    echo "无须构建！"
-                    ;;
-                3)
-                    echo  # 空行
-                    echo "无须构建！"
-                    ;;
-                4)
-                    echo  # 空行
-                    echo "无须构建！"
-                    ;;
-            esac
-            ;;
-        *)
-            echo  # 空行
-            echo "错误选择，请重新输入！"
+            exit 1
             ;;
     esac
+    exit 1
 }
 
 # 主循环
 while true; do
     show_menu
-    read -p "请输入选择 [1-8]: " choice1
-    show_submenu
-    read -p "请输入选择 [1-4]: " choice2
-    handle_choice "$choice1" "$choice2"
+    read -p "请输入选择 [1-4]: " choice1
+    handle_choice "$choice1"
     echo  # 空行
 done

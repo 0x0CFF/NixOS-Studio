@@ -27,7 +27,7 @@
   # 网络配置
   networking = {
     # 定义主机名
-    hostName = "NODENS00-BACKUP";
+    hostName = "DATABC00";
     # 配置网络管理工具，仅选择以下选项之一
     # wireless.enable = true;      # 通过 wpa_supplicant 启用无线支持
     networkmanager.enable = true;  # 易于使用的网络管理工具（大多数发行版默认使用它）
@@ -41,9 +41,7 @@
     firewall = {
       enable = true;                  # 防火墙开关（关闭则完全禁用防火墙）
       allowPing = true;
-      allowedTCPPorts = [             # 防火墙 TCP 放行端口
-        8384                          # Syncthing
-      ];
+      # allowedTCPPorts = [ ... ];    # 防火墙 TCP 放行端口
       # allowedUDPPorts = [ ... ];    # 防火墙 UPD 放行端口
     };
   };
