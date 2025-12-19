@@ -132,7 +132,7 @@
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
-    }
+    };
     
     
     # DATABC 系列 （Data Buffer Center，数据缓冲中心）#########################################################
