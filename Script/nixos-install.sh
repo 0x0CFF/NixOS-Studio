@@ -151,13 +151,14 @@ DATABC_MOUNTPOINTS=(
 
 # 定义要创建的挂载点（DATASC00, DATASC00-BACKUP）
 DATASC00_MOUNTPOINTS=(
+    "/mnt/Inspiration#PUBLIC/:root:root:775"
+    "/mnt/Material#PUBLIC/:root:root:775"
+    "/mnt/Material#DESIGN/:root:root:775"
+    "/mnt/Material#VIDEO/:root:root:775"
+    "/mnt/Material#MODELING/:root:root:775"
+    "/mnt/Material#EFFECTS/:root:root:775"
     "/mnt/Material#ANIMATION/:root:root:775"
     "/mnt/Material#BUSINESS/:root:root:775"
-    "/mnt/Material#DESIGN/:root:root:775"
-    "/mnt/Material#EFFECTS/:root:root:775"
-    "/mnt/Material#MODELING/:root:root:775"
-    "/mnt/Material#PUBLIC/:root:root:775"
-    "/mnt/Material#VIDEO/:root:root:775"
 )
 
 # 定义要创建的挂载点（DATASC01, DATASC01-BACKUP）
@@ -200,6 +201,7 @@ DATABC_FOLDERS=(
 )
 
 DATASC00_FOLDERS=(
+    "/mnt/Inspiration#PUBLIC/公共灵感库.library/:BOARD_R5:PUBLIC:755"
     "/mnt/Material#ANIMATION/动画素材库.library/:ANIMATION_R5:ANIMATION:755"
     "/mnt/Material#BUSINESS/商务素材库.library/:BUSINESS_R5:BUSINESS:750"
     "/mnt/Material#DESIGN/设计素材库.library/:DESIGN_R5:DESIGN:755"
@@ -210,14 +212,14 @@ DATASC00_FOLDERS=(
 )
 
 DATASC01_FOLDERS=(
-    "/mnt/Archive#01/归档盘#01/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#02/归档盘#02/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#03/归档盘#03/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#04/归档盘#04/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#05/归档盘#05/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#06/归档盘#06/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#07/归档盘#07/:BOARD_R5:PUBLIC:775"
-    "/mnt/Archive#08/归档盘#08/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#01/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#02/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#03/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#04/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#05/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#06/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#07/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#08/归档盘/:BOARD_R5:PUBLIC:775"
 )
 
 # 函数 : 批量创建文件夹

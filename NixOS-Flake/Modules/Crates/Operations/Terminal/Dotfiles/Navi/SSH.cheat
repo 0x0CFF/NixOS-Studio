@@ -22,7 +22,13 @@ ssh 0x0CFF@192.168.31.125
 ssh 0x0CFF@192.168.31.91
 
 # 连接到 DATAHC01
-ssh 0x0CFF@192.168.31.93
+ssh 0x0CFF@192.168.31.92
+
+# 连接到 DATAGC00
+ssh 0x0CFF@192.168.31.96
+
+# 连接到 DATAGC01
+ssh 0x0CFF@192.168.31.97
 
 # 结束 SSH 连接
 exit

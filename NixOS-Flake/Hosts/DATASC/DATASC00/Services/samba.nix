@@ -38,7 +38,24 @@
       #   "recycle:noversions = *.doc";               # 如果在回收站所在目录中存在同名文件，覆盖原有文件的文件类型
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
-      "公共素材库" = {
+      "公共灵感库(DATASC00#01)" = {
+        "path" = "/mnt/Inspiration#PUBLIC/公共灵感库.library";     # 共享目录
+        "read only" = "no";                                      # 是否只读
+        "browseable" = "yes";                                    # 指定该共享是否可以浏览
+        "writable" = "yes";                                      # 指定该共享路径是否可写
+        "public" = "no";                                         # 指定该共享是否允许 Guest 账户访问
+        "create mask" = "0775";                                  # 创建文件权限
+        "directory mask" = "0775";                               # 创建目录权限
+        # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
+        # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
+        "vaild users" = "@PUBLIC";
+        # 设置可对文件进行写操作的用户、用户组
+        "write list" = "@R5";
+        # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
+        "force user" = "BOARD_R5";
+        "force group" = "PUBLIC";
+      };
+      "公共素材库(DATASC00#02)" = {
         "path" = "/mnt/Material#PUBLIC/公共素材库.library";        # 共享目录
         "read only" = "no";                                      # 是否只读
         "browseable" = "yes";                                    # 指定该共享是否可以浏览
@@ -55,41 +72,7 @@
         "force user" = "BOARD_R5";
         "force group" = "PUBLIC";
       };
-      # "财务素材库" = {
-        # "path" = "/mnt/Material#FINANCE/财务素材库.library";       # 共享目录
-      #   "read only" = "no";                                      # 是否只读
-      #   "browseable" = "yes";                                    # 指定该共享是否可以浏览
-      #   "writable" = "yes";                                      # 指定该共享路径是否可写
-      #   "public" = "no";                                         # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0770";                                  # 创建文件权限
-      #   "directory mask" = "0770";                               # 创建目录权限
-      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
-      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
-      #   "vaild users" = "@FINANCE";
-      #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "FINANCE_R4, FINANCE_R5";
-      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
-      #   # "force user" = "FINANCE_R5";
-      #   "force group" = "FINANCE";
-      # };
-      # "商务素材库" = {
-      #   "path" = "/mnt/Material#BUSINESS/商务素材库.library";     # 共享目录
-      #   "read only" = "no";                                     # 是否只读
-      #   "browseable" = "yes";                                   # 指定该共享是否可以浏览
-      #   "writable" = "yes";                                     # 指定该共享路径是否可写
-      #   "public" = "no";                                        # 指定该共享是否允许 Guest 账户访问
-      #   "create mask" = "0770";                                 # 创建文件权限
-      #   "directory mask" = "0770";                              # 创建目录权限
-      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
-      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
-      #   "vaild users" = "@BUSINESS";
-      #   # 设置可对文件进行写操作的用户、用户组
-      #   "write list" = "BUSINESS_R4, BUSINESS_R5";
-      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
-      #   # "force user" = "BUSINESS_R5";
-      #   "force group" = "BUSINESS";
-      # };
-      # "设计素材库" = {
+      # "设计素材库(DATASC00#03)" = {
       #   "path" = "/mnt/Material#DESIGN/设计素材库.library";       # 共享目录
       #   "read only" = "no";                                     # 是否只读
       #   "browseable" = "yes";                                   # 指定该共享是否可以浏览
@@ -106,7 +89,7 @@
       #   # "force user" = "DESIGN_R5";
       #   "force group" = "DESIGN";
       # };
-      # "视频素材库" = {
+      # "视频素材库(DATASC00#04)" = {
       #   "path" = "/mnt/Material#VIDEO/视频素材库.library";       # 共享目录
       #   "read only" = "no";                                    # 是否只读
       #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
@@ -123,7 +106,24 @@
       #   # "force user" = "VIDEO_R5";
       #   "force group" = "VIDEO";
       # };
-      # "动画素材库" = {
+      # "建模素材库(DATASC00#05)" = {
+      #   "path" = "/mnt/Material#MODELING/建模素材库.library";    # 共享目录
+      #   "read only" = "no";                                    # 是否只读
+      #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                    # 指定该共享路径是否可写
+      #   "public" = "no";                                       # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                                # 创建文件权限
+      #   "directory mask" = "0775";                             # 创建目录权限
+      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
+      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
+      #   "vaild users" = "@PUBLIC";
+      #   # 设置可对文件进行写操作的用户、用户组
+      #   "write list" = "MODELING_R4, MODELING_R5";
+      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
+      #   # "force user" = "MODELING_R5";
+      #   "force group" = "MODELING";
+      # };
+      # "动画素材库(DATASC00#06)" = {
       #   "path" = "/mnt/Material#ANIMATION/动画素材库.library";   # 共享目录
       #   "read only" = "no";                                    # 是否只读
       #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
@@ -139,6 +139,40 @@
       #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
       #   # "force user" = "ANIMATION_R5";
       #   "force group" = "ANIMATION";
+      # };
+      # "特效素材库(DATASC00#07)" = {
+      #   "path" = "/mnt/Material#EFFECTS/动画素材库.library";   # 共享目录
+      #   "read only" = "no";                                    # 是否只读
+      #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                    # 指定该共享路径是否可写
+      #   "public" = "no";                                       # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                                # 创建文件权限
+      #   "directory mask" = "0775";                             # 创建目录权限
+      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
+      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
+      #   "vaild users" = "@PUBLIC";
+      #   # 设置可对文件进行写操作的用户、用户组
+      #   "write list" = "EFFECTS_R4, EFFECTS_R5";
+      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
+      #   # "force user" = "EFFECTS_R5";
+      #   "force group" = "EFFECTS";
+      # };
+      # "商务素材库(DATASC00#08)" = {
+      #   "path" = "/mnt/Material#BUSINESS/商务素材库.library";     # 共享目录
+      #   "read only" = "no";                                     # 是否只读
+      #   "browseable" = "yes";                                   # 指定该共享是否可以浏览
+      #   "writable" = "yes";                                     # 指定该共享路径是否可写
+      #   "public" = "no";                                        # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0770";                                 # 创建文件权限
+      #   "directory mask" = "0770";                              # 创建目录权限
+      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
+      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
+      #   "vaild users" = "@BUSINESS";
+      #   # 设置可对文件进行写操作的用户、用户组
+      #   "write list" = "BUSINESS_R4, BUSINESS_R5";
+      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
+      #   # "force user" = "BUSINESS_R5";
+      #   "force group" = "BUSINESS";
       # };
     };
   };

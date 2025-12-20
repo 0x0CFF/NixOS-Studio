@@ -56,14 +56,14 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 GIT
 
 # 将系统 FLAKE 化（执行后，NixOS 切换到 Flake 模式，可执行 Flake 对应操作）
-# sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+# sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh
 FLAKE
 
 # 重启电脑
 sudo reboot
 
 # 构建 /mnt 挂载点、SMB 用户群
-# sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+# sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh
 FLAKE
 
 # 使用 mount 命令挂载硬盘到 /mnt 目录下
@@ -73,7 +73,7 @@ sudo lsblk -f
 # NAVI [hdd]: 替换硬件信息到 NixOS-Flake 相应文件夹下
 
 # 构建 SMB 共享文件夹
-# sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh
+# sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh
 FLAKE
 
 # 修改对应 Services/samba.nix 文件

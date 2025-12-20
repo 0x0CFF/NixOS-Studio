@@ -10,7 +10,7 @@
     hdparm                   # [CLI] [C] 硬盘工具
     curl                     # [CLI] [C] URL 传输数据
     fastfetch                # [CLI] [C] 系统信息查看工具
-    restic                   # [CLI] [GO] 数据备份工具
+    openssl                  # [CLI] [C] SSL/TLS 协议加密库
     rclone                   # [CLI] [GO] 云存储同步工具
     smartmontools            # [CLI] [C++] 硬盘健康监测工具
     grex                     # [CLI] [RUST] 正则表达式生成器
@@ -46,7 +46,7 @@
       shellAliases = {
         NAVI = "navi --path '~/.config/navi'";
         GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio";
-        FLAKE = "sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh";
+        FLAKE = "sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh";
       };
     };
   };

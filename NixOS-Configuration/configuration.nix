@@ -154,7 +154,7 @@
       # 设置命令别名方便使用
       shellAliases = {
         GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio";
-        FLAKE = "sudo sh ~/Solution/Profiles/NixOS-Studio/NixOS-Configuration/nixos-install.sh";
+        FLAKE = "sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh";
       };
     };
   };

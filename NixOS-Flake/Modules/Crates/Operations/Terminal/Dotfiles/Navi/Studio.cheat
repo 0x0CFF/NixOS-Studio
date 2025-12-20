@@ -2,11 +2,27 @@
 
 # 重置 NixOS-Studio 配置
 ```sh
+echo "------------------------ 更新 NixOS-Studio 配置 ------------------------"
 rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/*
 git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
 rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.git
 rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.gitignore
+echo "------------------------ 更新设备硬件表 ------------------------"
 cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+case $HOSTNAME in
+    "DATABC00")
+        echo "------------------------ 更新服务配置表 ------------------------"
+        ;;
+    "DATASC00")
+        echo "------------------------ 更新服务配置表 ------------------------"
+        ;;
+    "DATASC01")
+        echo "------------------------ 更新服务配置表 ------------------------"
+        ;;
+    *)
+        exit 1
+        ;;
+esac
 ```
 
 # 重置 Panel-Studio 配置

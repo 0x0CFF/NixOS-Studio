@@ -5,7 +5,7 @@
     # Samba 工作组
     workgroup = "WORKGROUP";
     # Samba 服务器名称
-    hostname = "DATASC01";
+    hostname = "DATASC01-BACKUP";
   };
   services.samba = {
     settings = {
@@ -40,8 +40,8 @@
       #   "recycle:noversions = *.doc";               # 如果在回收站所在目录中存在同名文件，覆盖原有文件的文件类型
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
-      # "归档盘#01" = {
-      #   "path" = "/mnt/Archive#01";                 # 共享目录
+      # "归档盘(DATASC01-BACKUP#01)" = {
+      #   "path" = "/mnt/Archive#01/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
       #   "writable" = "yes";                         # 指定该共享路径是否可写
@@ -57,8 +57,8 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘#02" = {
-      #   "path" = "/mnt/Archive#02";                 # 共享目录
+      # "归档盘(DATASC01-BACKUP#02)" = {
+      #   "path" = "/mnt/Archive#02/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
       #   "writable" = "yes";                         # 指定该共享路径是否可写
@@ -74,8 +74,8 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘#03" = {
-      #   "path" = "/mnt/Archive#03";                 # 共享目录
+      # "归档盘(DATASC01-BACKUP#03)" = {
+      #   "path" = "/mnt/Archive#03/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
       #   "writable" = "yes";                         # 指定该共享路径是否可写
@@ -91,8 +91,8 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘#04" = {
-      #   "path" = "/mnt/Archive#04";                 # 共享目录
+      # "归档盘(DATASC01-BACKUP#04)" = {
+      #   "path" = "/mnt/Archive#04/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
       #   "writable" = "yes";                         # 指定该共享路径是否可写
@@ -108,8 +108,8 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘#05" = {
-      #   "path" = "/mnt/Archive#05";                 # 共享目录
+      # "归档盘(DATASC01-BACKUP#05)" = {
+      #   "path" = "/mnt/Archive#05/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
       #   "writable" = "yes";                         # 指定该共享路径是否可写
@@ -125,8 +125,42 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘#06" = {
-      #   "path" = "/mnt/Archive#06";                 # 共享目录
+      # "归档盘(DATASC01-BACKUP#06)" = {
+      #   "path" = "/mnt/Archive#06/归档盘";           # 共享目录
+      #   "read only" = "no";                         # 是否只读
+      #   "browseable" = "yes";                       # 指定该共享是否可以浏览
+      #   "writable" = "yes";                         # 指定该共享路径是否可写
+      #   "public" = "no";                            # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                     # 创建文件权限
+      #   "directory mask" = "0775";                  # 创建目录权限
+      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
+      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
+      #   "vaild users" = "@PUBLIC";
+      #   # 设置可对文件进行写操作的用户、用户组
+      #   "write list" = "@PUBLIC";
+      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
+      #   # "force user" = "BUSINESS_R5";
+      #   # "force group" = "PUBLIC";
+      # };
+      # "归档盘(DATASC01-BACKUP#07)" = {
+      #   "path" = "/mnt/Archive#07/归档盘";           # 共享目录
+      #   "read only" = "no";                         # 是否只读
+      #   "browseable" = "yes";                       # 指定该共享是否可以浏览
+      #   "writable" = "yes";                         # 指定该共享路径是否可写
+      #   "public" = "no";                            # 指定该共享是否允许 Guest 账户访问
+      #   "create mask" = "0775";                     # 创建文件权限
+      #   "directory mask" = "0775";                  # 创建目录权限
+      #   # 设置用户、用户组权限（用户组使用 @ 符号表示），多个用户或用户组中间用逗号隔开
+      #   # valid users 指定允许访问该共享资源的用户，如果不指定则所有用户都可访问
+      #   "vaild users" = "@PUBLIC";
+      #   # 设置可对文件进行写操作的用户、用户组
+      #   "write list" = "@PUBLIC";
+      #   # 强制用户或者组所有权，如果设置此项，则所有文件都将以此用户、用户组身份写入
+      #   # "force user" = "BUSINESS_R5";
+      #   # "force group" = "PUBLIC";
+      # };
+      # "归档盘(DATASC01-BACKUP#08)" = {
+      #   "path" = "/mnt/Archive#08/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
       #   "writable" = "yes";                         # 指定该共享路径是否可写

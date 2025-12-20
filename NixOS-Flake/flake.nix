@@ -54,7 +54,7 @@
 
     # DATAGC 系列（Data Gateway Center，数据网关中心）#########################################################
     
-    # 定义 DATAGC 系统配置
+    # 定义 DATAGC00 系统配置
     nixosConfigurations."DATAGC00" = nixpkgs.lib.nixosSystem {
       # 系统架构类型
       system = "x86_64-linux";
@@ -63,12 +63,13 @@
       # 引用子模块
       modules = [
         # 设备底层
-        ./Hosts/COMMON/configuration.nix                                      # 基础配置 [ 通用 ]
-        ./Hosts/COMMON/environment.nix                                        # 环境变量 [ 通用 ]
-        ./Hosts/DATAGC/DATAGC00/Device/configuration.nix                      # 基础配置
-        ./Hosts/DATAGC/DATAGC00/Device/environment.nix                        # 环境变量
-        ./Hosts/DATAGC/DATAGC00/Device/hardware-configuration.nix             # 硬件信息
+        ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
+        ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
+        ./Hosts/DATAGC/DATAGC00/Device/configuration.nix                    # 基础配置
+        ./Hosts/DATAGC/DATAGC00/Device/environment.nix                      # 环境变量
+        ./Hosts/DATAGC/DATAGC00/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         # 定时服务
 
         # 程序集合
@@ -89,6 +90,7 @@
 
         # 后台服务
         ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         # ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -152,6 +154,8 @@
         ./Hosts/DATABC/DATABC00/Device/environment.nix                      # 环境变量
         ./Hosts/DATABC/DATABC00/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATABC/DATABC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATABC/DATABC00/Timers/mnt-backup.nix                       # 数据备份
@@ -179,6 +183,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -239,6 +244,7 @@
         ./Hosts/DATABC/DATABC00-BACKUP/Device/environment.nix               # 环境变量
         ./Hosts/DATABC/DATABC00-BACKUP/Device/hardware-configuration.nix    # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         ./Hosts/DATABC/DATABC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
         ./Hosts/DATABC/DATABC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
@@ -262,6 +268,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -324,6 +331,8 @@
         ./Hosts/DATASC/DATASC00/Device/environment.nix                      # 环境变量
         ./Hosts/DATASC/DATASC00/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC00/Timers/mnt-backup.nix                       # 数据备份
@@ -347,6 +356,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -407,6 +417,7 @@
         ./Hosts/DATASC/DATASC00-BACKUP/Device/environment.nix               # 环境变量
         ./Hosts/DATASC/DATASC00-BACKUP/Device/hardware-configuration.nix    # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         ./Hosts/DATASC/DATASC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
         ./Hosts/DATABC/DATASC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
@@ -429,13 +440,14 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
         ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
         # ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
         # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
-        ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
+        # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
         # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
 
@@ -489,6 +501,8 @@
         ./Hosts/DATASC/DATASC01/Device/environment.nix                      # 环境变量
         ./Hosts/DATASC/DATASC01/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC01/Timers/mnt-backup.nix                       # 数据备份
@@ -513,6 +527,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -573,7 +588,8 @@
         ./Hosts/DATASC/DATASC01-BACKUP/Device/environment.nix               # 环境变量
         ./Hosts/DATASC/DATASC01-BACKUP/Device/hardware-configuration.nix    # 硬件信息
         # 服务专项配置
-        # ./Hosts/DATASC/DATASC01-BACKUP/Services/samba.nix                     # Samba 专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
+        # ./Hosts/DATASC/DATASC01-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC01-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
         ./Hosts/DATABC/DATASC01-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
@@ -596,6 +612,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -652,12 +669,13 @@
       # 引用子模块
       modules = [
         # 设备底层
-        ./Hosts/COMMON/configuration.nix                                   # 基础配置 [ 通用 ]
-        ./Hosts/COMMON/environment.nix                                     # 环境变量 [ 通用 ]
-        ./Hosts/DATAHC/DATAHC00/Device/configuration.nix                   # 基础配置
-        ./Hosts/DATAHC/DATAHC00/Device/environment.nix                     # 环境变量
-        ./Hosts/DATAHC/DATAHC00/Device/hardware-configuration.nix          # 硬件信息
+        ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
+        ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
+        ./Hosts/DATAHC/DATAHC00/Device/configuration.nix                    # 基础配置
+        ./Hosts/DATAHC/DATAHC00/Device/environment.nix                      # 环境变量
+        ./Hosts/DATAHC/DATAHC00/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         # 定时服务
 
         # 程序集合
@@ -678,6 +696,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         # ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -732,12 +751,13 @@
       # 引用子模块
       modules = [
         # 设备底层
-        ./Hosts/COMMON/configuration.nix                                   # 基础配置 [ 通用 ]
-        ./Hosts/COMMON/environment.nix                                     # 环境变量 [ 通用 ]
-        ./Hosts/DATAHC/DATAHC01/Device/configuration.nix                   # 基础配置
-        ./Hosts/DATAHC/DATAHC01/Device/environment.nix                     # 环境变量
-        ./Hosts/DATAHC/DATAHC01/Device/hardware-configuration.nix          # 硬件信息
+        ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
+        ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
+        ./Hosts/DATAHC/DATAHC01/Device/configuration.nix                    # 基础配置
+        ./Hosts/DATAHC/DATAHC01/Device/environment.nix                      # 环境变量
+        ./Hosts/DATAHC/DATAHC01/Device/hardware-configuration.nix           # 硬件信息
         # 服务专项配置
+        # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         # 定时服务
 
         # 程序集合
@@ -758,6 +778,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         # ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
