@@ -2,20 +2,18 @@
 
 {
   # 在 timers 服务中启用 systemd 单元
-  systemd.timers."mnt-backup" = {
+  systemd.timers."mount-point-backup" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      # 需要运行的单元（脚本或程序）
-      Unit = "mnt-backup.service";
       # 每天 08:00 到 20:00 之间，每 2 个小时运行一次
-      OnUnitActiveSec = "*-*-* 08..20:00:00/2";
-      # 如果开机时错过了执行时间，则立即补执行
+      OnCalendar = "*-*-* 08..20:00:00/2";
+      # 如果服务在执行时间内由于意外没有触发，则立即补执行
       Persistent = true;
     };
   };
 
   # 定义 systemd 单元
-  systemd.services."mnt-backup" = {
+  systemd.services."mount-point-backup" = {
     # 运行脚本
     # 查找程序所在位置 echo $(which ssh)
     script = ''
@@ -35,7 +33,7 @@
     # 单元配置
     serviceConfig = {
       Type = "oneshot";
-      User = "0x0CFF";
+      User = "root";
     };
   };
 }

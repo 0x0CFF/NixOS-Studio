@@ -5,11 +5,9 @@
   systemd.timers."web-toolbox-frontend" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      # 需要运行的单元（脚本或程序）
-      Unit = "web-toolbox-frontend.service";
-      # 系统启动后 1 分钟启动
-      OnBootSec = "1min";
-      # 如果服务由于意外没有触发，重启时将立即触发该服务
+      # 系统启动 30 秒后启动
+      OnBootSec = "30sec";
+      # 如果服务在执行时间内由于意外没有触发，则立即补执行
       Persistent = true;
     };
   };
@@ -26,8 +24,7 @@
     # 单元配置
     serviceConfig = {
       Type = "oneshot";
-      User = "0x0CFF";
-      Persistent = true;
+      User = "root";
     };
   };
 

@@ -35,8 +35,15 @@ git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Profiles/Web-Stu
 
 % Studio, Trash
 
-# 清除挂载点垃圾箱
-sudo rm -rf /mnt/*/.Trash-0/*
+# 清空挂载点垃圾箱
+sudo find /mnt -type d -name ".Trash-0" -exec rm -rf {}/'*' \; 2>/dev/null || true
+
+# 清空 SMB 回收站 .Trash 目录，包括隐藏文件
+```sh
+for dir in /mnt/*/*/.Trash/; do
+    [ -d "$dir" ] && rm -rf "$dir"/* "$dir"/.* 2>/dev/null || true
+done
+```
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -54,4 +61,4 @@ sudo chattr -i /mnt/Material#<Library><Path>
 # 设置目录及其下所有文件，递归移除不可变属性
 sudo chattr -R -i /mnt/Material#<Library><Path>
 
-$ Library: echo "ANIMATION/动画素材库 BUSINESS/商务素材库 DESIGN/设计素材库 EFFECTS/特效素材库 MODELING/建模素材库 PUBLIC/公共素材库 VIDEO/视频素材库" | tr ' ' '\n'
+$ Library: echo "ANIMATION/动画素材库.library BUSINESS/商务素材库.library DESIGN/设计素材库.library EFFECTS/特效素材库.library MODELING/建模素材库.library PUBLIC/公共素材库.library VIDEO/视频素材库.library" | tr ' ' '\n'

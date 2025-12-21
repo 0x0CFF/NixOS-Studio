@@ -158,7 +158,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATABC/DATABC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
-        ./Hosts/DATABC/DATABC00/Timers/mnt-backup.nix                       # 数据备份
+        ./Hosts/DATABC/DATABC00/Timers/mount-point-backup.nix               # 挂载点数据备份
         ./Hosts/DATABC/DATABC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
         ./Hosts/DATABC/DATABC00/Timers/samba-gc.nix                         # Samba 垃圾回收
         # ./Hosts/DATABC/DATABC00/Timers/web-panel.nix                        # 导航面板
@@ -335,7 +335,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
-        ./Hosts/DATASC/DATASC00/Timers/mnt-backup.nix                       # 数据备份
+        ./Hosts/DATASC/DATASC00/Timers/mount-point-backup.nix               # 挂载点数据备份
         ./Hosts/DATABC/DATASC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
 
         # 程序集合
@@ -505,7 +505,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
         # 定时服务
-        ./Hosts/DATASC/DATASC01/Timers/mnt-backup.nix                       # 数据备份
+        ./Hosts/DATASC/DATASC01/Timers/mount-point-backup.nix               # 挂载点数据备份
         ./Hosts/DATABC/DATASC01/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
         ./Hosts/DATASC/DATASC01/Timers/samba-gc.nix                         # Samba 垃圾回收
 
