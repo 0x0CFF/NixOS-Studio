@@ -36,7 +36,7 @@ git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Profiles/Web-Stu
 % Studio, Trash
 
 # 清空挂载点垃圾箱
-sudo find /mnt -type d -name ".Trash-0" -exec rm -rf {}/'*' \; 2>/dev/null || true
+sudo find /mnt -type d -name ".Trash-0" -exec sh -c 'rm -rf "$1"/* "$1"/.* 2>/dev/null || true' _ {} \;
 
 # 清空 SMB 回收站 .Trash 目录，包括隐藏文件
 ```sh

@@ -18,7 +18,7 @@
     # 查找程序所在位置 echo $(which ssh)
     script = ''
       # 清空挂载点垃圾箱
-      find /mnt -type d -name ".Trash-0" -exec rm -rf {}/'*' \; 2>/dev/null || true
+      find /mnt -type d -name ".Trash-0" -exec sh -c 'rm -rf "$1"/* "$1"/.* 2>/dev/null || true' _ {} \;
     '';
     # 单元配置
     serviceConfig = {

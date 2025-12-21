@@ -183,7 +183,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
-        ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -336,7 +336,7 @@
         ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC00/Timers/mount-point-backup.nix               # 挂载点数据备份
-        ./Hosts/DATABC/DATASC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
+        ./Hosts/DATASC/DATASC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
@@ -356,7 +356,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
-        ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -420,7 +420,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         ./Hosts/DATASC/DATASC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
-        ./Hosts/DATABC/DATASC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
+        ./Hosts/DATASC/DATASC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
@@ -506,7 +506,7 @@
         ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC01/Timers/mount-point-backup.nix               # 挂载点数据备份
-        ./Hosts/DATABC/DATASC01/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
+        ./Hosts/DATASC/DATASC01/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
         ./Hosts/DATASC/DATASC01/Timers/samba-gc.nix                         # Samba 垃圾回收
 
         # 程序集合
@@ -527,7 +527,7 @@
 
         # 后台服务
         # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
-        ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
+        # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         # ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
@@ -592,7 +592,7 @@
         # ./Hosts/DATASC/DATASC01-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
         ./Hosts/DATASC/DATASC01-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
-        ./Hosts/DATABC/DATASC01-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
+        ./Hosts/DATASC/DATASC01-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
