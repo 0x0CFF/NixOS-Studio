@@ -308,6 +308,7 @@ batch_create_folder() {
                 fi
             else
                 echo "硬盘未挂载，无法过创建 SMB 共享文件夹..."
+            fi
         fi
     done
 }
