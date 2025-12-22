@@ -7,12 +7,10 @@
     tailspin                 # [AUX] [RUST] 日志文件高亮工具
     starship                 # [AUX] [RUST] 命令行提示符
     eza                      # [AUX] [RUST] 文件列表命令行
-    hdparm                   # [CLI] [C] 硬盘工具
     curl                     # [CLI] [C] URL 传输数据
     fastfetch                # [CLI] [C] 系统信息查看工具
     openssl                  # [CLI] [C] SSL/TLS 协议加密库
     rclone                   # [CLI] [GO] 云存储同步工具
-    smartmontools            # [CLI] [C++] 硬盘健康监测工具
     grex                     # [CLI] [RUST] 正则表达式生成器
     trashy                   # [CLI] [RUST] 命令行回收站工具
     speedtest-rs             # [CLI] [RUST] 互联网测速工具

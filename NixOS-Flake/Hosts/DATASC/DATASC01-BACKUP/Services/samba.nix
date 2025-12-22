@@ -5,7 +5,7 @@
     # Samba 工作组
     workgroup = "WORKGROUP";
     # Samba 服务器名称
-    hostname = "DATASC01-BACKUP";
+    hostname = "DATASC01-BACKUP-BACKUP";
   };
   services.samba = {
     settings = {
@@ -40,7 +40,7 @@
       #   "recycle:noversions = *.doc";               # 如果在回收站所在目录中存在同名文件，覆盖原有文件的文件类型
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
-      # "归档盘(DATASC01-BACKUP#01)" = {
+      # "DATASC01-BACKUP#01·归档盘" = {
       #   "path" = "/mnt/Archive#01/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -57,7 +57,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#02)" = {
+      # "DATASC01-BACKUP#02·归档盘" = {
       #   "path" = "/mnt/Archive#02/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -74,7 +74,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#03)" = {
+      # "DATASC01-BACKUP#03·归档盘" = {
       #   "path" = "/mnt/Archive#03/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -91,7 +91,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#04)" = {
+      # "DATASC01-BACKUP#04·归档盘" = {
       #   "path" = "/mnt/Archive#04/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -108,7 +108,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#05)" = {
+      # "DATASC01-BACKUP#05·归档盘" = {
       #   "path" = "/mnt/Archive#05/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -125,7 +125,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#06)" = {
+      # "DATASC01-BACKUP#06·归档盘" = {
       #   "path" = "/mnt/Archive#06/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -142,7 +142,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#07)" = {
+      # "DATASC01-BACKUP#07·归档盘" = {
       #   "path" = "/mnt/Archive#07/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -159,7 +159,7 @@
       #   # "force user" = "BUSINESS_R5";
       #   # "force group" = "PUBLIC";
       # };
-      # "归档盘(DATASC01-BACKUP#08)" = {
+      # "DATASC01-BACKUP#08·归档盘" = {
       #   "path" = "/mnt/Archive#08/归档盘";           # 共享目录
       #   "read only" = "no";                         # 是否只读
       #   "browseable" = "yes";                       # 指定该共享是否可以浏览

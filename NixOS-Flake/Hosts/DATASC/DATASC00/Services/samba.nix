@@ -38,7 +38,7 @@
       #   "recycle:noversions = *.doc";               # 如果在回收站所在目录中存在同名文件，覆盖原有文件的文件类型
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
-      "公共灵感库(DATASC00#01)" = {
+      "DATASC00#01·公共灵感库" = {
         "path" = "/mnt/Inspiration#PUBLIC/公共灵感库.library";     # 共享目录
         "read only" = "no";                                      # 是否只读
         "browseable" = "yes";                                    # 指定该共享是否可以浏览
@@ -55,7 +55,7 @@
         "force user" = "BOARD_R5";
         "force group" = "PUBLIC";
       };
-      "公共素材库(DATASC00#02)" = {
+      "DATASC00#02·公共素材库" = {
         "path" = "/mnt/Material#PUBLIC/公共素材库.library";        # 共享目录
         "read only" = "no";                                      # 是否只读
         "browseable" = "yes";                                    # 指定该共享是否可以浏览
@@ -72,7 +72,7 @@
         "force user" = "BOARD_R5";
         "force group" = "PUBLIC";
       };
-      # "设计素材库(DATASC00#03)" = {
+      # "DATASC00#03·设计素材库" = {
       #   "path" = "/mnt/Material#DESIGN/设计素材库.library";       # 共享目录
       #   "read only" = "no";                                     # 是否只读
       #   "browseable" = "yes";                                   # 指定该共享是否可以浏览
@@ -89,7 +89,7 @@
       #   # "force user" = "DESIGN_R5";
       #   "force group" = "DESIGN";
       # };
-      # "视频素材库(DATASC00#04)" = {
+      # "DATASC00#04·视频素材库" = {
       #   "path" = "/mnt/Material#VIDEO/视频素材库.library";       # 共享目录
       #   "read only" = "no";                                    # 是否只读
       #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
@@ -106,7 +106,7 @@
       #   # "force user" = "VIDEO_R5";
       #   "force group" = "VIDEO";
       # };
-      # "建模素材库(DATASC00#05)" = {
+      # "DATASC00#05·建模素材库" = {
       #   "path" = "/mnt/Material#MODELING/建模素材库.library";    # 共享目录
       #   "read only" = "no";                                    # 是否只读
       #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
@@ -123,7 +123,7 @@
       #   # "force user" = "MODELING_R5";
       #   "force group" = "MODELING";
       # };
-      # "动画素材库(DATASC00#06)" = {
+      # "DATASC00#06·动画素材库" = {
       #   "path" = "/mnt/Material#ANIMATION/动画素材库.library";   # 共享目录
       #   "read only" = "no";                                    # 是否只读
       #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
@@ -140,7 +140,7 @@
       #   # "force user" = "ANIMATION_R5";
       #   "force group" = "ANIMATION";
       # };
-      # "特效素材库(DATASC00#07)" = {
+      # "DATASC00#07·特效素材库" = {
       #   "path" = "/mnt/Material#EFFECTS/动画素材库.library";   # 共享目录
       #   "read only" = "no";                                    # 是否只读
       #   "browseable" = "yes";                                  # 指定该共享是否可以浏览
@@ -157,7 +157,7 @@
       #   # "force user" = "EFFECTS_R5";
       #   "force group" = "EFFECTS";
       # };
-      # "商务素材库(DATASC00#08)" = {
+      # "DATASC00#08·商务素材库" = {
       #   "path" = "/mnt/Material#BUSINESS/商务素材库.library";     # 共享目录
       #   "read only" = "no";                                     # 是否只读
       #   "browseable" = "yes";                                   # 指定该共享是否可以浏览

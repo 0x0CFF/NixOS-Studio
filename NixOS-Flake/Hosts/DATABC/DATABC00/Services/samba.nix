@@ -40,7 +40,7 @@
       #   "recycle:noversions = *.doc";               # 如果在回收站所在目录中存在同名文件，覆盖原有文件的文件类型
       #   "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       # };
-      "协作盘(DATABC00#01)" = {
+      "DATABC00#01·协作盘" = {
         "path" = "/mnt/Workspace/协作盘";            # 共享目录
         "read only" = "no";                         # 是否只读
         "browseable" = "yes";                       # 指定该共享是否可以浏览
@@ -66,7 +66,7 @@
         "recycle:exclude_dir" = ".Trash";           # 排除文件夹（绝对路径，使用逗号隔开，支持通配符 * 和 ?）
         "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       };
-      "文档盘(DATABC00#02)" = {
+      "DATABC00#02·文档盘" = {
         "path" = "/mnt/Document/文档盘";                 # 共享目录
         "read only" = "no";                             # 是否只读
         "browseable" = "yes";                           # 指定该共享是否可以浏览
@@ -92,7 +92,7 @@
         "recycle:exclude_dir" = ".Trash";           # 排除文件夹（绝对路径，使用逗号隔开，支持通配符 * 和 ?）
         "recycle:touch_mtime" = "No";               # 删除文件时，是否应更新文件的上次修改日期
       };
-      "临时盘(DATABC00#03)" = {
+      "DATABC00#03·临时盘" = {
         "path" = "/mnt/Temp/临时盘";                 # 共享目录
         "read only" = "no";                         # 是否只读
         "browseable" = "yes";                       # 指定该共享是否可以浏览
