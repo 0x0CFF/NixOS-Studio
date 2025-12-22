@@ -112,7 +112,7 @@ batch_create_smb_users() {
 
         echo "处理用户: $username"
 
-        # 检查用户是否已存在
+        # 检查用户是否存在
         if check_smb_user "$username"; then
             echo "用户 $username 已存在，跳过"
             skip_count=$((skip_count + 1))
@@ -145,32 +145,51 @@ batch_create_smb_users() {
 # 定义要创建的挂载点（DATABC00, DATABC00-BACKUP）
 DATABC_MOUNTPOINTS=(
     "/mnt/Temp/:root:root:775"
+    "/mnt/Temp/.Trash-0/:root:root:775"
     "/mnt/Workspace/:root:root:775"
+    "/mnt/Workspace/.Trash-0/:root:root:775"
     "/mnt/Document/:root:root:775"
+    "/mnt/Document/.Trash-0/:root:root:775"
 )
 
 # 定义要创建的挂载点（DATASC00, DATASC00-BACKUP）
 DATASC00_MOUNTPOINTS=(
     "/mnt/Inspiration#PUBLIC/:root:root:775"
+    "/mnt/Inspiration#PUBLIC/.Trash-0/:root:root:775"
     "/mnt/Material#PUBLIC/:root:root:775"
+    "/mnt/Material#PUBLIC/.Trash-0/:root:root:775"
     "/mnt/Material#DESIGN/:root:root:775"
+    "/mnt/Material#DESIGN/.Trash-0/:root:root:775"
     "/mnt/Material#VIDEO/:root:root:775"
+    "/mnt/Material#VIDEO/.Trash-0/:root:root:775"
     "/mnt/Material#MODELING/:root:root:775"
+    "/mnt/Material#MODELING/.Trash-0/:root:root:775"
     "/mnt/Material#EFFECTS/:root:root:775"
+    "/mnt/Material#EFFECTS/.Trash-0/:root:root:775"
     "/mnt/Material#ANIMATION/:root:root:775"
+    "/mnt/Material#ANIMATION/.Trash-0/:root:root:775"
     "/mnt/Material#BUSINESS/:root:root:775"
+    "/mnt/Material#BUSINESS/.Trash-0/:root:root:775"
 )
 
 # 定义要创建的挂载点（DATASC01, DATASC01-BACKUP）
 DATASC01_MOUNTPOINTS=(
     "/mnt/Archive#01/:root:root:775"
+    "/mnt/Archive#01/.Trash-0/:root:root:775"
     "/mnt/Archive#02/:root:root:775"
+    "/mnt/Archive#02/.Trash-0/:root:root:775"
     "/mnt/Archive#03/:root:root:775"
+    "/mnt/Archive#03/.Trash-0/:root:root:775"
     "/mnt/Archive#04/:root:root:775"
+    "/mnt/Archive#04/.Trash-0/:root:root:775"
     "/mnt/Archive#05/:root:root:775"
+    "/mnt/Archive#05/.Trash-0/:root:root:775"
     "/mnt/Archive#06/:root:root:775"
+    "/mnt/Archive#06/.Trash-0/:root:root:775"
     "/mnt/Archive#07/:root:root:775"
+    "/mnt/Archive#07/.Trash-0/:root:root:775"
     "/mnt/Archive#08/:root:root:775"
+    "/mnt/Archive#08/.Trash-0/:root:root:775"
 )
 
 #############################################@########## 构建 SMB 共享文件夹 #######################################################
@@ -213,17 +232,25 @@ DATASC00_FOLDERS=(
 
 DATASC01_FOLDERS=(
     "/mnt/Archive#01/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#01/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#02/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#02/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#03/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#03/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#04/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#04/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#05/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#05/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#06/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#06/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#07/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#07/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Archive#08/归档盘/:BOARD_R5:PUBLIC:775"
+    "/mnt/Archive#08/归档盘/.Trash/:BOARD_R5:PUBLIC:775"
 )
 
-# 函数 : 批量创建文件夹
-batch_create_folder() {
+# 函数 : 批量创建挂载点
+batch_create_mountpoint() {
     # 引用数组
     local -n arr_ref=$1
     
@@ -232,7 +259,7 @@ batch_create_folder() {
         # 分割用户名和密码
         IFS=':' read -r folder owner group permission<<< "$folder_info"
 
-        # 检查文件夹是否已存在
+        # 检查挂载点是否存在
         if [ -d "$folder" ]; then
             echo "文件夹已存在: $folder"
         else
@@ -244,6 +271,43 @@ batch_create_folder() {
             else
                 echo "创建文件夹失败: $folder"
             fi
+        fi
+    done
+}
+
+# 函数 : 批量创建 SMB 共享文件夹
+batch_create_folder() {
+    # 引用数组
+    local -n arr_ref=$1
+    
+    # 遍历数组
+    for folder_info in "${arr_ref[@]}"; do
+        # 分割用户名和密码
+        IFS=':' read -r folder owner group permission<<< "$folder_info"
+
+        # 获取父级目录（挂载点）
+        mountpoint=$(dirname "$folder")
+
+        # 检查 SMB 共享文件夹是否存在
+        if [ -d "$folder" ]; then
+            echo
+            echo "文件夹已存在: $folder"
+        else
+            echo
+            echo "文件夹不存在: $folder"
+            # 检查硬盘是否挂载（挂载硬盘的目录下会有 lost+found 文件夹）
+            if [ -d "${mountpoint}/lost+found" ]; then
+                echo "硬盘已挂载，正在创建 SMB 共享文件夹..."
+                # 创建文件夹（-p 参数会自动创建父级目录）
+                if mkdir -p "$folder"; then
+                    sudo chown -R $owner:$group $folder
+                    sudo chmod -R $permission $folder
+                    echo "成功创建文件夹: $folder"
+                else
+                    echo "创建文件夹失败: $folder"
+                fi
+            else
+                echo "硬盘未挂载，无法过创建 SMB 共享文件夹..."
         fi
     done
 }
@@ -276,7 +340,7 @@ handle_choice() {
             ;;
         2)  # 构建 SMB 用户群
             case $HOSTNAME in
-                "DATABC00"|"DATABC00-BACKUP"|"DATASC00"|"DATASC00-BACKUP"|"DATASC01"|"DATASC01-BACKUP")
+                "DATABC00"|"DATABC00-BACKUP"|"DATASC00"|"DATASC00-BACKUP"|"DATASC01"|"DATASC01-BACKUP"|"DATAHC00"|"DATAHC01")
                     echo  # 空行
                     batch_create_smb_users
                     exit 1
@@ -292,17 +356,17 @@ handle_choice() {
             case $HOSTNAME in
                 "DATABC00"|"DATABC00-BACKUP")
                     echo  # 空行
-                    batch_create_folder DATABC_MOUNTPOINTS
+                    batch_create_mountpoint DATABC_MOUNTPOINTS
                     exit 1
                     ;;
                 "DATASC00"|"DATASC00-BACKUP")
                     echo  # 空行
-                    batch_create_folder DATASC00_MOUNTPOINTS
+                    batch_create_mountpoint DATASC00_MOUNTPOINTS
                     exit 1
                     ;;
                 "DATASC01"|"DATASC01-BACKUP")
                     echo  # 空行
-                    batch_create_folder DATASC01_MOUNTPOINTS
+                    batch_create_mountpoint DATASC01_MOUNTPOINTS
                     exit 1
                     ;;
                 *)
