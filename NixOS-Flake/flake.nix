@@ -335,6 +335,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATASC/DATASC00/Services/samba.nix                          # Samba 专项配置
         # 定时服务
+        # ./Hosts/DATASC/DATASC00/Timers/disk-check.nix                       # 硬盘定时检查
         ./Hosts/DATASC/DATASC00/Timers/mount-point-backup.nix               # 挂载点数据备份
         ./Hosts/DATASC/DATASC00/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
 
@@ -420,6 +421,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         ./Hosts/DATASC/DATASC00-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
+        # ./Hosts/DATASC/DATASC00-BACKUP/Timers/disk-check.nix                # 硬盘定时检查
         ./Hosts/DATASC/DATASC00-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
 
         # 程序集合
@@ -505,6 +507,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/restic.nix                         # Restic 专项配置
         ./Hosts/DATASC/DATASC01/Services/samba.nix                          # Samba 专项配置
         # 定时服务
+        # ./Hosts/DATASC/DATASC01/Timers/disk-check.nix                       # 硬盘定时检查
         ./Hosts/DATASC/DATASC01/Timers/mount-point-backup.nix               # 挂载点数据备份
         ./Hosts/DATASC/DATASC01/Timers/mount-point-gc.nix                   # 挂载点垃圾回收
         ./Hosts/DATASC/DATASC01/Timers/samba-gc.nix                         # Samba 垃圾回收
@@ -591,6 +594,7 @@
         # ./Hosts/DATAGC/DATAGC00/Services/beszel.nix                         # Beszel 专项配置
         # ./Hosts/DATASC/DATASC01-BACKUP/Services/samba.nix                   # Samba 专项配置
         # 定时服务
+        # ./Hosts/DATASC/DATASC01-BACKUP/Timers/disk-check.nix                # 硬盘定时检查
         ./Hosts/DATASC/DATASC01-BACKUP/Timers/samba-gc.nix                  # Samba 垃圾回收
         ./Hosts/DATASC/DATASC01-BACKUP/Timers/mount-point-gc.nix            # 挂载点垃圾回收
 

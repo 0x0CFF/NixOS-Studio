@@ -4,15 +4,15 @@
 ```sh
 echo "------------------------ 更新 NixOS-Studio 配置 ------------------------"
 echo
-rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/*
-git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
-rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.git
-rm -rf /home/0x0CFF/Solution/Profiles/NixOS-Studio/.gitignore
+rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/*
+git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
+rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.git
+rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.gitignore
 echo
 echo "----------------------------- 覆写设备硬件表 ----------------------------"
 echo
-echo "覆写：/home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
-cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+echo "覆写：/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
+cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
 echo "覆写：100% (1/1), 完成."
 echo
 case $HOSTNAME in
@@ -36,8 +36,8 @@ esac
 
 # 重置 Panel-Studio 配置
 ```sh
-rm -rf /home/0x0CFF/Solution/Profiles/Web-Studio/Panel-Studio/*
-git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Profiles/Web-Studio/Panel-Studio
+rm -rf /home/0x0CFF/Solution/Blueprints/UV/Web-Studio/Panel-Studio/*
+git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Blueprints/UV/Web-Studio/Panel-Studio
 ```
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

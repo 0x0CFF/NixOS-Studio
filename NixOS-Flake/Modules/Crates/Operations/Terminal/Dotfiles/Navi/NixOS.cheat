@@ -17,7 +17,7 @@ nix profile history --profile /nix/var/nix/profiles/system
 sudo nixos-generate-config
 
 # 替换硬件信息
-sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+sudo cp -f /etc/nixos/hardware-configuration.nix ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -63,25 +63,78 @@ fi
 % NixOS, Build
 
 # 拉取 NixOS 配置
-git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio
+git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
 
 # [Flake] 更新 flake.lock（更新所有依赖项）
-sudo nix flake update --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake
+sudo nix flake update --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake
 
 # [Flake] 部署 NixOS 系统
-sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
+sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
+
+# [Flake] [Auto] 部署 NixOS 系统
+```sh
+echo "--------------- 请选择操作 ---------------"
+echo "1. Test"
+echo "1. Switch"
+echo "-----------------------------------------"
+
+read -p "请输入选择 [1-2]: " choice1
+
+set -e
+
+MIRRORS=(
+  "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+  "https://mirrors.ustc.edu.cn/nix-channels/store"
+  "https://mirrors.nju.edu.cn/nix-channels/store"
+  "https://mirror.sjtu.edu.cn/nix-channels/store"
+  "https://mirrors.cqupt.edu.cn/nix-channels/store"
+  "https://mirror.nyist.edu.cn/nix-channels/store"
+  "https://mirror.iscas.ac.cn/nix-channels/store"
+)
+
+FASTEST_MIRROR=""
+FASTEST_TIME=99999
+
+echo "正在测试 Nix 镜像源速度..."
+
+for mirror in "${MIRRORS[@]}"; do
+  echo -n "测试 $mirror ... "
+  
+  # 使用 curl 测试连接时间
+  TIME=$(curl -o /dev/null -s -w "%{time_total}" "$mirror/.info" 2>/dev/null || echo 999)
+  
+  # 检查是否有效
+  if (( $(echo "$TIME < 10" | bc -l) )); then
+    echo "${TIME}s"
+    if (( $(echo "$TIME < $FASTEST_TIME" | bc -l) )); then
+      FASTEST_TIME=$TIME
+      FASTEST_MIRROR=$mirror
+    fi
+  else
+    echo "超时"
+  fi
+done
+
+if [[ -n "$FASTEST_MIRROR" ]]; then
+  echo "最快的镜像源: $FASTEST_MIRROR (${FASTEST_TIME}s)"
+  sudo nixos-rebuild $choice1 --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "$FASTEST_MIRROR"
+else
+  echo "没有找到可用的镜像源，使用官方源进行构建"
+  sudo nixos-rebuild $choice1 --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v
+fi
+```
 
 # [Flake] [Git] 回滚 NixOS 系统
 ```sh
 git checkout HEAD^1
-sudo nixos-rebuild switch --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
+sudo nixos-rebuild switch --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
 ```
 
 # [Flake] 远程部署 NixOS 系统（系统构建过程将在本机执行）
-sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host localhost --verbose
+sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host localhost --verbose
 
 # [Flake] 远程部署 NixOS 系统（系统构建过程将在远程主机执行）
-sudo nixos-rebuild <Commands> --flake ~/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host root@<IP> --verbose
+sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host root@<IP> --verbose
 
 # [Unflake] 部署 NixOS 系统
 sudo nixos-rebuild <Commands> -I nixos-config=<Path> --show-trace -L -v --option substituters "<Channels>"
@@ -151,16 +204,16 @@ systemctl list-timers --all
 % NixOS, NH
 
 # [Flake] 部署 NixOS 系统，使用官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask
+nh os <Commands> ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask
 
 # [Flake] 部署 NixOS 系统，使用且信任非官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask -- --accept-flake-config
+nh os <Commands> ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask -- --accept-flake-config
 
 # [Flake] 更新 flake.lock 并部署 NixOS 系统，使用官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask --update 
+nh os <Commands> ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask --update 
 
 # [Flake] 更新 flake.lock 并部署 NixOS 系统，使用且信任非官方二进制缓存
-nh os <Commands> ~/Solution/Profiles/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask --update -- --accept-flake-config
+nh os <Commands> ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake --hostname $HOSTNAME --ask --update -- --accept-flake-config
 
 # [Flake] [Github] 部署 NixOS 系统，使用官方二进制缓存
 nh os <Commands> github:username/nixos-config --hostname $HOSTNAME --ask 

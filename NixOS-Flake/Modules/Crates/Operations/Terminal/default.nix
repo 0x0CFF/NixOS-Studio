@@ -43,8 +43,8 @@
       # 设置命令别名
       shellAliases = {
         NAVI = "navi --path '~/.config/navi'";
-        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio";
-        FLAKE = "sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh";
+        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio";
+        FLAKE = "sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh";
       };
     };
   };

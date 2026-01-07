@@ -18,7 +18,7 @@
     # 查找程序所在位置 echo $(which ssh)
     script = ''
       set -eu
-      cd /home/0x0CFF/Solution/Profiles/Web-Studio/Panel-Studio/
+      cd /home/0x0CFF/Solution/Blueprints/UV/Web-Studio/Panel-Studio/
       ${pkgs.uv}/bin/uv run ./main.py
     '';
     # 单元配置

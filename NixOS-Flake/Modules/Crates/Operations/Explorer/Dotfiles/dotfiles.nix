@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:let
   # 配置目录路径
   # ${config.home.homeDirectory} 表示 Home-Manager 管理的用户家目录
-  helixPath = "${config.home.homeDirectory}/Solution/Profiles/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Explorer/Dotfiles/Helix";
-  yaziPath = "${config.home.homeDirectory}/Solution/Profiles/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Explorer/Dotfiles/Yazi";
+  helixPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Explorer/Dotfiles/Helix";
+  yaziPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Explorer/Dotfiles/Yazi";
 in
 {
   # config.lib.file.mkOutOfStoreSymlink 可以创建一个指向 Dotfiles 绝对路径的软链接

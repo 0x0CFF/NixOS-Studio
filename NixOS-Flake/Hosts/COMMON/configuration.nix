@@ -91,8 +91,8 @@
     # 启用自动化垃圾回收机制
     gc = {
       automatic = true;                          # 在特定时间自动运行垃圾回收器
-      dates = "2weeks";                          # 执行垃圾回收的频率，格式查看：https://www.mankier.com/7/systemd.time
-      options = "--delete-older-than 14d";       # 垃圾收集器自动运行时 nix-collect-garbage 的选项
+      dates = "1months";                         # 执行垃圾回收的频率，格式查看：https://www.mankier.com/7/systemd.time
+      options = "--delete-older-than 1months";   # 垃圾收集器自动运行时 nix-collect-garbage 的选项
     };
   };
   

@@ -153,8 +153,8 @@
       # 初始化交互式 Shell 时应运行的额外命令
       # 设置命令别名方便使用
       shellAliases = {
-        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Profiles/NixOS-Studio";
-        FLAKE = "sudo sh ~/Solution/Profiles/NixOS-Studio/Script/nixos-install.sh";
+        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio";
+        FLAKE = "sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh";
       };
     };
   };

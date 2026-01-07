@@ -334,9 +334,9 @@ handle_choice() {
         1)  # NixOS Flake 
             echo  # 空行
             # 复制硬件信息
-            cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+            cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
             # 构建 NixOS 系统
-            sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
+            sudo nixos-rebuild switch --flake /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
             exit 1
             ;;
         2)  # 构建 SMB 用户群

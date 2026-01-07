@@ -20,7 +20,7 @@
         # 如果不存在，则创建该仓库
         initialize = true
         # 仓库密码文件
-        passwordFile = "/home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Modules/Services/Automation/Restic/Dotfiles/restic-password";
+        passwordFile = "/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Services/Automation/Restic/Dotfiles/restic-password";
         # 备份定时器
         timerConfig = {
           # 每天 08:00 到 20:00 之间，每 2 个小时运行一次
@@ -43,7 +43,7 @@
           "--cleanup-cache"
         ];
         # rclone 配置文件
-        rcloneConfigFile = "/home/0x0CFF/Solution/Profiles/NixOS-Studio/NixOS-Flake/Hosts/DATABC/DATABC00/Services/Dotfiles/rclone.conf";
+        rcloneConfigFile = "/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/DATABC/DATABC00/Services/Dotfiles/rclone.conf";
         # 传递给 rclone 以控制其行为的选项，详细参数查看官方文档： https://rclone.org/docs/#options
         rcloneOptions = {
           bwlimit = "100M:off";           # --bwlimit UP:DOWN 带宽上下行限制，off 表示关闭限制，单位 MiB/s
