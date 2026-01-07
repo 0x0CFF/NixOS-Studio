@@ -116,6 +116,7 @@ for mirror in "${MIRRORS[@]}"; do
 done
 
 if [[ -n "$FASTEST_MIRROR" ]]; then
+  echo
   echo "最快的镜像源: $FASTEST_MIRROR (${FASTEST_TIME}s)"
   case $choice1 in
     1)
@@ -124,7 +125,10 @@ if [[ -n "$FASTEST_MIRROR" ]]; then
     2)
       sudo nixos-rebuild switch --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "$FASTEST_MIRROR"
       ;;
+  esac
+  exit 1
 else
+  echo
   echo "没有找到可用的镜像源，使用官方源进行构建"
   case $choice1 in
     1)
@@ -133,6 +137,8 @@ else
     2)
       sudo nixos-rebuild switch --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v
       ;;
+  esac
+  exit 1
 fi
 ```
 

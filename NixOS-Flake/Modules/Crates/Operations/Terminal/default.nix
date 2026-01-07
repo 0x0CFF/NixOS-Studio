@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    bc                       # [AUX] [BC] 任意精度计算工具
     nh                       # [AUX] [RUST] NixOS 生态辅助工具
     watchexec                # [AUX] [RUST] 文件改动监视工具
     tailspin                 # [AUX] [RUST] 日志文件高亮工具
