@@ -75,7 +75,7 @@ sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/N
 ```sh
 echo "--------------- 请选择操作 ---------------"
 echo "1. Test"
-echo "1. Switch"
+echo "2. Switch"
 echo "-----------------------------------------"
 
 read -p "请输入选择 [1-2]: " choice1
@@ -117,10 +117,22 @@ done
 
 if [[ -n "$FASTEST_MIRROR" ]]; then
   echo "最快的镜像源: $FASTEST_MIRROR (${FASTEST_TIME}s)"
-  sudo nixos-rebuild $choice1 --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "$FASTEST_MIRROR"
+  case $choice1 in
+    1)
+      sudo nixos-rebuild test --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "$FASTEST_MIRROR"
+      ;;
+    2)
+      sudo nixos-rebuild switch --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "$FASTEST_MIRROR"
+      ;;
 else
   echo "没有找到可用的镜像源，使用官方源进行构建"
-  sudo nixos-rebuild $choice1 --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v
+  case $choice1 in
+    1)
+      sudo nixos-rebuild test --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v
+      ;;
+    2)
+      sudo nixos-rebuild switch --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v
+      ;;
 fi
 ```
 
