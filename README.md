@@ -55,6 +55,8 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 # git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
 GIT
 
+# 删除 GIT 仓库配置
+
 # 将系统 FLAKE 化（执行后，NixOS 切换到 Flake 模式，可执行 Flake 对应操作）
 # sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh
 FLAKE

@@ -6,6 +6,7 @@
       enable = true;
       user = "0x0CFF";
       guiAddress = "0.0.0.0:8384";
+      dataDir = "/home/0x0CFF/Solution";
       extraFlags = [
           # "--reset-database"
       ];

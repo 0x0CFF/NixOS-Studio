@@ -89,7 +89,7 @@
         # ./Modules/Driver/Xserver/default.nix                                # Xserver 驱动
 
         # 后台服务
-        ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
+        # ./Modules/Services/Automation/HomeAssistant/default.nix             # 智能家居平台
         # ./Modules/Services/Automation/Restic/default.nix                    # 数据备份服务
         ./Modules/Services/Network/AdguardHome/default.nix                  # 网络拦截平台
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
@@ -99,7 +99,7 @@
         # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
         # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务
-        # ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
+        ./Modules/Services/Security/VaultWarden/default.nix                 # 密码管理服务
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎

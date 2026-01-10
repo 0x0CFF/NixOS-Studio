@@ -329,7 +329,7 @@ show_menu() {
 handle_choice() {
     echo  # 空行
     echo "主机名: $HOSTNAME"
-    echo "----------------------------------------"
+    echo "-----------------------------------------"
     case $1 in
         1)  # NixOS Flake 
             echo  # 空行
