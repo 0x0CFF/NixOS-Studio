@@ -12,6 +12,7 @@
     fastfetch                # [CLI] [C] 系统信息查看工具
     openssl                  # [CLI] [C] SSL/TLS 协议加密库
     rclone                   # [CLI] [GO] 云存储同步工具
+    mkcert                   # [CLI] [GO] 本地信任开发证书工具
     grex                     # [CLI] [RUST] 正则表达式生成器
     trashy                   # [CLI] [RUST] 命令行回收站工具
     speedtest-rs             # [CLI] [RUST] 互联网测速工具

@@ -73,7 +73,7 @@
         # 定时服务
 
         # 程序集合
-        # ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
+        ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
         ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
         ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
         ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
@@ -135,7 +135,6 @@
         }
       ];
     };
-    
     
     # DATABC 系列 （Data Buffer Center，数据缓冲中心）#########################################################
 

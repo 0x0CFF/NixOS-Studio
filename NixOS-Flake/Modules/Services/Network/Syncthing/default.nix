@@ -5,7 +5,6 @@
     syncthing = {
       enable = true;
       user = "0x0CFF";
-      dataDir = "/home/0x0CFF/Solution";
       guiAddress = "0.0.0.0:8384";
       extraFlags = [
           # "--reset-database"

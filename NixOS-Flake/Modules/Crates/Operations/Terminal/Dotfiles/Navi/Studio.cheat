@@ -145,6 +145,9 @@ rm -rf /home/0x0CFF/Solution/Blueprints/UV/Web-Studio/Panel-Studio/*
 git clone https://github.com/0x0CFF/Panel-Studio.git ~/Solution/Blueprints/UV/Web-Studio/Panel-Studio
 ```
 
+$ Commands: echo "test switch boot" | tr ' ' '\n'
+$ Channels: echo "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://mirrors.ustc.edu.cn/nix-channels/store https://mirrors.nju.edu.cn/nix-channels/store https://mirror.sjtu.edu.cn/nix-channels/store https://mirrors.cqupt.edu.cn/nix-channels/store https://mirror.nyist.edu.cn/nix-channels/store https://mirror.iscas.ac.cn/nix-channels/store" | tr ' ' '\n'
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 % Studio, Trash
