@@ -59,6 +59,9 @@ fi
 
 % NixOS, Build
 
+# [Flake] 部署 NixOS 系统
+sudo nixos-rebuild <Commands> --flake <Path>#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
+
 # [Unflake] 部署 NixOS 系统
 sudo nixos-rebuild <Commands> -I nixos-config=<Path> --show-trace -L -v --option substituters "<Channels>"
 
