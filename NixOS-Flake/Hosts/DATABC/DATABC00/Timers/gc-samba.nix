@@ -2,7 +2,7 @@
 
 {
   # 在 timers 服务中启用 systemd 单元
-  systemd.timers."samba-gc" = {
+  systemd.timers."gc-samba" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       # 在系统运行时，每年 1 月 1 日开始，每 2 个月循环，在 05：00：00 运行任务
@@ -15,7 +15,7 @@
   };
 
   # 定义 systemd 单元
-  systemd.services."samba-gc" = {
+  systemd.services."gc-samba" = {
     # 运行脚本
     # 查找程序所在位置 echo $(which ssh)
     script = ''

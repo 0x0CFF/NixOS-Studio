@@ -2,7 +2,7 @@
 
 {
   # 在 timers 服务中启用 systemd 单元
-  systemd.timers."mount-point-backup" = {
+  systemd.timers."backup-local-mount-point" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       # 在系统运行时，每月 1 日开始，每 3 天循环，在 05:00:00 运行任务
@@ -13,7 +13,7 @@
   };
 
   # 定义 systemd 单元
-  systemd.services."mount-point-backup" = {
+  systemd.services."backup-local-mount-point" = {
     # 运行脚本
     # 查找程序所在位置 echo $(which ssh)
     script = ''
