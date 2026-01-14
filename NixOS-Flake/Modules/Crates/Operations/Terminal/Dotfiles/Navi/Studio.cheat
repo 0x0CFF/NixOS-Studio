@@ -18,55 +18,54 @@ sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/N
 # [Flake] 远程部署 NixOS 系统（系统构建过程将在远程主机执行）
 sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host root@<IP> --verbose
 
-# 拉取 NixOS-Studio 配置
-```sh
-rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/*
-git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
-rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.git
-rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.gitignore
-```
-
-# 替换硬件信息
-```sh
-echo "覆写：/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
-cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
-echo "覆写：100% (1/1), 完成."
-```
-
-# 重置 NixOS-Studio 配置 + 替换硬件信息
+# [Flake][Auto] 克隆 NixOS-Studio 配置 + 替换硬件信息
 ```sh
 echo "------------------------ 更新 NixOS-Studio 配置 ------------------------"
 echo
-rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/*
-sleep 1
-git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
-sleep 1
-rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.git
-rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.gitignore
-echo
-echo "----------------------------- 覆写设备硬件表 ----------------------------"
-echo
-echo "覆写：/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
-cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
-echo "覆写：100% (1/1), 完成."
-echo
-case $HOSTNAME in
-  "DATABC00")
-    echo "----------------------------- 更新服务配置项 ----------------------------"
+CLONE_DIR="/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio"
+CLONE_DIR_BACKUP="/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio_Backup"
+REPO_URL="https://github.com/0x0CFF/NixOS-Studio.git"
+
+if [ -d "$CLONE_DIR" ]; then
+    echo "目录 $CLONE_DIR 已存在，正在备份..."
+    mv -f "$CLONE_DIR" "$CLONE_DIR_BACKUP"
+    echo "备份：100% (1/1), 完成."
+    sleep 1
+fi
+
+MAX_RETRIES=3
+RETRY_COUNT=0
+CLONE_SUCCESS=false
+while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
     echo
-    ;;
-  "DATASC00")
-    echo "----------------------------- 更新服务配置项 ----------------------------"
+    echo "尝试克隆 NixOS-Studio 配置 (第 $((RETRY_COUNT+1)) 次)..."
+    if git clone "$REPO_URL" "$CLONE_DIR"; then
+        CLONE_SUCCESS=true
+        sleep 1
+        break
+    fi
+    RETRY_COUNT=$((RETRY_COUNT+1))
+    echo "克隆失败，等待 2 秒后重试..."
+    sleep 2
+done
+
+if [ "$CLONE_SUCCESS" = true ]; then
+    rm -rf "$CLONE_DIR_BACKUP"
+    rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.git
+    rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.gitignore
     echo
-    ;;
-  "DATASC01")
-    echo "----------------------------- 更新服务配置项 ----------------------------"
+    echo "----------------------------- 覆写设备硬件表 ----------------------------"
     echo
-    ;;
-  *)
-    exit 1
-    ;;
-esac
+    echo "覆写：/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
+    cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+    echo "覆写：100% (1/1), 完成."
+else
+    echo
+    echo "经过 $MAX_RETRIES 次尝试后仍然克隆失败，正在恢复备份..."
+    rm -rf "$CLONE_DIR"
+    mv -f "$CLONE_DIR_BACKUP" "$CLONE_DIR"
+    echo "恢复：100% (1/1), 完成."
+fi
 ```
 
 # [Flake][Auto] 部署 NixOS-Studio 系统

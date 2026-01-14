@@ -64,7 +64,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -149,7 +149,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -240,7 +240,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -328,7 +328,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -416,7 +416,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -502,7 +502,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -591,7 +591,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -680,7 +680,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
@@ -763,7 +763,7 @@
       specialArgs = { inherit inputs; };
       # 引用子模块
       modules = [
-        agenix.nixosModules.age                                             # 信息加解密工具
+        agenix.nixosModules.default                                         # 信息加解密工具
         # 设备底层
         ./Hosts/COMMON/configuration.nix                                    # 基础配置 [ 通用 ]
         ./Hosts/COMMON/environment.nix                                      # 环境变量 [ 通用 ]
