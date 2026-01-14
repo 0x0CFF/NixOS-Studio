@@ -6,7 +6,7 @@ sudo nix flake update --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Fla
 # [Flake] 部署 NixOS 系统
 sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
 
-# [Flake] [Git] 回滚 NixOS 系统
+# [Flake][Git] 回滚 NixOS 系统
 ```sh
 git checkout HEAD^1
 sudo nixos-rebuild switch --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
@@ -33,12 +33,14 @@ cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/Nix
 echo "覆写：100% (1/1), 完成."
 ```
 
-# 重置 NixOS-Studio 配置
+# 重置 NixOS-Studio 配置 + 替换硬件信息
 ```sh
 echo "------------------------ 更新 NixOS-Studio 配置 ------------------------"
 echo
 rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/*
+sleep 1
 git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
+sleep 1
 rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.git
 rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.gitignore
 echo
@@ -67,7 +69,7 @@ case $HOSTNAME in
 esac
 ```
 
-# [Flake] [Auto] 部署 NixOS-Studio 系统
+# [Flake][Auto] 部署 NixOS-Studio 系统
 ```sh
 echo "--------------- 请选择操作 ---------------"
 echo "1. Test"

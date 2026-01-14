@@ -202,7 +202,6 @@ DATABC_FOLDERS=(
     "/mnt/Workspace/协作盘/.Trash/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/.Trash/:BOARD_R5:PUBLIC:775"
-    "/mnt/Document/文档盘/Keepass:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/Masscode:DEVELOPMENT_R5:DEVELOPMENT:755"
     "/mnt/Document/文档盘/Obsidian/:BOARD_R5:PUBLIC:775"
     "/mnt/Document/文档盘/Obsidian/行政文档:ADMINISTRATION_R5:ADMINISTRATION:750"

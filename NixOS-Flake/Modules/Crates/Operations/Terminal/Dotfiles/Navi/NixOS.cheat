@@ -29,10 +29,10 @@ if [ -f "$FILE" ]; then
 else
     # 创建 /run/systemd/system/nix-daemon.service.d/override.conf
     sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
-    sudo tee /run/systemd/system/nix-daemon.service.d/override.conf <<EOF
-    [Service]
-    Environment="https_proxy=socks5h://192.168.31.96:20172"
-    EOF
+    sudo tee /run/systemd/system/nix-daemon.service.d/override.conf << EOF
+[Service]
+Environment="https_proxy=socks5h://192.168.31.96:20172"
+EOF
     # 重启 nix-daemon 进程
     sudo systemctl daemon-reload
     sudo systemctl restart nix-daemon
@@ -129,10 +129,10 @@ systemctl list-timers --all
 
 % NixOS, NH
 
-# [Flake] [Github] 部署 NixOS 系统，使用官方二进制缓存
+# [Flake][Github] 部署 NixOS 系统，使用官方二进制缓存
 nh os <Commands> github:username/nixos-config --hostname $HOSTNAME --ask 
 
-# [Flake] [Github] 部署 NixOS 系统，使用且信任非官方二进制缓存
+# [Flake][Github] 部署 NixOS 系统，使用且信任非官方二进制缓存
 nh os <Commands> github:username/nixos-config --hostname $HOSTNAME --ask -- --accept-flake-config
 
 # 清理所有系统范围内的配置文件和 GC 根
