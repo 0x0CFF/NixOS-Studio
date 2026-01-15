@@ -3,26 +3,20 @@
 {
   environment.systemPackages = with pkgs; [
     bc                       # [AUX] [BC] 任意精度计算工具
-    nh                       # [AUX] [RUST] NixOS 生态辅助工具
-    watchexec                # [AUX] [RUST] 文件改动监视工具
     tailspin                 # [AUX] [RUST] 日志文件高亮工具
     starship                 # [AUX] [RUST] 命令行提示符
     eza                      # [AUX] [RUST] 文件列表命令行
     curl                     # [CLI] [C] URL 传输数据
     fastfetch                # [CLI] [C] 系统信息查看工具
     openssl                  # [CLI] [C] SSL/TLS 协议加密库
-    rclone                   # [CLI] [GO] 云存储同步工具
     grex                     # [CLI] [RUST] 正则表达式生成器
-    trashy                   # [CLI] [RUST] 命令行回收站工具
-    speedtest-rs             # [CLI] [RUST] 互联网测速工具
-    pik                      # [TUI] [RUST] 进程交互式 Kill 工具
-    navi                     # [TUI] [RUST] 命令行交互式备忘单工具
     bottom                   # [TUI] [RUST] 资源管理器
     zellij                   # [TUI] [RUST] 终端复用器
+    pik                      # [TUI] [RUST] 进程交互式 Kill 工具
+    navi                     # [TUI] [RUST] 命令行交互式备忘单工具
     systemctl-tui            # [TUI] [RUST] Systemd 服务管理工具
-    somo                     # [TUI] [RUST] 端口查看工具
   ];
-
+  
   programs = {
     # 配置 Bash
     bash = {
@@ -39,13 +33,10 @@
         bind '"\em": "btm\n"'
         bind '"\ek": "pik\n"'
         bind '"\es": "systemctl-tui\n"'
-        bind '"\eg": "gitui\n"'
       '';
       # 设置命令别名
       shellAliases = {
         NAVI = "navi --path '~/.config/navi'";
-        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio";
-        FLAKE = "sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh";
       };
     };
   };

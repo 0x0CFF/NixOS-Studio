@@ -6,6 +6,9 @@ sudo nix flake update --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Fla
 # [Flake] 部署 NixOS 系统
 sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --show-trace -L -v --option substituters "<Channels>"
 
+# [Flake][Offline] 部署 NixOS 系统
+sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --offline --impure --show-trace -L -v
+
 # [Flake][Git] 回滚 NixOS 系统
 ```sh
 git checkout HEAD^1

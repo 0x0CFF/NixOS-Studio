@@ -77,11 +77,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        # ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -129,8 +131,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -170,11 +172,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -222,8 +226,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -256,11 +260,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -308,8 +314,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -346,11 +352,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -398,8 +406,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -432,11 +440,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -484,8 +494,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -521,11 +531,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -573,8 +585,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -608,11 +620,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        # ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -660,8 +674,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -693,11 +707,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -745,8 +761,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
@@ -776,11 +792,13 @@
 
         # 程序集合
         ./Modules/Crates/Development/Python/default.nix                     # Python 开发工具集合
-        ./Modules/Crates/Operations/Explorer/default.nix                    # 终端文件管理器程序集合
-        ./Modules/Crates/Operations/Git/default.nix                         # Git 程序集合
-        ./Modules/Crates/Operations/Hardware/default.nix                    # 硬件管理程序集合
-        ./Modules/Crates/Operations/Multimedia/default.nix                  # 多媒体处理程序集合
-        ./Modules/Crates/Operations/Terminal/default.nix                    # 终端环境程序集合
+        # ./Modules/Crates/Terminal/Automation/default                        # 终端自动化程序集合
+        ./Modules/Crates/Terminal/Explorer/default.nix                      # 终端文件管理器程序集合
+        ./Modules/Crates/Terminal/Hardware/default.nix                      # 终端硬件管理程序集合
+        ./Modules/Crates/Terminal/Multimedia/default.nix                    # 终端多媒体处理程序集合
+        ./Modules/Crates/Terminal/Network/default.nix                       # 终端网络程序集合
+        ./Modules/Crates/Terminal/Nix-Ecosystem/default.nix                 # 终端 Nix 生态程序集合
+        ./Modules/Crates/Terminal/Operations/default.nix                    # 终端运维程序集合
 
         # 硬件驱动
         ./Modules/Driver/Audio/default.nix                                  # 声音驱动
@@ -828,8 +846,8 @@
             imports = [
               # 基础配置
               ./Hosts/COMMON/homemanager.nix
-              ./Modules/Crates/Operations/Explorer/Dotfiles/dotfiles.nix
-              ./Modules/Crates/Operations/Terminal/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Explorer/Dotfiles/dotfiles.nix
+              ./Modules/Crates/Terminal/Operations/Dotfiles/dotfiles.nix
             ];
           };
           # 将所有 inputs 输入函数中所有的变量设为 home-manager 模块的特殊参数，这样 home-manager 子模块中可进行调用
