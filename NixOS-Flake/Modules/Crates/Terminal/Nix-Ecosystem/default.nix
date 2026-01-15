@@ -22,7 +22,6 @@
       # 设置命令别名
       shellAliases = {
         GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio && find /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/ -type f \( -name '.git' -o -name '.gitignore' \) -exec rm -f {} \;";
-        HC = "cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/";
         FLAKE = "sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh";
       };
     };

@@ -21,6 +21,15 @@ sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/N
 # [Flake] 远程部署 NixOS 系统（系统构建过程将在远程主机执行）
 sudo nixos-rebuild <Commands> --flake ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake#$HOSTNAME --target-host root@<IP> --build-host root@<IP> --verbose
 
+# [Flake][Auto] 替换硬件信息
+```sh
+echo "---------------------------- 覆写设备硬件信息 ---------------------------"
+echo
+echo "覆写：/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
+cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/
+echo "覆写：100% (1/1), 完成."
+```
+
 # [Flake][Auto] 克隆 NixOS-Studio 配置 + 替换硬件信息
 ```sh
 echo "------------------------ 更新 NixOS-Studio 配置 ------------------------"
