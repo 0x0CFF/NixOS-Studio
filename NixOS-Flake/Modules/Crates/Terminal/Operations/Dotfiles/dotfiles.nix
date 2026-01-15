@@ -1,9 +1,9 @@
 { config, pkgs, inputs, ... }:let
   # 配置目录路径
   # ${config.home.homeDirectory} 表示 Home-Manager 管理的用户家目录
-  bottomPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Terminal/Dotfiles/Bottom";
-  naviPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Terminal/Dotfiles/Navi";
-  zellijPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Operations/Terminal/Dotfiles/Zellij";
+  bottomPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Terminal/Operations/Dotfiles/Bottom";
+  naviPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Terminal/Operations/Dotfiles/Navi";
+  zellijPath = "${config.home.homeDirectory}/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Modules/Crates/Terminal/Operations/Dotfiles/Zellij";
 in
 {
   # config.lib.file.mkOutOfStoreSymlink 可以创建一个指向 Dotfiles 绝对路径的软链接
