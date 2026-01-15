@@ -57,7 +57,7 @@ if [ "$CLONE_SUCCESS" = true ]; then
     rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.git
     rm -rf /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/.gitignore
     echo
-    echo "----------------------------- 覆写设备硬件表 ----------------------------"
+    echo "---------------------------- 覆写设备硬件信息 ---------------------------"
     echo
     echo "覆写：/home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/hardware-configuration.nix"
     cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/

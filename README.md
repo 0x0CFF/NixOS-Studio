@@ -55,7 +55,8 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 # git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
 GIT
 
-# 删除 GIT 仓库配置
+# 替换硬件信息
+HC
 
 # 将系统 FLAKE 化（执行后，NixOS 切换到 Flake 模式，可执行 Flake 对应操作）
 # sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh
@@ -71,8 +72,8 @@ FLAKE
 # 使用 mount 命令挂载硬盘到 /mnt 目录下
 # 查看硬盘挂载情况
 sudo lsblk -f
-# NAVI [hdd]: 生成 `hardware-configuration.nix` 硬件信息
-# NAVI [hdd]: 替换硬件信息到 NixOS-Flake 相应文件夹下
+# NAVI [nixos]: 生成 `hardware-configuration.nix` 硬件信息
+# HC: 替换硬件信息到 NixOS-Flake 相应文件夹下
 
 # 构建 SMB 共享文件夹
 # sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh
@@ -80,5 +81,5 @@ FLAKE
 
 # 修改对应 Services/samba.nix 文件
 # 修改 flake.nix 文件，开启 samba 专项
-# NAVI [rebuild]: 构建系统
+# NAVI [studio]: 构建系统
 ```

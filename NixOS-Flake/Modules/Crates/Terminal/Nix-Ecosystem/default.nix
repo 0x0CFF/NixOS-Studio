@@ -2,12 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
-    git                                              # [CLI] [C] 版本控制系统
-    gitui                                            # [TUI] [RUST] Git 版本管理
-    gitnr                                            # [TUI] [RUST] .gitignore 文件模板
-    serie                                            # [TUI] [RUST] Git 分支提交图
-    nh                                               # [AUX] [RUST] NixOS 生态辅助工具
-    inputs.agenix.packages."${system}".default       # [CLI] [Nix] 信息加解密工具
+    git                                                                  # [CLI] [C] 版本控制系统
+    gitui                                                                # [TUI] [RUST] Git 版本管理
+    gitnr                                                                # [TUI] [RUST] .gitignore 文件模板
+    serie                                                                # [TUI] [RUST] Git 分支提交图
+    nh                                                                   # [AUX] [RUST] NixOS 生态辅助工具
+    inputs.agenix.packages."${stdenv.hostPlatform.system}".default       # [CLI] [Nix] 信息加解密工具
   ];
   
   programs = {
@@ -21,7 +21,8 @@
       '';
       # 设置命令别名
       shellAliases = {
-        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio";
+        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio && find /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/ -type f \( -name '.git' -o -name '.gitignore' \) -exec rm -f {} \;";
+        HC = "cp -f /etc/nixos/hardware-configuration.nix /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake/Hosts/${HOSTNAME%%0*}/$HOSTNAME/Device/";
         FLAKE = "sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh";
       };
     };
