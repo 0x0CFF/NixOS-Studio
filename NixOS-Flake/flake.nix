@@ -108,6 +108,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -203,6 +204,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -291,6 +293,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -383,6 +386,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -471,6 +475,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -562,6 +567,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -651,6 +657,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -738,6 +745,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门
@@ -823,6 +831,7 @@
 
         # 容器引擎
         ./Modules/Virtualisation/Docker/default.nix                         # Docker 引擎
+        # ./Modules/Virtualisation/Selfhosted/Dify/default.nix                # Dify
 
         # 用户成员
         ./Users/ADMINISTRATION/default.nix                                  # 行政部门

@@ -193,6 +193,76 @@ nh os <Commands> ~/Solution/Blueprints/NixOS/NixOS-Studio/NixOS-Flake --hostname
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+% Studio, Docker
+
+# [Docker][Auto] 克隆 Selfhosted 项目仓库
+```sh
+# 函数 : 克隆项目仓库
+clone_github_repo() {
+    echo  # 空行
+    local REPO_URL="$1"
+    # 提取出项目名称
+    local REPO_NAME
+    REPO_NAME=$(basename "$REPO_URL" .git)
+    # 首字母大写（支持多单词，如 my-project -> My-Project）
+    if [[ -n "$REPO_NAME" ]]; then
+        # 方法1：使用 sed 处理每个单词首字母大写
+        REPO_NAME=$(echo "$REPO_NAME" | sed 's/\b\(.\)/\u\1/g')
+    fi
+    local CLONE_DIR="/home/0x0CFF/Solution/Selfhosted/$REPO_NAME"
+    
+    local MAX_RETRIES=3
+    local RETRY_COUNT=0
+    local CLONE_SUCCESS=false
+    
+    echo "仓库地址： $REPO_URL"
+    while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+        echo  # 空行
+        echo "尝试克隆项目仓库 (第 $((RETRY_COUNT+1)) 次)..."
+        if git clone "$REPO_URL" "$CLONE_DIR"; then
+            CLONE_SUCCESS=true
+            sleep 1
+            break
+        fi
+        RETRY_COUNT=$((RETRY_COUNT+1))
+        echo "克隆失败，等待 2 秒后重试..."
+        sleep 2
+    done
+    echo  # 空行
+    echo "-----------------------------------------"
+}
+
+case $HOSTNAME in
+    "DATAGC00")
+        echo "--------------- 请选择操作 ---------------"
+        echo "1. Dify"
+        echo "2. Drawnix"
+        echo "-----------------------------------------"
+        
+        read -p "请输入选择 [1-2]: " choice1
+        
+        case $choice1 in
+            1)
+                clone_github_repo https://github.com/langgenius/dify.git
+                ;;
+            2)
+                clone_github_repo https://github.com/plait-board/drawnix.git
+                ;;
+            *)
+                echo "无效选择!"
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo "$HOSTNAME 无须克隆 Selfhosted 项目仓库！"
+        exit 1
+        ;;
+esac
+```
+                    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 % Studio, Eagle
 
 # 设置目录，添加不可变属性

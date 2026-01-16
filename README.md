@@ -55,8 +55,7 @@ nixos-install --root /mnt --option substituters "https://mirror.sjtu.edu.cn/nix-
 # git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio
 GIT
 
-# 替换硬件信息
-HC
+# NAVI [studio]: 替换硬件信息到 NixOS-Flake 相应文件夹下
 
 # 将系统 FLAKE 化（执行后，NixOS 切换到 Flake 模式，可执行 Flake 对应操作）
 # sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh
@@ -73,7 +72,7 @@ FLAKE
 # 查看硬盘挂载情况
 sudo lsblk -f
 # NAVI [nixos]: 生成 `hardware-configuration.nix` 硬件信息
-# HC: 替换硬件信息到 NixOS-Flake 相应文件夹下
+# NAVI [studio]: 替换硬件信息到 NixOS-Flake 相应文件夹下
 
 # 构建 SMB 共享文件夹
 # sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh

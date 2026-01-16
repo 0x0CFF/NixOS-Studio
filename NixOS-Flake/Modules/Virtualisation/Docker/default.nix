@@ -7,6 +7,7 @@
     virtualisation = {
       docker = {
         enable = true;
+        autoPrune.enable = true; # 自动清理无用镜像
       };
     };
 
