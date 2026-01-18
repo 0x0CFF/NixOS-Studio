@@ -234,6 +234,8 @@ clone_github_repo() {
 
 case $HOSTNAME in
     "DATAGC00")
+        DOCKER_DIR="/home/0x0CFF/Solution/Selfhosted"
+    
         echo "--------------- 请选择操作 ---------------"
         echo "1. Dify"
         echo "2. Drawnix"
@@ -244,6 +246,10 @@ case $HOSTNAME in
         case $choice1 in
             1)
                 clone_github_repo https://github.com/langgenius/dify.git
+                cp $DOCKER_DIR/Dify/docker/.env.example $DOCKER_DIR/Dify/docker/.env
+                sed -i "s|^EXPOSE_NGINX_PORT=.*|EXPOSE_NGINX_PORT=10080|" $DOCKER_DIR/Dify/docker/.env
+                sed -i "s|^PIP_MIRROR_URL=.*|PIP_MIRROR_URL=https://mirrors.aliyun.com/pypi/simple|" $DOCKER_DIR/Dify/docker/.env
+                cp $DOCKER_DIR/Dify/docker/docker-compose.yaml $DOCKER_DIR/Dify/docker/docker-compose.yaml.example
                 ;;
             2)
                 clone_github_repo https://github.com/plait-board/drawnix.git

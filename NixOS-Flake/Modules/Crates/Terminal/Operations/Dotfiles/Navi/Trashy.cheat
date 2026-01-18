@@ -1,0 +1,22 @@
+% Trashy
+
+# 丢弃文件到回收站
+trash put <Path>
+
+# 列出回收站中的项目
+trash list
+
+# 列出回收站中的项目（使用 rg 搜索）
+trash list | rg <Keyword>
+
+# 恢复某些文件
+trash restore
+
+# 清空某些文件
+trash empty
+
+# 恢复所有文件
+trash restore --all
+
+# 清空所有文件
+trash empty --all

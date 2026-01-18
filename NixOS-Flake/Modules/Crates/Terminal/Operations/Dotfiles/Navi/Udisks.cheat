@@ -1,0 +1,13 @@
+% Udisks
+
+# 列出可用移动设备
+udisksctl status
+
+# 挂载移动设备（自动选择挂载点）
+udisksctl mount -b /dev/<udisk>
+
+# 卸载移动设备
+udisksctl unmount -b /dev/<udisk>
+
+# 断电并卸载移动设备（安全移除）
+udisksctl power-off -b /dev/<udisk>

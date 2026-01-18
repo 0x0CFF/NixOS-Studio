@@ -100,7 +100,7 @@
         ./Modules/Services/Network/OpenSSH/default.nix                      # 远程通信服务
         # ./Modules/Services/Network/Samba/default.nix                        # 文件共享服务
         ./Modules/Services/Network/Syncthing/default.nix                    # 文件同步服务
-        ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
+        # ./Modules/Services/Network/V2raya/default.nix                       # 网络代理服务
         # ./Modules/Services/Produce/Ollama/default.nix                       # 本地 LLM 运行框架
         # ./Modules/Services/Produce/OpenWebUI/default.nix                    # AI 应用平台
         # ./Modules/Services/Security/Frigate/default.nix                     # 网络录像服务

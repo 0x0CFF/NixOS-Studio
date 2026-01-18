@@ -122,10 +122,10 @@ keymap = [
 	{ on = [ "g", "h" ],       run = "cd ~",                                                               desc = "转到家目录" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",                                                       desc = "转到配置目录" },
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",                                                     desc = "转到下载目录" },
-	{ on = [ "g", "p" ],       run = "cd ~/Programs",                                                      desc = "转到程序目录" },
-	{ on = [ "g", "t" ],       run = "cd /tmp",                                                            desc = "转到临时目录" },
-	{ on = [ "g", "b" ],       run = "cd '~/Syncthing/Private/Workspaces/178 丨 0x0CFF/Blog'",             desc = "转到博客目录" },	
-	{ on = [ "g", "n" ],       run = "cd ~/Syncthing/Private/Profiles/NixOS-Flake",                        desc = "转到 NixOS-Flake 目录（Private）" },
+	{ on = [ "g", "t" ],       run = "cd /tmp",                                                            desc = "转到临时目录" },	
+	{ on = [ "g", "n" ],       run = "cd /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio",             desc = "转到 NixOS-Flake 目录）" },
+	{ on = [ "g", "s" ],       run = "cd /home/0x0CFF/Solution/Selfhosted",                                desc = "转到 Selfhosted 目录）" },
+	{ on = [ "g", "m" ],       run = "cd /mnt",                                                            desc = "转到 Mnt 目录）" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive",                                                   desc = "以交互方式转到目录" },
 	
 	# 在当前位置打开 Shell

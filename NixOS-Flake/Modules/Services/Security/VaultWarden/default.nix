@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 let
-  # 您的服务器 IP 地址
+  # 服务器 IP 地址
   serverIp = "192.168.31.96";
   # SSL 证书路径
   sslDir = "/var/lib/vaultwarden";
@@ -109,8 +109,6 @@ in
   # 防火墙端口配置
   networking.firewall = {
     allowedTCPPorts = [
-      80                          # HTTP
-      443                         # HTTPS
       8222                        # Rocket 服务
       3012                        # WebSocket 服务
     ];

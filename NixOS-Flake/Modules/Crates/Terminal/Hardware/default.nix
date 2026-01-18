@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     hdparm                   # [CLI] [C] 硬盘工具
+    udisks                   # [CLI] [C] 移动设备挂载工具
     # clinfo                   # [CLI] [C] OpenCL 验证工具
     # brightnessctl            # [CLI] [C] 屏幕亮度调节工具
     smartmontools            # [CLI] [C++] 硬盘健康监测工具

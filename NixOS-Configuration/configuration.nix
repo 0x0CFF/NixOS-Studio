@@ -27,11 +27,11 @@
     # wireless.enable = true;      # 通过 wpa_supplicant 启用无线支持
     networkmanager.enable = true;  # 易于使用的网络管理工具（大多数发行版默认使用它）
     # 网络代理配置，格式："http://user:password@proxy:port/"
-    # proxy = {
-    #   default = "http://192.168.31.51:20171/";            # [ 代理服务器 ] V2ray 非分流端口
-    #   default = "http://192.168.31.51:20172/";            # [ 代理服务器 ] V2ray 分流端口
-    #   noProxy = "127.0.0.1,localhost,internal.domain";    # 代理黑名单
-    # };
+    proxy = {
+      # default = "http://192.168.31.96:20171/";            # [ 代理服务器 ] V2ray 非分流端口
+      # default = "http://192.168.31.96:20172/";            # [ 代理服务器 ] V2ray 分流端口
+      # noProxy = "127.0.0.1,localhost,internal.domain";    # 代理黑名单
+    };
     # 防火墙端口配置
     firewall = {
       enable = true;                  # 防火墙开关（关闭则完全禁用防火墙）
@@ -146,7 +146,7 @@
       # 初始化交互式 Shell 时应运行的额外命令
       # 设置命令别名方便使用
       shellAliases = {
-        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio";
+        GIT = "git clone https://github.com/0x0CFF/NixOS-Studio.git ~/Solution/Blueprints/NixOS/NixOS-Studio && find /home/0x0CFF/Solution/Blueprints/NixOS/NixOS-Studio/ -type f \( -name '.git' -o -name '.gitignore' \) -exec rm -f {} \;";
         FLAKE = "sudo sh ~/Solution/Blueprints/NixOS/NixOS-Studio/Script/nixos-install.sh";
       };
     };
